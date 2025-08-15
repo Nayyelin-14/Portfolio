@@ -69,7 +69,7 @@ const ContactSection = ({ isDark }) => {
           </button>
 
           <a
-            href={`mailto:${portfolioData.personal.email}`}
+            href={`https://mail.google.com/mail/?view=cm&to=${portfolioData.personal.email}`}
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center gap-4 rounded-xl border p-6 shadow-lg transition-shadow hover:shadow-xl hover:scale-[1.03] ${

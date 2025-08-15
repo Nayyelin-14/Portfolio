@@ -77,7 +77,7 @@ export const portfolioData = {
     title: "Full-Stack Developer",
     tagline:
       "Crafting elegant solutions through clean code and innovative thinking",
-    email: "nayyelin.dev@email.com",
+    email: "nayyelin.dev@gmail.com",
     location: "Chiang Rai , Thailand",
     github: "https://github.com/Nayyelin-14",
 
