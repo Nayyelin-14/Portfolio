@@ -1,4 +1,5 @@
 import { MapPin, Calendar, Download, Star } from "lucide-react";
+import { portfolioData } from "../assets/Data";
 
 export const AboutSection = ({ isDark, visibleElements }) => {
   const allSkills = [
@@ -84,7 +85,7 @@ export const AboutSection = ({ isDark, visibleElements }) => {
             <div className="flex-shrink-0">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-1 bg-gradient-to-br from-blue-500 to-purple-600">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
+                  src={portfolioData.personal.profileImg}
                   alt="Profile"
                   className="w-full h-full rounded-xl object-cover"
                 />
@@ -193,7 +194,7 @@ export const AboutSection = ({ isDark, visibleElements }) => {
                     ? "bg-blue-600 hover:bg-blue-700 text-white"
                     : "bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg"
                 }`}
-                onClick={() => window.open("/NayYeLin_Resume.pdf")}
+                onClick={() => window.open(portfolioData.personal.resumeLink)}
                 aria-label="Download Resume"
               >
                 <Download className="w-4 h-4" />

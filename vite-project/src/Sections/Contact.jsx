@@ -4,8 +4,7 @@ import { portfolioData } from "../assets/Data";
 
 const ContactSection = ({ isDark }) => {
   const handleEmailClick = () => {
-    window.location.href =
-      "mailto:your.email@example.com?subject=Contact%20from%20Portfolio&body=Hi%2C%0D%0A%0D%0AI%20would%20like%20to%20get%20in%20touch%20with%20you%20regarding%20potential%20opportunities.%0D%0A%0D%0ABest%20regards";
+    window.location.href = `mailto:${portfolioData.personal.email}?subject=Contact%20from%20Portfolio&body=Hi%2C%0D%0A%0D%0AI%20would%20like%20to%20get%20in%20touch%20with%20you%20regarding%20potential%20opportunities.%0D%0A%0D%0ABest%20regards`;
   };
 
   const handlePhoneClick = () => {

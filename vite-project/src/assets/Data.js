@@ -69,12 +69,15 @@ import d26 from "./doitung/d26.jpg";
 import d28 from "./doitung/d28.jpg";
 import d29 from "./doitung/d29.jpg";
 import d30 from "./doitung/d30.jpg";
-
+import profile from "./profile.jpg";
+import resumeLink from "./nayyelin.resume.pdf";
 // ... rest of your code
 export const portfolioData = {
   personal: {
     name: "Nay Ye Lin",
     title: "Full-Stack Developer",
+    profileImg: profile,
+    resumeLink: resumeLink,
     tagline:
       "Crafting elegant solutions through clean code and innovative thinking",
     email: "nayyelin.dev@gmail.com",
@@ -158,7 +161,7 @@ export const portfolioData = {
       ],
       image: one,
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
-      liveUrl: "https://taskflow-pro.com",
+      liveUrl: "https://task-management-brown-three.vercel.app",
       githubUrl: "https://github.com/Nayyelin-14/Task-management",
       featured: true,
       status: "completed",
@@ -279,7 +282,7 @@ export const portfolioData = {
         "Tailwind CSS",
         "i18next",
       ],
-      liveUrl: "https://furniturehub-demo.com", // your link
+
       githubUrl: "https://github.com/Nayyelin-14/Furniture-Shop", // your repo
       featured: true,
       details: [n1, n2, n3, n4, n6, n5, n7, n8, n9, n10, n11], // replace with screenshots
