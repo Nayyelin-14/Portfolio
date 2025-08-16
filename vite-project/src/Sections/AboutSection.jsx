@@ -2,25 +2,6 @@ import { MapPin, Calendar, Download, Star } from "lucide-react";
 import { portfolioData } from "../assets/Data";
 
 export const AboutSection = ({ isDark, visibleElements }) => {
-  const allSkills = [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "Vue.js",
-    "Node.js",
-    "Express.js",
-    "Python",
-    "PostgreSQL",
-    "MongoDB",
-    "GraphQL",
-    "Git",
-    "VS Code",
-    "Figma",
-    "Postman",
-    "Jest",
-  ];
-
   const interests = [
     { icon: "🎮", label: "Gaming", description: "Strategy & indie games" },
     { icon: "📚", label: "Learning", description: "Exploring new tech" },
@@ -222,7 +203,7 @@ export const AboutSection = ({ isDark, visibleElements }) => {
           </h3>
 
           <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
-            {allSkills.map((skill, idx) => (
+            {portfolioData.skills.allSkills.map((skill, idx) => (
               <span
                 key={idx}
                 className={`px-4 py-1.5 text-sm font-medium rounded-full shadow-sm transition-all

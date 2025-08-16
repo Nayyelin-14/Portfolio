@@ -87,26 +87,21 @@ export const portfolioData = {
     bio: "Passionate full-stack developer with 1+ year of experience building scalable web applications. I love turning complex problems into simple, elegant solutions and am always eager to learn new technologies.",
   },
   skills: {
-    frontend: [
-      { name: "React", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "Tailwind CSS", level: 90 },
-    ],
-    backend: [
-      { name: "Node.js", level: 90 },
-      { name: "Express.js", level: 88 },
-    ],
-    Databse: [
-      { name: "PostgreSQL", level: 85 },
-      { name: "MongoDB", level: 80 },
-      { name: "Mysql", level: 80 },
-      { name: "Nosql", level: 80 },
-    ],
-    Tools: [
-      { name: "Jest", level: 85 },
-      { name: "SuperTest", level: 80 },
-      { name: "Postman", level: 80 },
+    allSkills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "MongoDB",
+      "GraphQL",
+      "Git",
+      "VS Code",
+      "Figma",
+      "Postman",
+      "Jest",
     ],
   },
   projects: [
