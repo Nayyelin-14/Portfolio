@@ -133,7 +133,7 @@ export const portfolioData = {
         "GeminiAI",
         "Redis (Upstash)",
       ],
-      liveUrl: "https://ecotracker-demo.com",
+      liveUrl: "https://interview-prep-ai-nine.vercel.app",
       githubUrl: "https://github.com/Nayyelin-14/InterviewPrepAI",
       featured: true,
       details: [INT1, INT2, INT3, INT4, INT5, INT6],
