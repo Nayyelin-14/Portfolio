@@ -27,7 +27,7 @@ export const ImageSlider = ({ images = [], title = "" }) => {
 
       {/* Title */}
       <div className="absolute bottom-6 left-6 right-16 z-20">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+        <h3 className="text-xl md:text-3xl font-bold text-white mb-2">
           {title}
         </h3>
       </div>

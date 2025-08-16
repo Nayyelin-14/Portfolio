@@ -221,7 +221,7 @@ export const ProjectsSection = ({ isDark, visibleElements }) => {
                     </div>
 
                     {/* Mobile Action Buttons (always visible on small screens) */}
-                    <div className="flex gap-3 mt-4 md:hidden">
+                    <div className="flex gap-2 mt-4 md:hidden">
                       <button
                         onClick={() => openModal(project)}
                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
@@ -285,7 +285,7 @@ export const ProjectsSection = ({ isDark, visibleElements }) => {
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className={`absolute top-4 right-4 z-50 p-2 rounded-full transition-colors ${
+              className={`fixed top-4 right-4 z-50 p-2 rounded-full transition-colors ${
                 isDark
                   ? "hover:bg-gray-700 text-gray-300"
                   : "hover:bg-gray-100 text-gray-600"
