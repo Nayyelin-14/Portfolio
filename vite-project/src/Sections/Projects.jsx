@@ -105,7 +105,7 @@ export const ProjectsSection = ({ isDark, visibleElements }) => {
                       loading="lazy"
                     />
 
-                    {/* Overlay on hover */}
+                    {/* Overlay on hover (desktop only) */}
                     <div className="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                       <div className="flex gap-3">
                         <button
@@ -129,18 +129,16 @@ export const ProjectsSection = ({ isDark, visibleElements }) => {
                           </a>
                         )}
                         {project.liveUrl && (
-                          <>
-                            <a
-                              href={project.liveUrl}
-                              className=" p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors group/btn"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label="View live project"
-                              title="View live project"
-                            >
-                              <ExternalLink className="w-5 h-5 text-white group-hover/btn:scale-110 transition-transform" />
-                            </a>
-                          </>
+                          <a
+                            href={project.liveUrl}
+                            className=" p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors group/btn"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="View live project"
+                            title="View live project"
+                          >
+                            <ExternalLink className="w-5 h-5 text-white group-hover/btn:scale-110 transition-transform" />
+                          </a>
                         )}
                       </div>
                     </div>
@@ -219,6 +217,44 @@ export const ProjectsSection = ({ isDark, visibleElements }) => {
                         >
                           +{project.technologies.length - 3} more
                         </span>
+                      )}
+                    </div>
+
+                    {/* Mobile Action Buttons (always visible on small screens) */}
+                    <div className="flex gap-3 mt-4 md:hidden">
+                      <button
+                        onClick={() => openModal(project)}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+                        aria-label="View project details"
+                      >
+                        <Eye className="w-4 h-4" />
+                        <span>Details</span>
+                      </button>
+
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-semibold transition-colors"
+                          aria-label="View GitHub repository"
+                        >
+                          <Github className="w-4 h-4" />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+                          aria-label="View live project"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span>Live</span>
+                        </a>
                       )}
                     </div>
                   </div>
