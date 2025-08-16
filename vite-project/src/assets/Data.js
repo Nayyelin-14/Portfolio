@@ -70,14 +70,15 @@ import d28 from "./doitung/d28.jpg";
 import d29 from "./doitung/d29.jpg";
 import d30 from "./doitung/d30.jpg";
 import profile from "./profile.jpg";
-import resumeLink from "./nayyelin.resume.pdf";
+// import resumeLink from "./nayyelin.resume.pdf";
+import resume from "./nyl.resume.pdf";
 // ... rest of your code
 export const portfolioData = {
   personal: {
     name: "Nay Ye Lin",
     title: "Full-Stack Developer",
     profileImg: profile,
-    resumeLink: resumeLink,
+    resumeLink: resume,
     tagline:
       "Crafting elegant solutions through clean code and innovative thinking",
     email: "nayyelin.dev@gmail.com",
