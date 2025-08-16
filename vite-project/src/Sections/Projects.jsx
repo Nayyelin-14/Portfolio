@@ -285,7 +285,7 @@ export const ProjectsSection = ({ isDark, visibleElements }) => {
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className={`fixed top-4 right-4 z-50 p-2 rounded-full transition-colors ${
+              className={`absolute top-4 right-4 z-50 p-2 rounded-full transition-colors ${
                 isDark
                   ? "hover:bg-gray-700 text-gray-300"
                   : "hover:bg-gray-100 text-gray-600"
