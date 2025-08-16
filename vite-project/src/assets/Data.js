@@ -95,15 +95,18 @@ export const portfolioData = {
     ],
     backend: [
       { name: "Node.js", level: 90 },
-
       { name: "Express.js", level: 88 },
     ],
-    tools: [
+    Databse: [
       { name: "PostgreSQL", level: 85 },
       { name: "MongoDB", level: 80 },
-      { name: "Docker", level: 75 },
-
-      { name: "Git", level: 95 },
+      { name: "Mysql", level: 80 },
+      { name: "Nosql", level: 80 },
+    ],
+    Tools: [
+      { name: "Jest", level: 85 },
+      { name: "SuperTest", level: 80 },
+      { name: "Postman", level: 80 },
     ],
   },
   projects: [
