@@ -208,7 +208,7 @@ export const portfolioData = {
         "Cloudinary (profile images)",
         "Ant Design",
       ],
-      liveUrl: "https://maefahluang-sports.example.com", // replace with real URL
+      // liveUrl: "https://maefahluang-sports.example.com", // replace with real URL
       githubUrl: "https://github.com/Nayyelin-14/SportComplex",
       featured: true,
       details: [

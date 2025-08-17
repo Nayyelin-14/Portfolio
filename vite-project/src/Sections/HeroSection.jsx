@@ -1,5 +1,5 @@
 import { portfolioData } from "../assets/Data";
-import { Github, Linkedin, ArrowDown } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Mail } from "lucide-react";
 
 export const HeroSection = ({ isDark, visibleElements }) => (
   <section
@@ -119,6 +119,22 @@ export const HeroSection = ({ isDark, visibleElements }) => (
               className={`absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity`}
             >
               LinkedIn
+            </span>
+          </a>
+        )}
+        {portfolioData.personal.email && (
+          <a
+            href={`mailto:${portfolioData.personal.email}`}
+            aria-label="Email"
+            className={`group relative transition-colors ${
+              isDark
+                ? "text-gray-200 hover:text-blue-400"
+                : "text-gray-600 hover:text-blue-600"
+            }`}
+          >
+            <Mail className="w-7 h-7" />
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+              Email
             </span>
           </a>
         )}
