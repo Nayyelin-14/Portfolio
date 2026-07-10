@@ -1,0 +1,38 @@
+@import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+@keyframes meteor-move {
+  0% {
+    transform: translateX(0) translateY(0) rotate(var(--angle));
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100vw) translateY(100vh) rotate(var(--angle));
+    opacity: 0;
+  }
+}
+
+.meteor {
+  position: absolute;
+  border-radius: 9999px;
+  background-color: #a78bfa; /* purple-400 */
+  box-shadow: 0 0 6px 2px #c4b5fd; /* lighter purple glow */
+  width: 4px;
+  height: 4px;
+  pointer-events: none;
+  animation-name: meteor-move;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.meteor-tail {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 40px;
+  background: linear-gradient(to right, #a78bfa, transparent);
+  border-radius: 9999px;
+  filter: blur(1px);
+}
