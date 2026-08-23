@@ -8,10 +8,7 @@ interface ImageSliderProps {
   title?: string;
 }
 
-export const ImageSlider = ({
-  images = [],
-  title = "",
-}: ImageSliderProps) => {
+export const ImageSlider = ({ images = [], title = "" }: ImageSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
@@ -25,7 +22,7 @@ export const ImageSlider = ({
   if (images.length === 0) return null;
 
   return (
-    <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-2xl flex items-center justify-center p-4">
+    <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl flex items-center justify-center p-4">
       <img
         src={images[currentIndex]}
         alt={`${title} image ${currentIndex + 1}`}
@@ -33,7 +30,7 @@ export const ImageSlider = ({
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent z-10 pointer-events-none" />
 
       {/* Title */}
       <div className="absolute bottom-6 left-6 right-16 z-20">
