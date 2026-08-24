@@ -6,6 +6,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/sections/HeroSection";
 import { AboutSection } from "@/sections/AboutSection";
+import { ExperienceSection } from "@/sections/ExperienceSection";
 import { ProjectsSection } from "@/sections/Projects";
 import { CertificatesSection } from "@/sections/Exp";
 import ContactSection from "@/sections/Contact";
@@ -27,6 +28,10 @@ export default function Home() {
       <Navigation isDark={isDark} toggleTheme={toggleTheme} />
       <HeroSection isDark={isDark} visibleElements={visibleElements} />
       <AboutSection
+        isDark={isDark}
+        visibleElements={visibleElements}
+      />
+      <ExperienceSection
         isDark={isDark}
         visibleElements={visibleElements}
       />

@@ -96,7 +96,7 @@ export const AboutSection = ({
               <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 mb-4 text-sm text-gray-600">
                 <div className="flex items-center gap-2 font-bold">
                   <MapPin className="w-4 h-4" />
-                  Chiang Rai, Thailand
+                  {portfolioData.personal.location}
                 </div>
                 <div className="flex items-center gap-2 font-bold">
                   <Calendar className="w-4 h-4" />
@@ -114,10 +114,27 @@ export const AboutSection = ({
                 }`}
               >
                 Hi, I&apos;m{" "}
-                <span className="text-indigo-600">Nay Ye Lin</span>, a final
-                year Software Engineering student passionate about building
-                modern, scalable web applications that solve real-world problems.
+                <span className="text-indigo-600">Nay Ye Lin</span>, a Software
+                Engineering graduate with 8 months of enterprise internship
+                experience, passionate about building scalable backends and
+                modern full-stack applications.
               </h1>
+
+              <p
+                className={`mb-4 leading-relaxed ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                I recently completed an{" "}
+                <span className="font-semibold">
+                  8-month internship at Datasabai Thailand
+                </span>
+                , where I worked on enterprise integration products — from
+                rebuilding a marketing website with{" "}
+                <span className="font-bold text-xl">Next.js</span> to building{" "}
+                <span className="font-bold text-xl">Java + Quarkus</span>{" "}
+                backend services, internal SDK modules, and CI/CD pipelines.
+              </p>
 
               <p
                 className={`mb-4 leading-relaxed ${
@@ -126,29 +143,30 @@ export const AboutSection = ({
               >
                 My core stack includes{" "}
                 <span className="font-bold text-xl">
-                  React, Next.js, Node.js, Express, MongoDB, Prisma, and MySQL
+                  Java, Quarkus, Node.js, Express, React, Next.js, PostgreSQL,
+                  and MongoDB
                 </span>
-                , but I&apos;m always exploring new technologies like{" "}
-                <span className="font-bold text-xl">Docker</span> and serverless
-                platforms such as{" "}
-                <span className="font-bold text-xl">Firebase and Supabase</span>
+                , with hands-on experience in{" "}
+                <span className="font-bold text-xl">
+                  Docker, GitHub Actions, Azure DevOps, Redis, and Kafka
+                </span>
                 . I love working across the stack — from designing clean,
-                responsive UIs to building robust APIs and optimizing
-                performance.
+                responsive UIs to building robust APIs and shipping production
+                deployments.
               </p>
 
               <p
-                className={`mb-4 leading-relaxed ${
+                className={`mb-6 leading-relaxed ${
                   isDark ? "text-gray-300" : "text-gray-700"
                 }`}
               >
                 In this rapidly evolving era of AI, I&apos;m focused on building
-                smart, intuitive websites with{" "}
-                <span className="font-semibold">AI integration</span> to deliver
-                efficient, adaptive user experiences. I love turning ideas into
-                impactful, real-world applications while continuously improving
-                in both technical skills and essential soft skills like
-                communication, adaptability, and problem-solving.
+                smart, intuitive applications with{" "}
+                <span className="font-semibold">AI integration</span> — from
+                SSE-streamed AI features to LLM-powered developer tools. I love
+                turning ideas into impactful, real-world software while
+                continuously improving both technically and in soft skills like
+                communication and problem-solving.
               </p>
 
               <p

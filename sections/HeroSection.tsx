@@ -2,7 +2,6 @@
 
 import { portfolioData } from "@/lib/data";
 import { Github, Linkedin, ArrowDown, Mail } from "lucide-react";
-
 interface HeroSectionProps {
   isDark: boolean;
   visibleElements: Set<string>;
@@ -109,6 +108,22 @@ export const HeroSection = ({ isDark, visibleElements }: HeroSectionProps) => (
             GitHub
           </span>
         </a>
+        {portfolioData.personal.linkedin && (
+          <a
+            href={portfolioData.personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className={`group relative transition-colors ${
+              isDark ? "text-gray-200 hover:text-blue-400" : "text-gray-600 hover:text-blue-600"
+            }`}
+          >
+            <Linkedin className="w-7 h-7" />
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+              LinkedIn
+            </span>
+          </a>
+        )}
         {portfolioData.personal.email && (
           <a
             href={`mailto:${portfolioData.personal.email}`}

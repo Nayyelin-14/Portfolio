@@ -12,6 +12,22 @@ export interface Project {
   status?: "completed" | "in-progress" | "planned";
 }
 
+export interface Experience {
+  id: number;
+  company: string;
+  companyUrl?: string;
+  role: string;
+  type: string;
+  location: string;
+  date: {
+    start: string;
+    end: string;
+  };
+  description: string;
+  highlights: string[];
+  technologies: string[];
+}
+
 export interface Certificate {
   id: number;
   title: string;
@@ -38,10 +54,12 @@ export interface PortfolioData {
     email: string;
     location: string;
     github: string;
+    linkedin?: string;
     bio: string;
   };
   skills: {
     allSkills: string[];
   };
+  experience: Experience[];
   projects: Project[];
 }
