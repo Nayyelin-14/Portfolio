@@ -24,9 +24,7 @@ export const ProjectsSection = ({
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const featuredProjects = portfolioData.projects.filter(
-    (project) => project.featured
-  );
+  const projects = portfolioData.projects;
 
   const openModal = (project: Project) => {
     setSelectedProject(project);
@@ -77,7 +75,7 @@ export const ProjectsSection = ({
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Featured Projects
+                Projects
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-4 rounded-full" />
               <p
@@ -85,14 +83,14 @@ export const ProjectsSection = ({
                   isDark ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                Here are some of my recent works that showcase my skills and
-                passion for development
+                A selection of things I&apos;ve built — from enterprise SDKs to
+                AI-powered tools and full-stack applications.
               </p>
             </div>
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 mb-12">
-              {featuredProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <div
                   key={project.id}
                   className={`group rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl ${

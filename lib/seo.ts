@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Nay Ye Lin",
     "Software Engineer",
     "Junior Software Engineer",
-    "Full-Stack Developer",
+    "Full Stack Developer",
     "Java Developer",
     "Quarkus",
     "React Developer",
@@ -106,5 +106,5 @@ export const jsonLd = {
     "Apache Kafka",
   ],
   description:
-    "Junior Software Engineer with 8 months of enterprise internship experience at Datasabai Thailand, building scalable backends and modern full-stack applications.",
+    "Junior Software Engineer with 8 months of enterprise internship experience at Datasabai Thailand, building scalable backends and modern full stack applications.",
 };

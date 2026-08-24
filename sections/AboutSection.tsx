@@ -127,7 +127,7 @@ export const AboutSection = ({
               >
                 I recently completed an{" "}
                 <span className="font-semibold">
-                  8-month internship at Datasabai Thailand
+                  8 month internship at Datasabai Thailand
                 </span>
                 , where I worked on enterprise integration products — from
                 rebuilding a marketing website with{" "}
@@ -163,7 +163,7 @@ export const AboutSection = ({
                 In this rapidly evolving era of AI, I&apos;m focused on building
                 smart, intuitive applications with{" "}
                 <span className="font-semibold">AI integration</span> — from
-                SSE-streamed AI features to LLM-powered developer tools. I love
+                SSE streamed AI features to LLM powered developer tools. I love
                 turning ideas into impactful, real-world software while
                 continuously improving both technically and in soft skills like
                 communication and problem-solving.

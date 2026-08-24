@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Calendar, ExternalLink, X } from "lucide-react";
+import { Award, Calendar, Download, ExternalLink, X } from "lucide-react";
 import { useState } from "react";
 import type { Certificate } from "@/types/data";
 
@@ -12,7 +12,44 @@ interface CertificatesSectionProps {
 const certificates: Certificate[] = [
   {
     id: 1,
-    title: "Full-Stack Web Development Bootcamp",
+    title: "Internship Completion Certificate",
+    provider: "Datasabai Thailand",
+    instructor: "gilbert COURTOT",
+    instructorBio:
+      "Senior Integration Architect specializing in cloud-native B2B platforms, API & data integration, and webMethods & SAP solutions. Mentored me throughout my 8-month internship at Datasabai Thailand.",
+    date: {
+      start: "Dec 2025",
+      end: "Jul 2026",
+    },
+    image: "/Certi/internship-certificate.pdf",
+    description:
+      "Completed an 8-month Software Engineer Internship at Datasabai Thailand, where my software engineering journey began. Worked with the R&D team on enterprise integration products — EDI data transformation tools (EDIFACT/X12), a SAP IDoc parser, an internal VS Code extension, the company marketing website with Next.js and Payload CMS, and an AI-powered changelog platform built with Java, Quarkus, and React.",
+    techStack: [
+      "Java",
+      "Quarkus",
+      "Maven",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Payload CMS",
+      "Azure DevOps",
+      "Docker",
+      "REST APIs",
+    ],
+    skills: [
+      "Enterprise Integration (EDIFACT / X12)",
+      "SAP IDoc Parsing",
+      "Backend Development with Java & Quarkus",
+      "Full-Stack Web Development",
+      "VS Code Extension Development",
+      "CI/CD with Azure Pipelines",
+      "Docker & Azure VM Deployment",
+      "Agile Team Collaboration",
+    ],
+  },
+  {
+    id: 2,
+    title: "Full Stack Web Development Bootcamp",
     provider: "Code Hub MM",
     instructor: "Code Hub MM",
     date: {
@@ -23,7 +60,7 @@ const certificates: Certificate[] = [
     instructorBio:
       "A vibrant community for developers in Myanmar to learn, share, and grow together. We focus on coding tutorials, projects, and tech discussions to empower Myanmar's tech talent. Join us to code, collaborate, and connect!",
     description:
-      "Intensive hands-on bootcamp covering modern full-stack development. Built multiple real-world projects using React, Next.js, Node.js, and MongoDB, with deployment on Vercel and production-ready configurations.",
+      "Intensive hands-on bootcamp covering modern full stack development. Built multiple real-world projects using React, Next.js, Node.js, and MongoDB, with deployment on Vercel and production-ready configurations.",
     techStack: [
       "React",
       "Next.js",
@@ -61,12 +98,12 @@ const certificates: Certificate[] = [
     ],
   },
   {
-    id: 2,
-    title: "Full-Stack Web Developer class",
+    id: 3,
+    title: "Full Stack Web Developer class",
     provider: "Phone Nyo MM",
     instructor: "Mr.Phone Nyo",
     instructorBio:
-      "Mr.Phone Nyo is a full-stack developer and tech lead from Myanmar. He specializes in React, Next.js, Node.js, React Native, and NestJS, sharing practical knowledge to help others build modern web and mobile apps",
+      "Mr.Phone Nyo is a full stack developer and tech lead from Myanmar. He specializes in React, Next.js, Node.js, React Native, and NestJS, sharing practical knowledge to help others build modern web and mobile apps",
     date: {
       start: "2025-06-22",
     },
@@ -135,8 +172,8 @@ export const CertificatesSection = ({
       id="certificates-education"
       className={`py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 relative overflow-hidden ${
         isDark
-          ? "bg-gradient-to-b from-slate-800 via-gray-900 to-slate-900"
-          : "bg-gradient-to-b from-blue-50/30 via-white to-purple-50/20"
+          ? "bg-linear-to-b from-slate-800 via-gray-900 to-slate-900"
+          : "bg-linear-to-b from-blue-50/30 via-white to-purple-50/20"
       }`}
     >
       {/* Background Elements */}
@@ -163,7 +200,7 @@ export const CertificatesSection = ({
           }`}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
               Certificates
             </span>
           </h2>
@@ -196,14 +233,18 @@ export const CertificatesSection = ({
               >
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
                   {/* Certificate Image */}
-                  <div className="flex-shrink-0 mx-auto lg:mx-0">
+                  <div className="shrink-0 mx-auto lg:mx-0">
                     <div className="relative rounded-2xl overflow-hidden w-full max-w-sm lg:w-80 h-48 lg:h-56">
                       <img
-                        src={cert.image}
+                        src={
+                          cert.image.endsWith(".pdf")
+                            ? cert.image.replace(".pdf", "-preview.png")
+                            : cert.image
+                        }
                         alt={`${cert.title} Certificate`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
                       <div className="absolute top-4 right-4">
                         <div
                           className={`p-2 rounded-full ${
@@ -347,23 +388,43 @@ export const CertificatesSection = ({
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative bg-white dark:bg-gray-900 rounded-2xl max-w-3xl w-full overflow-hidden"
+            className="relative bg-white dark:bg-gray-900 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 hover:text-red-500"
+              className="absolute top-4 right-4 z-10 p-1 rounded-full bg-white/80 dark:bg-gray-900/80 text-gray-600 dark:text-gray-300 hover:text-red-500"
               onClick={() => setSelectedCert(null)}
             >
               <X className="w-6 h-6" />
             </button>
 
-            {/* Image */}
+            {/* Image / PDF */}
             <img
-              src={selectedCert.image}
+              src={
+                selectedCert.image.endsWith(".pdf")
+                  ? selectedCert.image.replace(".pdf", "-preview.png")
+                  : selectedCert.image
+              }
               alt={`${selectedCert.title} Certificate`}
-              className="w-full h-auto"
+              className="w-full h-auto max-h-[80vh] object-contain"
             />
+            {selectedCert.image.endsWith(".pdf") && (
+              <div className="flex justify-center py-4 shrink-0">
+                <a
+                  href={selectedCert.image}
+                  download
+                  className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-medium transition-all hover:scale-105 ${
+                    isDark
+                      ? "bg-gray-800 hover:bg-gray-700 text-white"
+                      : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+                  }`}
+                >
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </a>
+              </div>
+            )}
           </div>
         </div>
       )}
