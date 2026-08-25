@@ -213,6 +213,7 @@ export const portfolioData: PortfolioData = {
         "TanStack Query",
         "Zod",
       ],
+      liveUrl: "https://edu-pro-nay1.vercel.app/",
       githubUrl: "https://github.com/Nayyelin-14/Edu-pro",
       featured: true,
       details: [
