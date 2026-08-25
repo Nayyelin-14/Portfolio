@@ -197,20 +197,19 @@ export const AboutSection = ({
                 together.
               </p>
 
-              <button
+              <a
+                href={portfolioData.personal.resumeLink}
+                download="Nay Ye Lin - Software Engineering Resume.pdf"
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                   isDark
                     ? "bg-blue-600 hover:bg-blue-700 text-white"
                     : "bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg"
                 }`}
-                onClick={() =>
-                  window.open(portfolioData.personal.resumeLink)
-                }
                 aria-label="Download Resume"
               >
                 <Download className="w-4 h-4" />
                 Download Resume
-              </button>
+              </a>
             </div>
           </div>
         </div>
