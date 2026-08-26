@@ -7,6 +7,7 @@ import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/sections/HeroSection";
 import { AboutSection } from "@/sections/AboutSection";
 import { ExperienceSection } from "@/sections/ExperienceSection";
+import { SkillsSection } from "@/sections/SkillsSection";
 import { ProjectsSection } from "@/sections/Projects";
 import { CertificatesSection } from "@/sections/Exp";
 import ContactSection from "@/sections/Contact";
@@ -32,6 +33,10 @@ export default function Home() {
         visibleElements={visibleElements}
       />
       <ExperienceSection
+        isDark={isDark}
+        visibleElements={visibleElements}
+      />
+      <SkillsSection
         isDark={isDark}
         visibleElements={visibleElements}
       />

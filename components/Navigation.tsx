@@ -55,7 +55,9 @@ export const Navigation = ({
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors ${
-                isDark ? "hover:bg-gray-800" : "hover:bg-gray-100"
+                isDark
+                  ? "text-gray-200 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
               }`}
               aria-label="Toggle theme"
             >
@@ -72,7 +74,9 @@ export const Navigation = ({
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-lg transition-colors ${
-                isDark ? "hover:bg-gray-800" : "hover:bg-gray-100"
+                isDark
+                  ? "text-gray-200 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
               }`}
               aria-label="Toggle theme"
             >
