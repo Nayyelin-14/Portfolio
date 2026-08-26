@@ -12,13 +12,6 @@ export const AboutSection = ({
   isDark,
   visibleElements,
 }: AboutSectionProps) => {
-  const interests = [
-    { icon: "🎮", label: "Gaming", description: "Strategy & indie games" },
-    { icon: "📚", label: "Learning", description: "Exploring new tech" },
-    { icon: "🏃‍♂️", label: "Running", description: "Morning runs & marathons" },
-    { icon: "🏋️‍♂️", label: "Gym", description: "Strength training & fitness" },
-  ];
-
   return (
     <section
       id="about"
@@ -242,51 +235,6 @@ export const AboutSection = ({
               >
                 {skill}
               </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Interests */}
-        <div
-          className={`transition-all duration-1000 delay-600 ${
-            visibleElements?.has("about")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h3
-            className={`text-xl sm:text-2xl font-bold text-center mb-6 ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-          >
-            When I&apos;m Not Coding
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {interests.map((interest, index) => (
-              <div
-                key={index}
-                className={`p-4 rounded-xl text-center border backdrop-blur-sm hover:scale-[1.02] transition-all ${
-                  isDark
-                    ? "bg-gray-800/60 border-gray-700/50"
-                    : "bg-white/80 border-gray-200/60 shadow-sm hover:shadow-md"
-                }`}
-              >
-                <div className="text-2xl mb-2">{interest.icon}</div>
-                <h4
-                  className={`font-semibold mb-1 ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  {interest.label}
-                </h4>
-                <p
-                  className={`text-xs ${
-                    isDark ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  {interest.description}
-                </p>
-              </div>
             ))}
           </div>
         </div>
