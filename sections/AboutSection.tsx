@@ -36,7 +36,7 @@ export const AboutSection = ({
         />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div
           className={`mb-10 transition-all duration-1000 ${
@@ -97,7 +97,7 @@ export const AboutSection = ({
                 </div>
                 <div className="flex items-center gap-2 font-bold">
                   <Star className="w-4 h-4" />
-                  Current GPAX : 3.77 / 4.0
+                  Current GPAX : 3.79 / 4.0
                 </div>
               </div>
 
@@ -106,11 +106,10 @@ export const AboutSection = ({
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Hi, I&apos;m{" "}
-                <span className="text-indigo-600">Nay Ye Lin</span>, a Software
-                Engineering graduate with 8 months of enterprise internship
-                experience, passionate about building scalable backends and
-                modern full-stack applications.
+                Hi, I&apos;m <span className="text-indigo-600">Nay Ye Lin</span>
+                , a Software Engineering graduate with 8 months of enterprise
+                internship experience, passionate about building scalable
+                backends and modern full-stack applications.
               </h1>
 
               <p
@@ -155,8 +154,8 @@ export const AboutSection = ({
               >
                 In this rapidly evolving era of AI, I&apos;m focused on building
                 smart, intuitive applications with{" "}
-                <span className="font-semibold">AI integration</span> — from
-                SSE streamed AI features to LLM powered developer tools. I love
+                <span className="font-semibold">AI integration</span> — from SSE
+                streamed AI features to LLM powered developer tools. I love
                 turning ideas into impactful, real-world software while
                 continuously improving both technically and in soft skills like
                 communication and problem-solving.

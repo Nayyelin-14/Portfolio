@@ -22,7 +22,7 @@ export const SkillsSection = ({
       }`}
     >
       <div
-        className={`transition-all duration-1000 delay-400 max-w-6xl mx-auto relative z-10 ${
+        className={`transition-all duration-1000 delay-400 max-w-7xl mx-auto relative z-10 ${
           visibleElements?.has("skills")
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-4"

@@ -1,36 +1,29 @@
 export default function sitemap() {
-  const baseUrl = 'https://nayyelin.dev';
+  const baseUrl = "https://nayyelin.dev";
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}#about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#projects`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}#certificates-education`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}#contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+  const routes = [
+    "",
+    "/about",
+    "/skills",
+    "/experience",
+    "/projects",
+    "/projects/changelog-composer",
+    "/projects/j-track",
+    "/projects/edupro",
+    "/projects/idoc-parser",
+    "/projects/edi-scrapper",
+    "/projects/workflow-mcp",
+    "/projects/interview-prep",
+    "/projects/task-management",
+    "/projects/nextfurniture",
+    "/certificates",
+    "/contact",
   ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: route === "" ? 1 : route.startsWith("/projects/") ? 0.7 : 0.8,
+  }));
 }

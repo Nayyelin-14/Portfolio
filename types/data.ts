@@ -44,6 +44,39 @@ export interface Certificate {
   skills: string[];
 }
 
+export interface ProjectDetail {
+  slug: string;
+  title: string;
+  summary: string;
+  status: "completed" | "ongoing" | "prototype";
+  privacy: "open-source" | "company" | "practice";
+  technologies: string[];
+  overview: {
+    title: string;
+    steps: {
+      number: string;
+      title: string;
+      description: string;
+    }[];
+  };
+  architecture: {
+    description: string;
+    note?: string;
+    steps: {
+      number: string;
+      title: string;
+      description: string;
+    }[];
+  };
+  engineeringFocus: {
+    title: string;
+    items: string[];
+  };
+  screenshots: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+}
+
 export interface PortfolioData {
   personal: {
     name: string;

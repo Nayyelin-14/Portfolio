@@ -1,172 +1,172 @@
 "use client";
 
+import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 import { portfolioData } from "@/lib/data";
-import { Github, Linkedin, ArrowDown, Mail } from "lucide-react";
-interface HeroSectionProps {
-  isDark: boolean;
-  visibleElements: Set<string>;
-}
+import { ArrowRight, ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
-export const HeroSection = ({ isDark, visibleElements }: HeroSectionProps) => (
-  <section
-    id="hero-content"
-    data-animate
-    className={`relative w-full min-h-screen px-8 py-24 flex flex-col md:flex-row items-center justify-center gap-16 overflow-hidden transition-all duration-1000 ${
-      visibleElements?.has("hero-content")
-        ? "opacity-100 translate-y-0"
-        : "opacity-0 translate-y-8"
-    } ${isDark ? "bg-gray-900" : "bg-white"}`}
-  >
-    {/* Left side: Profile */}
-    <div
-      className={`relative w-64 h-64 md:w-72 md:h-72 flex-shrink-0 rounded-xl overflow-hidden border-4 shadow-lg hover:scale-105 transition-transform duration-500 ${
-        isDark
-          ? "border-purple-600"
-          : "border-gradient-to-tr from-purple-500 via-pink-500 to-red-500"
-      }`}
-    >
-      <img
-        src={portfolioData.personal.profileImg}
-        alt="Profile"
-        className="w-full h-full object-cover"
-        loading="lazy"
-      />
-      <div
-        className={`absolute bottom-3 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-xs font-semibold shadow-lg flex items-center gap-2 ring-1 ${
-          isDark
-            ? "bg-gray-800 text-green-400 ring-green-400/50"
-            : "bg-gradient-to-r from-green-400 to-green-600 text-white ring-green-500/40"
-        }`}
-      >
-        <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-        AVAILABLE
-      </div>
-    </div>
+export const HeroSection = () => {
+  const { isDark } = useTheme();
 
-    {/* Right side: Text */}
-    <div className="max-w-xl text-left">
-      <p
-        className={`uppercase text-sm tracking-widest font-semibold mb-3 ${
-          isDark ? "text-green-400" : "text-pink-600"
-        }`}
-      >
-        Hello, I&apos;m
-      </p>
-
-      <h1
-        className={`text-5xl font-extrabold mb-4 tracking-tight ${
-          isDark ? "text-white" : "text-gray-900"
-        }`}
-      >
-        {portfolioData.personal.name.toUpperCase()}
-      </h1>
-
-      <h2
-        className={`text-2xl font-medium mb-6 ${
-          isDark ? "text-gray-300" : "text-gray-700"
-        }`}
-      >
-        {portfolioData.personal.title}
-      </h2>
-
-      <p
-        className={`mb-8 leading-relaxed text-base sm:text-lg ${
-          isDark ? "text-gray-400" : "text-gray-600"
-        }`}
-      >
-        {portfolioData.personal.tagline}
-      </p>
-
-      <a
-        href="#contact"
-        className={`inline-block font-semibold px-8 py-3 rounded-full shadow-lg hover:brightness-110 transition ${
-          isDark
-            ? "bg-gradient-to-r from-purple-700 via-pink-700 to-blue-600 text-white"
-            : "bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white"
-        }`}
-      >
-        Contact Me
-      </a>
-
-      {/* Social Links */}
-      <div className="flex gap-6 my-5">
-        <a
-          href={portfolioData.personal.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          className={`group relative transition-colors ${
-            isDark
-              ? "text-gray-200 hover:text-purple-400"
-              : "text-gray-600 hover:text-purple-600"
+  return (
+    <section className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className={`absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl ${
+            isDark ? "bg-blue-600/10" : "bg-blue-500/10"
           }`}
-        >
-          <Github className="w-7 h-7" />
-          <span
-            className={`absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity`}
-          >
-            GitHub
-          </span>
-        </a>
-        {portfolioData.personal.linkedin && (
-          <a
-            href={portfolioData.personal.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className={`group relative transition-colors ${
-              isDark ? "text-gray-200 hover:text-blue-400" : "text-gray-600 hover:text-blue-600"
-            }`}
-          >
-            <Linkedin className="w-7 h-7" />
-            <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-              LinkedIn
-            </span>
-          </a>
-        )}
-        {portfolioData.personal.email && (
-          <a
-            href={`mailto:${portfolioData.personal.email}`}
-            aria-label="Email"
-            className={`group relative transition-colors ${
-              isDark
-                ? "text-gray-200 hover:text-blue-400"
-                : "text-gray-600 hover:text-blue-600"
-            }`}
-          >
-            <Mail className="w-7 h-7" />
-            <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-              Email
-            </span>
-          </a>
-        )}
-      </div>
-    </div>
-
-    {/* Scroll Indicator */}
-    <a
-      href="#about"
-      className={`absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer select-none animate-bounce`}
-      aria-label="Scroll to about section"
-    >
-      <span
-        className={`uppercase text-xs tracking-widest mb-2 ${
-          isDark ? "text-gray-400" : "text-gray-600"
-        }`}
-      >
-        scroll
-      </span>
-      <div
-        className={`w-8 h-14 rounded-3xl border-2 flex justify-center items-start p-1 ${
-          isDark ? "border-gray-400" : "border-current"
-        }`}
-      >
-        <ArrowDown
-          className={`w-5 h-5 mt-1 ${
-            isDark ? "text-gray-400" : "text-gray-600"
+        />
+        <div
+          className={`absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl ${
+            isDark ? "bg-purple-600/10" : "bg-purple-500/10"
           }`}
         />
       </div>
-    </a>
-  </section>
-);
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Content */}
+          <div>
+            <p
+              className={`text-sm font-medium mb-4 ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              <span className="animate-wave">👋</span> Hello, I&apos;m
+            </p>
+            <h1
+              className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {portfolioData.personal.name}
+            </h1>
+            <p
+              className={`mt-3 text-xl sm:text-2xl font-medium ${
+                isDark ? "text-blue-400" : "text-blue-600"
+              }`}
+            >
+              {portfolioData.personal.title}
+            </p>
+            <p
+              className={`mt-6 text-lg leading-relaxed max-w-lg ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              {portfolioData.personal.tagline}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                View My Work
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className={`inline-flex items-center gap-2 px-6 py-3 font-medium rounded-lg border transition-colors ${
+                  isDark
+                    ? "border-gray-700 text-gray-300 hover:bg-gray-800"
+                    : "border-gray-300 text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                Contact Me
+                <Mail className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="mt-8 flex items-center gap-4">
+              <a
+                href={portfolioData.personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-2.5 rounded-lg transition-colors ${
+                  isDark
+                    ? "text-gray-400 hover:bg-gray-800 hover:text-white"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                }`}
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href={portfolioData.personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-2.5 rounded-lg transition-colors ${
+                  isDark
+                    ? "text-gray-400 hover:bg-gray-800 hover:text-white"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                }`}
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href={`mailto:${portfolioData.personal.email}`}
+                className={`p-2.5 rounded-lg transition-colors ${
+                  isDark
+                    ? "text-gray-400 hover:bg-gray-800 hover:text-white"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                }`}
+                aria-label="Email"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Profile Visual */}
+          <div className="hidden lg:flex justify-center">
+            <div className="relative">
+              {/* Decorative ring */}
+              <div
+                className={`absolute inset-0 rounded-full animate-pulse-ring ${
+                  isDark ? "bg-blue-500/20" : "bg-blue-500/10"
+                }`}
+                style={{ margin: "-20px" }}
+              />
+              <div
+                className={`relative w-72 h-72 rounded-full overflow-hidden border-4 ${
+                  isDark ? "border-gray-700" : "border-gray-200"
+                }`}
+              >
+                <img
+                  src={portfolioData.personal.profileImg}
+                  alt={portfolioData.personal.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Floating badge */}
+              <div
+                className={`absolute -bottom-2 -right-2 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 ${
+                  isDark
+                    ? "bg-gray-900 border border-gray-700 text-green-400"
+                    : "bg-white border border-gray-200 text-green-600"
+                }`}
+              >
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                AVAILABLE
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <a
+          href="#strengths"
+          className={`p-2 rounded-full ${
+            isDark ? "text-gray-500 hover:text-gray-300" : "text-gray-400 hover:text-gray-600"
+          }`}
+        >
+          <ArrowDown className="w-5 h-5" />
+        </a>
+      </div>
+    </section>
+  );
+};

@@ -36,7 +36,7 @@ export const ExperienceSection = ({
         />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div
           className={`text-center mb-12 transition-all duration-1000 ${

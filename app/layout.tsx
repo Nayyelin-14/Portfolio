@@ -3,12 +3,17 @@ import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { metadata as siteMetadata, jsonLd } from "@/lib/seo";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
+
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":true;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
 
 export const metadata: Metadata = siteMetadata;
 
@@ -20,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -29,7 +35,11 @@ export default function RootLayout({
         className={`${inter.className} font-sans antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <ThemeProvider>
+          <Navigation />
+          <main className="min-h-screen pt-16">{children}</main>
+          <Footer />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
