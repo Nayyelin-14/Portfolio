@@ -16,7 +16,7 @@ import { WorkflowMcpVisual } from "@/components/project-visuals/WorkflowMcpVisua
 import { InterviewPrepVisual } from "@/components/project-visuals/InterviewPrepVisual";
 import { TaskManagementVisual } from "@/components/project-visuals/TaskManagementVisual";
 import { NextFurnitureVisual } from "@/components/project-visuals/NextFurnitureVisual";
-import { FastVisual } from "@/components/project-visuals/FastVisual";
+import { SkyfareVisual } from "@/components/project-visuals/SkyfareVisual";
 
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "changelog-composer": ChangelogComposerVisual,
@@ -28,7 +28,7 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "interview-prep": InterviewPrepVisual,
   "task-management": TaskManagementVisual,
   nextfurniture: NextFurnitureVisual,
-  fast: FastVisual,
+  skyfare: SkyfareVisual,
 };
 
 export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => {

@@ -1,12 +1,12 @@
 import type { ProjectDetail } from "@/types/data";
 
-export const fast: ProjectDetail = {
-  slug: "fast",
-  title: "Fast – Flight Booking System",
+export const skyfare: ProjectDetail = {
+  slug: "skyfare",
+  title: "Skyfare – Flight Booking Platform",
   summary:
     "In-progress full-stack flight booking platform with a thoroughly documented system design — a FastAPI backend with transactional outbox, claim-based async worker, JWT auth, Redis caching, Kafka event pipelines, and a Next.js frontend. User registration and welcome emails are live; the full booking journey (flight search, seat locking, payments, ticketing) is being implemented.",
   status: "ongoing",
-  privacy: "open-source",
+  privacy: "practice",
   technologies: [
     "FastAPI",
     "Python 3.14",

@@ -13,7 +13,7 @@ import { WorkflowMcpVisual } from "./project-visuals/WorkflowMcpVisual";
 import { InterviewPrepVisual } from "./project-visuals/InterviewPrepVisual";
 import { TaskManagementVisual } from "./project-visuals/TaskManagementVisual";
 import { NextFurnitureVisual } from "./project-visuals/NextFurnitureVisual";
-import { FastVisual } from "./project-visuals/FastVisual";
+import { SkyfareVisual } from "./project-visuals/SkyfareVisual";
 
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "Changelog Composer": ChangelogComposerVisual,
@@ -25,7 +25,7 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "AI Powered Interview Preparation": InterviewPrepVisual,
   "Task Management": TaskManagementVisual,
   "NextFurniture – Shopping & Blog Platform": NextFurnitureVisual,
-  "Fast – Flight Booking System": FastVisual,
+  "Skyfare – Flight Booking Platform": SkyfareVisual,
 };
 
 const slugMap: Record<string, string> = {
@@ -38,7 +38,7 @@ const slugMap: Record<string, string> = {
   "AI Powered Interview Preparation": "interview-prep",
   "Task Management": "task-management",
   "NextFurniture – Shopping & Blog Platform": "nextfurniture",
-  "Fast – Flight Booking System": "fast",
+  "Skyfare – Flight Booking Platform": "skyfare",
 };
 
 interface ProjectCardProps {

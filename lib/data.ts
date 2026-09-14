@@ -84,7 +84,7 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 10,
-      title: "Fast – Flight Booking System",
+      title: "Skyfare – Flight Booking Platform",
       description: `Full-stack flight booking platform currently in active development. The reliability core is already built: a FastAPI backend with a transactional outbox where registration commits the user and a welcome-email job atomically, a claim-based async worker (SKIP LOCKED batch claiming, bounded concurrency, exponential-backoff retries, stale-job recovery), and SMTP delivery. The full system design is documented end to end — flight search, DB-locked seat selection, idempotent booking, Chimoney payments with signed webhooks, ticket issuance with PNR, cancellations/refunds, and Kafka event pipelines — with failure/retry scenarios, sharding, security, and monitoring plans.`,
       features: [
         "Flight search — route/date/passenger queries over indexed PostgreSQL with Redis read-through caching to keep search p99 latency low.",
