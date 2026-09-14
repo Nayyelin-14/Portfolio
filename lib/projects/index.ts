@@ -8,8 +8,10 @@ import { workflowMcp } from "./workflow-mcp";
 import { interviewPrep } from "./interview-prep";
 import { taskManagement } from "./task-management";
 import { nextFurniture } from "./nextfurniture";
+import { fast } from "./fast";
 
 export const allProjects: ProjectDetail[] = [
+  fast,
   changelogComposer,
   jTrack,
   edupro,

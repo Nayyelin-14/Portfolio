@@ -13,6 +13,7 @@ import { WorkflowMcpVisual } from "./project-visuals/WorkflowMcpVisual";
 import { InterviewPrepVisual } from "./project-visuals/InterviewPrepVisual";
 import { TaskManagementVisual } from "./project-visuals/TaskManagementVisual";
 import { NextFurnitureVisual } from "./project-visuals/NextFurnitureVisual";
+import { FastVisual } from "./project-visuals/FastVisual";
 
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "Changelog Composer": ChangelogComposerVisual,
@@ -24,6 +25,7 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "AI Powered Interview Preparation": InterviewPrepVisual,
   "Task Management": TaskManagementVisual,
   "NextFurniture – Shopping & Blog Platform": NextFurnitureVisual,
+  "Fast – Flight Booking System": FastVisual,
 };
 
 const slugMap: Record<string, string> = {
@@ -36,6 +38,7 @@ const slugMap: Record<string, string> = {
   "AI Powered Interview Preparation": "interview-prep",
   "Task Management": "task-management",
   "NextFurniture – Shopping & Blog Platform": "nextfurniture",
+  "Fast – Flight Booking System": "fast",
 };
 
 interface ProjectCardProps {
@@ -82,13 +85,32 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             </span>
           )}
         </p>
-        <h3
-          className={`text-lg font-semibold leading-snug ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}
-        >
-          {project.title}
-        </h3>
+        <div className="flex items-start justify-between gap-2">
+          <h3
+            className={`text-lg font-semibold leading-snug ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
+            {project.title}
+          </h3>
+          {project.status && (
+            <span
+              className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                project.status === "completed"
+                  ? "bg-green-500/15 text-green-600 dark:text-green-400"
+                  : project.status === "in-progress"
+                    ? "bg-yellow-500/15 text-yellow-600 dark:text-yellow-400"
+                    : "bg-blue-500/15 text-blue-600 dark:text-blue-400"
+              }`}
+            >
+              {project.status === "in-progress"
+                ? "In Progress"
+                : project.status === "completed"
+                  ? "Completed"
+                  : "Planned"}
+            </span>
+          )}
+        </div>
         <p
           className={`mt-2 text-sm leading-relaxed line-clamp-3 ${
             isDark ? "text-gray-400" : "text-gray-600"
