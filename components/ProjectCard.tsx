@@ -1,22 +1,55 @@
 "use client";
 
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
 import { portfolioData } from "@/lib/data";
 import type { Project } from "@/types/data";
-import { ChangelogComposerVisual } from "./project-visuals/ChangelogComposerVisual";
-import { JTrackVisual } from "./project-visuals/JTrackVisual";
-import { EduProVisual } from "./project-visuals/EduProVisual";
-import { IdocParserVisual } from "./project-visuals/IdocParserVisual";
-import { EdiScrapperVisual } from "./project-visuals/EdiScrapperVisual";
-import { WorkflowMcpVisual } from "./project-visuals/WorkflowMcpVisual";
-import { InterviewPrepVisual } from "./project-visuals/InterviewPrepVisual";
-import { TaskManagementVisual } from "./project-visuals/TaskManagementVisual";
-import { NextFurnitureVisual } from "./project-visuals/NextFurnitureVisual";
-import { SkyfareVisual } from "./project-visuals/SkyfareVisual";
+
+const ChangelogVisual = dynamic(
+  () =>
+    import("./project-visuals/ChangelogComposerVisual").then(
+      (m) => m.ChangelogComposerVisual,
+    ),
+  { ssr: true },
+);
+const JTrackVisual = dynamic(() =>
+  import("./project-visuals/JTrackVisual").then((m) => m.JTrackVisual),
+);
+const EduProVisual = dynamic(() =>
+  import("./project-visuals/EduProVisual").then((m) => m.EduProVisual),
+);
+const IdocParserVisual = dynamic(() =>
+  import("./project-visuals/IdocParserVisual").then((m) => m.IdocParserVisual),
+);
+const EdiScrapperVisual = dynamic(() =>
+  import("./project-visuals/EdiScrapperVisual").then((m) => m.EdiScrapperVisual),
+);
+const WorkflowMcpVisual = dynamic(() =>
+  import("./project-visuals/WorkflowMcpVisual").then((m) => m.WorkflowMcpVisual),
+);
+const InterviewPrepVisual = dynamic(() =>
+  import("./project-visuals/InterviewPrepVisual").then(
+    (m) => m.InterviewPrepVisual,
+  ),
+);
+const TaskManagementVisual = dynamic(() =>
+  import("./project-visuals/TaskManagementVisual").then(
+    (m) => m.TaskManagementVisual,
+  ),
+);
+const NextFurnitureVisual = dynamic(() =>
+  import("./project-visuals/NextFurnitureVisual").then(
+    (m) => m.NextFurnitureVisual,
+  ),
+);
+const SkyfareVisual = dynamic(() =>
+  import("./project-visuals/SkyfareVisual").then((m) => m.SkyfareVisual),
+);
 
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  "Changelog Composer": ChangelogComposerVisual,
+  "Changelog Composer": ChangelogVisual,
   "J Track – Job Tracking Platform": JTrackVisual,
   "EduPro – E-Learning Platform": EduProVisual,
   "SAP IDoc Parser": IdocParserVisual,
@@ -67,7 +100,19 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           isDark ? "bg-gray-950" : "bg-gray-50"
         }`}
       >
-        {Visual && <Visual className="w-full h-full" />}
+        {Visual &&
+          (() => {
+            const ActiveVisual = Visual;
+            return (
+              <Suspense
+                fallback={
+                  <div className="h-full w-full bg-zinc-100 animate-pulse dark:bg-zinc-900" />
+                }
+              >
+                <ActiveVisual className="w-full h-full" />
+              </Suspense>
+            );
+          })()}
       </div>
 
       {/* Content */}

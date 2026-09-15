@@ -18,12 +18,12 @@ export const ediScrapper: ProjectDetail = {
   ],
   githubUrl: "https://github.com/Nayyelin-14/edi-scrapper",
   screenshots: [
-    "/PJimg/scrapper/scrapper-ui-02-standard-edifact-revisions-loaded.png",
-    "/PJimg/scrapper/scrapper-ui-05-scrape-progress-live-sse.png",
-    "/PJimg/scrapper/scrapper-ui-06-result-tree-view.png",
-    "/PJimg/scrapper/scrapper-ui-07-result-beanio-tab.png",
-    "/PJimg/scrapper/scrapper-api-18-result-jsonschema.png",
-    "/PJimg/scrapper/scrapper-ui-11-dark-mode.png",
+    "/PJimg/scrapper/scrapper-ui-02-standard-edifact-revisions-loaded.webp",
+    "/PJimg/scrapper/scrapper-ui-05-scrape-progress-live-sse.webp",
+    "/PJimg/scrapper/scrapper-ui-06-result-tree-view.webp",
+    "/PJimg/scrapper/scrapper-ui-07-result-beanio-tab.webp",
+    "/PJimg/scrapper/scrapper-api-18-result-jsonschema.webp",
+    "/PJimg/scrapper/scrapper-ui-11-dark-mode.webp",
   ],
   overview: {
     title: "Turning public EDI reference sites into machine-readable artifacts.",

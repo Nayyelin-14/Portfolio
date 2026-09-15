@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 interface ImageSliderProps {
@@ -23,10 +24,12 @@ export const ImageSlider = ({ images = [], title = "" }: ImageSliderProps) => {
 
   return (
     <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl flex items-center justify-center p-4">
-      <img
+      <Image
         src={images[currentIndex]}
         alt={`${title} image ${currentIndex + 1}`}
-        className="w-full h-full object-cover transition-all duration-500"
+        fill
+        sizes="(min-width: 1024px) 60vw, 100vw"
+        className="object-cover transition-all duration-500"
       />
 
       {/* Gradient Overlay */}

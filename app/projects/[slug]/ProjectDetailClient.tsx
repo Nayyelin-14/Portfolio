@@ -1,22 +1,50 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import type { ProjectDetail } from "@/types/data";
 import { ArrowLeft, ChevronLeft, ChevronRight, Github, ExternalLink } from "lucide-react";
 
-import { ChangelogComposerVisual } from "@/components/project-visuals/ChangelogComposerVisual";
-import { JTrackVisual } from "@/components/project-visuals/JTrackVisual";
-import { EduProVisual } from "@/components/project-visuals/EduProVisual";
-import { IdocParserVisual } from "@/components/project-visuals/IdocParserVisual";
-import { EdiScrapperVisual } from "@/components/project-visuals/EdiScrapperVisual";
-import { WorkflowMcpVisual } from "@/components/project-visuals/WorkflowMcpVisual";
-import { InterviewPrepVisual } from "@/components/project-visuals/InterviewPrepVisual";
-import { TaskManagementVisual } from "@/components/project-visuals/TaskManagementVisual";
-import { NextFurnitureVisual } from "@/components/project-visuals/NextFurnitureVisual";
-import { SkyfareVisual } from "@/components/project-visuals/SkyfareVisual";
+const ChangelogComposerVisual = dynamic(() =>
+  import("@/components/project-visuals/ChangelogComposerVisual").then(
+    (m) => m.ChangelogComposerVisual,
+  ),
+);
+const JTrackVisual = dynamic(() =>
+  import("@/components/project-visuals/JTrackVisual").then((m) => m.JTrackVisual),
+);
+const EduProVisual = dynamic(() =>
+  import("@/components/project-visuals/EduProVisual").then((m) => m.EduProVisual),
+);
+const IdocParserVisual = dynamic(() =>
+  import("@/components/project-visuals/IdocParserVisual").then((m) => m.IdocParserVisual),
+);
+const EdiScrapperVisual = dynamic(() =>
+  import("@/components/project-visuals/EdiScrapperVisual").then((m) => m.EdiScrapperVisual),
+);
+const WorkflowMcpVisual = dynamic(() =>
+  import("@/components/project-visuals/WorkflowMcpVisual").then((m) => m.WorkflowMcpVisual),
+);
+const InterviewPrepVisual = dynamic(() =>
+  import("@/components/project-visuals/InterviewPrepVisual").then((m) => m.InterviewPrepVisual),
+);
+const TaskManagementVisual = dynamic(() =>
+  import("@/components/project-visuals/TaskManagementVisual").then(
+    (m) => m.TaskManagementVisual,
+  ),
+);
+const NextFurnitureVisual = dynamic(() =>
+  import("@/components/project-visuals/NextFurnitureVisual").then(
+    (m) => m.NextFurnitureVisual,
+  ),
+);
+const SkyfareVisual = dynamic(() =>
+  import("@/components/project-visuals/SkyfareVisual").then((m) => m.SkyfareVisual),
+);
 
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "changelog-composer": ChangelogComposerVisual,
@@ -156,7 +184,13 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
             isDark ? "border-gray-800 bg-gray-950" : "border-gray-200 bg-gray-50"
           }`}
         >
-          <Visual className="w-full max-w-xl mx-auto" />
+          <Suspense
+            fallback={
+              <div className="h-48 w-full max-w-xl mx-auto animate-pulse bg-zinc-100 dark:bg-zinc-900" />
+            }
+          >
+            <Visual className="w-full max-w-xl mx-auto" />
+          </Suspense>
         </div>
       )}
 
@@ -225,14 +259,16 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
             Screenshots
           </h2>
           <div
-            className={`relative rounded-xl border overflow-hidden ${
+            className={`relative aspect-video rounded-xl border overflow-hidden ${
               isDark ? "border-gray-800" : "border-gray-200"
             }`}
           >
-            <img
+            <Image
               src={project.screenshots[activeIdx]}
               alt={`${project.title} screenshot ${activeIdx + 1}`}
-              className="w-full h-auto"
+              fill
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-contain"
             />
             {project.screenshots.length > 1 && (
               <>

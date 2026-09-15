@@ -10,8 +10,8 @@ export const idocParser: ProjectDetail = {
   technologies: ["Java 25", "Quarkus", "Maven", "SAP IDoc", "JSON Schema"],
   githubUrl: "https://github.com/Nayyelin-14/idoc-parser",
   screenshots: [
-    "/PJimg/idoc/idoc-ui-01-input.png",
-    "/PJimg/idoc/idoc-ui-02-before-after.png",
+    "/PJimg/idoc/idoc-ui-01-input.webp",
+    "/PJimg/idoc/idoc-ui-02-before-after.webp",
   ],
   overview: {
     title: "Converting SAP WE60 exports into machine-readable JSON Schema.",

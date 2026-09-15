@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
 import { Award, Calendar, Download, ExternalLink, X } from "lucide-react";
 import type { Certificate } from "@/types/data";
@@ -35,7 +36,7 @@ const certificates: Certificate[] = [
     provider: "Code Hub MM",
     instructor: "Code Hub MM",
     date: { start: "2024-05-14", end: "2024-08-29" },
-    image: "/Certi/image.png",
+    image: "/Certi/image.webp",
     instructorBio:
       "A vibrant community for developers in Myanmar to learn, share, and grow together. We focus on coding tutorials, projects, and tech discussions to empower Myanmar's tech talent.",
     description:
@@ -51,13 +52,23 @@ const certificates: Certificate[] = [
     instructorBio:
       "Mr.Phone Nyo is a full stack developer and tech lead from Myanmar. He specializes in React, Next.js, Node.js, React Native, and NestJS.",
     date: { start: "2025-06-22" },
-    image: "/Certi/Full.JPEG",
+    image: "/Certi/Full.webp",
     description:
       "An intensive hands-on bootcamp covering both frontend and backend development with modern technologies. Included multiple real-world projects, such as a full-featured furniture shop application, backend APIs with Express.js and Prisma, and GraphQL services.",
     techStack: ["React", "Next.js", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Prisma ORM", "GraphQL", "Zustand", "Tanstack Query", "i18next"],
     skills: ["React Hooks", "Responsive UI", "State Management", "REST API Development", "Authentication (JWT)", "Pagination", "Caching Strategies", "Cron Jobs"],
   },
 ];
+
+const certImageDims: Record<string, { width: number; height: number }> = {
+  "/Certi/image.webp": { width: 1122, height: 789 },
+  "/Certi/Full.webp": { width: 2048, height: 1447 },
+  "/Certi/internship-certificate-preview.webp": { width: 1224, height: 1584 },
+};
+
+function resolvedCertImage(image: string) {
+  return image.endsWith(".pdf") ? image.replace(".pdf", "-preview.webp") : image;
+}
 
 export const CertificatesClient = () => {
   const { isDark } = useTheme();
@@ -99,14 +110,12 @@ export const CertificatesClient = () => {
               {/* Image */}
               <div className="shrink-0 mx-auto lg:mx-0">
                 <div className="relative rounded-xl overflow-hidden w-full max-w-sm lg:w-72 h-48 lg:h-52">
-                  <img
-                    src={
-                      cert.image.endsWith(".pdf")
-                        ? cert.image.replace(".pdf", "-preview.png")
-                        : cert.image
-                    }
+                  <Image
+                    src={resolvedCertImage(cert.image)}
                     alt={`${cert.title} Certificate`}
-                    className="w-full h-full object-cover object-top"
+                    fill
+                    sizes="(min-width: 1024px) 288px, (min-width: 640px) 384px, 100vw"
+                    className="object-cover object-top"
                   />
                   <div className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 dark:bg-gray-800/80">
                     <Award className="w-4 h-4 text-yellow-500" />
@@ -230,13 +239,13 @@ export const CertificatesClient = () => {
             >
               <X className="w-5 h-5" />
             </button>
-            <img
-              src={
-                selectedCert.image.endsWith(".pdf")
-                  ? selectedCert.image.replace(".pdf", "-preview.png")
-                  : selectedCert.image
-              }
+            <Image
+              src={resolvedCertImage(selectedCert.image)}
               alt={`${selectedCert.title} Certificate`}
+              {...(certImageDims[resolvedCertImage(selectedCert.image)] ?? {
+                width: 1224,
+                height: 1584,
+              })}
               className="w-full h-auto max-h-[80vh] object-contain"
             />
             {selectedCert.image.endsWith(".pdf") && (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import Image from "next/image";
 import { portfolioData } from "@/lib/data";
 import {
   MapPin,
@@ -55,16 +56,18 @@ export const AboutClient = ({
               {/* soft glow behind */}
               <div className="absolute -inset-3 rounded-[32px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/10 blur-2xl" />
               <div
-                className={`relative overflow-hidden rounded-[28px] border shadow-xl ${
+                className={`relative aspect-[4/5] overflow-hidden rounded-[28px] border shadow-xl ${
                   isDark
                     ? "border-white/10 bg-gray-900"
                     : "border-gray-200 bg-white"
                 }`}
               >
-                <img
+                <Image
                   src={portfolioData.personal.profileImg}
                   alt={portfolioData.personal.name}
-                  className="w-full aspect-[4/5] object-cover"
+                  fill
+                  sizes="280px"
+                  className="object-cover"
                 />
                 <div className={`p-4 ${isDark ? "bg-gray-900" : "bg-white"}`}>
                   <p

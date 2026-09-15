@@ -56,7 +56,7 @@ const certificates: Certificate[] = [
       start: "2024-05-14",
       end: "2024-08-29",
     },
-    image: "/Certi/image.png",
+    image: "/Certi/image.webp",
     instructorBio:
       "A vibrant community for developers in Myanmar to learn, share, and grow together. We focus on coding tutorials, projects, and tech discussions to empower Myanmar's tech talent. Join us to code, collaborate, and connect!",
     description:
@@ -107,7 +107,7 @@ const certificates: Certificate[] = [
     date: {
       start: "2025-06-22",
     },
-    image: "/Certi/Full.JPEG",
+    image: "/Certi/Full.webp",
     description:
       "An intensive hands-on bootcamp covering both frontend and backend development with modern technologies. Included multiple real-world projects, such as a full-featured furniture shop application, backend APIs with Express.js and Prisma, and GraphQL services. Covered performance optimization, security best practices, deployment pipelines, and developer tooling.",
     techStack: [
@@ -238,7 +238,7 @@ export const CertificatesSection = ({
                       <img
                         src={
                           cert.image.endsWith(".pdf")
-                            ? cert.image.replace(".pdf", "-preview.png")
+                            ? cert.image.replace(".pdf", "-preview.webp")
                             : cert.image
                         }
                         alt={`${cert.title} Certificate`}
@@ -403,7 +403,7 @@ export const CertificatesSection = ({
             <img
               src={
                 selectedCert.image.endsWith(".pdf")
-                  ? selectedCert.image.replace(".pdf", "-preview.png")
+                  ? selectedCert.image.replace(".pdf", "-preview.webp")
                   : selectedCert.image
               }
               alt={`${selectedCert.title} Certificate`}

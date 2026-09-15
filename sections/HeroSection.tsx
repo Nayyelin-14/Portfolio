@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
 import { portfolioData } from "@/lib/data";
 import { ArrowRight, ArrowDown, Github, Linkedin, Mail } from "lucide-react";
@@ -134,10 +135,13 @@ export const HeroSection = () => {
                   isDark ? "border-gray-700" : "border-gray-200"
                 }`}
               >
-                <img
+                <Image
                   src={portfolioData.personal.profileImg}
                   alt={portfolioData.personal.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  sizes="288px"
+                  className="object-cover"
                 />
               </div>
               {/* Floating badge */}

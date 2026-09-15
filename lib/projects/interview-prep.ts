@@ -20,12 +20,12 @@ export const interviewPrep: ProjectDetail = {
   liveUrl: "https://interview-prep-ai-nine.vercel.app",
   githubUrl: "https://github.com/Nayyelin-14/InterviewPrepAI",
   screenshots: [
-    "/PJimg/INT1.jpg",
-    "/PJimg/INT2.jpg",
-    "/PJimg/INT3.jpg",
-    "/PJimg/INT4.jpg",
-    "/PJimg/INT5.jpg",
-    "/PJimg/INT6.jpg",
+    "/PJimg/INT1.webp",
+    "/PJimg/INT2.webp",
+    "/PJimg/INT3.webp",
+    "/PJimg/INT4.webp",
+    "/PJimg/INT5.webp",
+    "/PJimg/INT6.webp",
   ],
   overview: {
     title: "Personalized interview preparation powered by Gemini AI.",
