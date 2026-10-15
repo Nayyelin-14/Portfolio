@@ -44,10 +44,6 @@ const NextFurnitureVisual = dynamic(() =>
     (m) => m.NextFurnitureVisual,
   ),
 );
-const SkyfareVisual = dynamic(() =>
-  import("./project-visuals/SkyfareVisual").then((m) => m.SkyfareVisual),
-);
-
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "Changelog Composer": ChangelogVisual,
   "J Track – Job Tracking Platform": JTrackVisual,
@@ -58,7 +54,6 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "AI Powered Interview Preparation": InterviewPrepVisual,
   "Task Management": TaskManagementVisual,
   "NextFurniture – Shopping & Blog Platform": NextFurnitureVisual,
-  "Skyfare – Flight Booking Platform": SkyfareVisual,
 };
 
 const slugMap: Record<string, string> = {
@@ -71,7 +66,6 @@ const slugMap: Record<string, string> = {
   "AI Powered Interview Preparation": "interview-prep",
   "Task Management": "task-management",
   "NextFurniture – Shopping & Blog Platform": "nextfurniture",
-  "Skyfare – Flight Booking Platform": "skyfare",
 };
 
 interface ProjectCardProps {

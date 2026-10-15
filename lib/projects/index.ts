@@ -8,10 +8,8 @@ import { workflowMcp } from "./workflow-mcp";
 import { interviewPrep } from "./interview-prep";
 import { taskManagement } from "./task-management";
 import { nextFurniture } from "./nextfurniture";
-import { skyfare } from "./skyfare";
 
 export const allProjects: ProjectDetail[] = [
-  skyfare,
   changelogComposer,
   jTrack,
   edupro,

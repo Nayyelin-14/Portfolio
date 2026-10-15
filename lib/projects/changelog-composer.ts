@@ -14,9 +14,14 @@ export const changelogComposer: ProjectDetail = {
     "TypeScript",
     "PostgreSQL",
     "Flyway",
-    "NVIDIA NIM LLM",
+    "NVIDIA NIM",
+    "OpenRouter",
+    "Groq",
+    "Z.AI",
     "GitHub REST API",
+    "GitHub OAuth",
     "GitHub Actions",
+    "SSE",
     "Docker",
     "Caddy",
     "Azure VM",
@@ -25,12 +30,24 @@ export const changelogComposer: ProjectDetail = {
   githubUrl: "https://github.com/Nayyelin-14/Changelog-gen",
   screenshots: [
     "/PJimg/cc/01-role-select.webp",
-    "/PJimg/cc/02-dev-dashboard-repos.webp",
-    "/PJimg/cc/05-generation-streaming-mid.webp",
-    "/PJimg/cc/06-generation-result.webp",
-    "/PJimg/cc/13-push-success.webp",
-    "/PJimg/cc/16-qa-version-changelog.webp",
-    "/PJimg/cc/17-business-version-changelog.webp",
+    "/PJimg/cc/02-login.webp",
+    "/PJimg/cc/03-login-error.webp",
+    "/PJimg/cc/06-dev-repo-dashboard.webp",
+    "/PJimg/cc/07-generate-source-data.webp",
+    "/PJimg/cc/08-generation-streaming.webp",
+    "/PJimg/cc/09-generation-result.webp",
+    "/PJimg/cc/10-edit-mode.webp",
+    "/PJimg/cc/11-save-confirm-dialog.webp",
+    "/PJimg/cc/12-save-success.webp",
+    "/PJimg/cc/13-push-confirm-dialog.webp",
+    "/PJimg/cc/14-history-list.webp",
+    "/PJimg/cc/15-generation-error.webp",
+    "/PJimg/cc/16-models-unavailable.webp",
+    "/PJimg/cc/17-account-menu.webp",
+    "/PJimg/cc/18-qa-browse.webp",
+    "/PJimg/cc/19-qa-version-changelog.webp",
+    "/PJimg/cc/20-business-browse.webp",
+    "/PJimg/cc/21-business-version-changelog.webp",
   ],
   overview: {
     title: "From raw release data to audience-specific changelogs.",
@@ -43,33 +60,33 @@ export const changelogComposer: ProjectDetail = {
       },
       {
         number: "02",
-        title: "Dashboard generation",
+        title: "Multi-provider generation",
         description:
-          "A role-based React dashboard lets developers, QA, and business stakeholders generate, edit, and restore tailored changelogs. Generation streams live via SSE.",
+          "A role-based React dashboard generates, edits, and restores tailored changelogs per audience. Pick from NVIDIA NIM, OpenRouter, Groq, or Z.AI — the model catalog is probed live so only healthy models are offered. Generation streams over SSE.",
       },
       {
         number: "03",
         title: "Push to repository",
         description:
-          "The generated developer changelog can be pushed back to the source repository as a pull request against CHANGELOG.md.",
+          "The generated developer changelog is pushed directly to CHANGELOG.md on the source repository, with a confirmation step and version tracking.",
       },
     ],
   },
   architecture: {
     description:
-      "Quarkus backend serves the API and bundles the React frontend. PostgreSQL stores changelog versions, revisions, and raw release data. NVIDIA NIM provides AI generation with a fallback model chain.",
+      "Quarkus backend serves the API and bundles the React frontend. PostgreSQL stores changelog versions, revisions, and raw release data. Multi-provider AI generation with catalog health probing and a fallback model chain.",
     steps: [
       {
         number: "01",
-        title: "Dual source connectors",
+        title: "GitHub source connector",
         description:
-          "Azure DevOps and GitHub connectors fetch releases, pull requests, commits, and work items through their respective REST APIs.",
+          "GitHub connector fetches releases, pull requests, and commits through the REST API, with per-user OAuth sessions and default-deny access guards on every route.",
       },
       {
         number: "02",
         title: "AI generation pipeline",
         description:
-          "The changelog generation service processes release data through NVIDIA NIM with input-hash caching and a model fallback chain for reliability.",
+          "The changelog generation service processes release data through the selected provider (NVIDIA NIM, OpenRouter, Groq, Z.AI) with input-hash caching, live catalog probing, and a model fallback chain.",
       },
       {
         number: "03",
@@ -80,11 +97,12 @@ export const changelogComposer: ProjectDetail = {
     ],
   },
   engineeringFocus: {
-    title: "Reliable AI generation with production-grade deployment.",
+    title: "Multi-provider AI with production-grade deployment.",
     items: [
-      "AI model fallback chain — up to 4 models tried sequentially on failure",
-      "Input-hash caching — avoids redundant AI calls when data hasn't changed",
-      "Self-changelog pipeline — the project dogfoods its own changelog generation",
+      "Multi-provider AI — NVIDIA NIM, OpenRouter, Groq, Z.AI with live catalog health probing and fallback chain",
+      "SSE streaming — generation streams token-by-token into the dashboard",
+      "Per-user isolation — GitHub OAuth sessions, default-deny API guards, role-scoped views (Developer / QA / Business)",
+      "Revision history — every text change is a new revision; restore any previous version atomically",
     ],
   },
 };

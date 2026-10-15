@@ -42,10 +42,6 @@ const NextFurnitureVisual = dynamic(() =>
     (m) => m.NextFurnitureVisual,
   ),
 );
-const SkyfareVisual = dynamic(() =>
-  import("@/components/project-visuals/SkyfareVisual").then((m) => m.SkyfareVisual),
-);
-
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "changelog-composer": ChangelogComposerVisual,
   "j-track": JTrackVisual,
@@ -56,7 +52,6 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "interview-prep": InterviewPrepVisual,
   "task-management": TaskManagementVisual,
   nextfurniture: NextFurnitureVisual,
-  skyfare: SkyfareVisual,
 };
 
 export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => {

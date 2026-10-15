@@ -16,7 +16,6 @@ export default function sitemap() {
     "/projects/interview-prep",
     "/projects/task-management",
     "/projects/nextfurniture",
-    "/projects/skyfare",
     "/certificates",
     "/contact",
   ];
