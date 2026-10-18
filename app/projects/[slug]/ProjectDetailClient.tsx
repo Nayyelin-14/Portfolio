@@ -7,7 +7,13 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import type { ProjectDetail } from "@/types/data";
-import { ArrowLeft, ChevronLeft, ChevronRight, Github, ExternalLink } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  Github,
+  ExternalLink,
+} from "lucide-react";
 
 const ChangelogComposerVisual = dynamic(() =>
   import("@/components/project-visuals/ChangelogComposerVisual").then(
@@ -15,22 +21,34 @@ const ChangelogComposerVisual = dynamic(() =>
   ),
 );
 const JTrackVisual = dynamic(() =>
-  import("@/components/project-visuals/JTrackVisual").then((m) => m.JTrackVisual),
+  import("@/components/project-visuals/JTrackVisual").then(
+    (m) => m.JTrackVisual,
+  ),
 );
 const EduProVisual = dynamic(() =>
-  import("@/components/project-visuals/EduProVisual").then((m) => m.EduProVisual),
+  import("@/components/project-visuals/EduProVisual").then(
+    (m) => m.EduProVisual,
+  ),
 );
 const IdocParserVisual = dynamic(() =>
-  import("@/components/project-visuals/IdocParserVisual").then((m) => m.IdocParserVisual),
+  import("@/components/project-visuals/IdocParserVisual").then(
+    (m) => m.IdocParserVisual,
+  ),
 );
 const EdiScrapperVisual = dynamic(() =>
-  import("@/components/project-visuals/EdiScrapperVisual").then((m) => m.EdiScrapperVisual),
+  import("@/components/project-visuals/EdiScrapperVisual").then(
+    (m) => m.EdiScrapperVisual,
+  ),
 );
 const WorkflowMcpVisual = dynamic(() =>
-  import("@/components/project-visuals/WorkflowMcpVisual").then((m) => m.WorkflowMcpVisual),
+  import("@/components/project-visuals/WorkflowMcpVisual").then(
+    (m) => m.WorkflowMcpVisual,
+  ),
 );
 const InterviewPrepVisual = dynamic(() =>
-  import("@/components/project-visuals/InterviewPrepVisual").then((m) => m.InterviewPrepVisual),
+  import("@/components/project-visuals/InterviewPrepVisual").then(
+    (m) => m.InterviewPrepVisual,
+  ),
 );
 const TaskManagementVisual = dynamic(() =>
   import("@/components/project-visuals/TaskManagementVisual").then(
@@ -42,7 +60,13 @@ const NextFurnitureVisual = dynamic(() =>
     (m) => m.NextFurnitureVisual,
   ),
 );
+const EnergyTrackerVisual = dynamic(() =>
+  import("@/components/project-visuals/EnergyTrackerVisual").then(
+    (m) => m.EnergyTrackerVisual,
+  ),
+);
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  "energy-tracker": EnergyTrackerVisual,
   "changelog-composer": ChangelogComposerVisual,
   "j-track": JTrackVisual,
   edupro: EduProVisual,
@@ -54,7 +78,11 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
   nextfurniture: NextFurnitureVisual,
 };
 
-export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => {
+export const ProjectDetailClient = ({
+  project,
+}: {
+  project: ProjectDetail;
+}) => {
   const { isDark } = useTheme();
   const [activeIdx, setActiveIdx] = useState(0);
   const Visual = visualMap[project.slug];
@@ -76,13 +104,15 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Back link */}
       <Link
-        href="/projects"
+        href="/"
         className={`inline-flex items-center gap-1.5 text-sm font-medium mb-8 ${
-          isDark ? "text-gray-400 hover:text-gray-200" : "text-gray-600 hover:text-gray-900"
+          isDark
+            ? "text-gray-400 hover:text-gray-200"
+            : "text-gray-600 hover:text-gray-900"
         }`}
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to Projects
+        Back
       </Link>
 
       {/* Title */}
@@ -172,23 +202,6 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
         ))}
       </div>
 
-      {/* CSS/SVG Visual */}
-      {Visual && (
-        <div
-          className={`mt-8 rounded-xl border overflow-hidden p-4 sm:p-6 ${
-            isDark ? "border-gray-800 bg-gray-950" : "border-gray-200 bg-gray-50"
-          }`}
-        >
-          <Suspense
-            fallback={
-              <div className="h-48 w-full max-w-xl mx-auto animate-pulse bg-zinc-100 dark:bg-zinc-900" />
-            }
-          >
-            <Visual className="w-full max-w-xl mx-auto" />
-          </Suspense>
-        </div>
-      )}
-
       {/* Overview */}
       <section className="mt-12">
         <p
@@ -258,19 +271,31 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
               isDark ? "border-gray-800" : "border-gray-200"
             }`}
           >
-            <Image
-              src={project.screenshots[activeIdx]}
-              alt={`${project.title} screenshot ${activeIdx + 1}`}
-              fill
-              sizes="(min-width: 1280px) 1216px, 100vw"
-              className="object-contain"
-            />
+            {project.screenshots.map((src, idx) => {
+              const offset = idx - activeIdx;
+              return (
+                <Image
+                  key={src}
+                  src={src}
+                  alt={`${project.title} screenshot ${idx + 1}`}
+                  fill
+                  sizes="(min-width: 1280px) 1216px, 100vw"
+                  className={`object-contain transition-all duration-500 ease-out ${
+                    offset === 0
+                      ? "opacity-100 translate-x-0"
+                      : offset < 0
+                        ? "opacity-0 -translate-x-4"
+                        : "opacity-0 translate-x-4"
+                  }`}
+                />
+              );
+            })}
             {project.screenshots.length > 1 && (
               <>
                 <button
                   onClick={() =>
                     setActiveIdx((prev) =>
-                      prev === 0 ? project.screenshots.length - 1 : prev - 1
+                      prev === 0 ? project.screenshots.length - 1 : prev - 1,
                     )
                   }
                   className={`absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg transition-colors ${
@@ -285,7 +310,7 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
                 <button
                   onClick={() =>
                     setActiveIdx((prev) =>
-                      prev === project.screenshots.length - 1 ? 0 : prev + 1
+                      prev === project.screenshots.length - 1 ? 0 : prev + 1,
                     )
                   }
                   className={`absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg transition-colors ${
@@ -302,9 +327,9 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
                     <button
                       key={idx}
                       onClick={() => setActiveIdx(idx)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         idx === activeIdx
-                          ? "bg-white"
+                          ? "bg-white scale-125"
                           : "bg-white/50 hover:bg-white/80"
                       }`}
                       aria-label={`Go to screenshot ${idx + 1}`}
@@ -331,7 +356,9 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          {project.architecture.steps.length > 0 ? "How it works" : "Architecture"}
+          {project.architecture.steps.length > 0
+            ? "How it works"
+            : "Architecture"}
         </h2>
         <p
           className={`mt-3 text-sm leading-relaxed ${
@@ -403,7 +430,9 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
             <div
               key={idx}
               className={`p-4 rounded-xl border ${
-                isDark ? "bg-gray-900/50 border-gray-800" : "bg-white border-gray-200"
+                isDark
+                  ? "bg-gray-900/50 border-gray-800"
+                  : "bg-white border-gray-200"
               }`}
             >
               <p
@@ -446,19 +475,6 @@ export const ProjectDetailClient = ({ project }: { project: ProjectDetail }) => 
             Live Demo
           </a>
         )}
-      </div>
-
-      {/* Back link */}
-      <div className="mt-10">
-        <Link
-          href="/projects"
-          className={`inline-flex items-center gap-1.5 text-sm font-medium ${
-            isDark ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-700"
-          }`}
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Projects
-        </Link>
       </div>
     </div>
   );

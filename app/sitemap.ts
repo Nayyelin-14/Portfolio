@@ -7,6 +7,7 @@ export default function sitemap() {
     "/skills",
     "/experience",
     "/projects",
+    "/projects/energy-tracker",
     "/projects/changelog-composer",
     "/projects/j-track",
     "/projects/edupro",

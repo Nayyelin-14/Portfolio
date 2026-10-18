@@ -44,7 +44,13 @@ const NextFurnitureVisual = dynamic(() =>
     (m) => m.NextFurnitureVisual,
   ),
 );
+const EnergyTrackerVisual = dynamic(() =>
+  import("./project-visuals/EnergyTrackerVisual").then(
+    (m) => m.EnergyTrackerVisual,
+  ),
+);
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  "Energy Tracker – Home Energy Monitoring": EnergyTrackerVisual,
   "Changelog Composer": ChangelogVisual,
   "J Track – Job Tracking Platform": JTrackVisual,
   "EduPro – E-Learning Platform": EduProVisual,
@@ -57,6 +63,7 @@ const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const slugMap: Record<string, string> = {
+  "Energy Tracker – Home Energy Monitoring": "energy-tracker",
   "Changelog Composer": "changelog-composer",
   "J Track – Job Tracking Platform": "j-track",
   "EduPro – E-Learning Platform": "edupro",
