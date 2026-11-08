@@ -12,6 +12,11 @@ const CATEGORY_CONFIG: Record<
   string,
   { label: string; icon: string; color: string }
 > = {
+  "python-fastapi": {
+    label: "Python FastAPI",
+    icon: "🐍",
+    color: "bg-blue-500 text-white",
+  },
   "java-backend": {
     label: "Java Backend",
     icon: "☕",
@@ -45,7 +50,7 @@ export const ProjectsSection = () => {
     {} as Record<string, typeof data.projects>,
   );
 
-  const categoryOrder = ["java-backend", "nodejs-express", "nextjs-fullstack"];
+  const categoryOrder = ["python-fastapi", "java-backend", "nodejs-express", "nextjs-fullstack"];
 
   return (
     <section id="projects" className="py-20">
