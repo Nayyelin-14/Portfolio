@@ -9,6 +9,7 @@ import { interviewPrep } from "./interview-prep";
 import { taskManagement } from "./task-management";
 import { nextFurniture } from "./nextfurniture";
 import { energyTracker } from "./energy-tracker";
+import { logsManager } from "./logs-manager";
 
 export const allProjects: ProjectDetail[] = [
   energyTracker,
@@ -21,6 +22,7 @@ export const allProjects: ProjectDetail[] = [
   interviewPrep,
   taskManagement,
   nextFurniture,
+  logsManager,
 ];
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {

@@ -11,6 +11,7 @@ export interface Project {
   featured: boolean;
   details: string[];
   status?: "completed" | "in-progress" | "planned";
+  category: "java-backend" | "nodejs-express" | "nextjs-fullstack";
 }
 
 export interface Experience {

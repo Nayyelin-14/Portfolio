@@ -1,66 +1,22 @@
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
 import { useTranslation } from "@/hooks/useTranslation";
 import { portfolioData } from "@/lib/data";
 import type { Project } from "@/types/data";
 
-const ChangelogVisual = dynamic(
-  () =>
-    import("./project-visuals/ChangelogComposerVisual").then(
-      (m) => m.ChangelogComposerVisual,
-    ),
-  { ssr: true },
-);
-const JTrackVisual = dynamic(() =>
-  import("./project-visuals/JTrackVisual").then((m) => m.JTrackVisual),
-);
-const EduProVisual = dynamic(() =>
-  import("./project-visuals/EduProVisual").then((m) => m.EduProVisual),
-);
-const IdocParserVisual = dynamic(() =>
-  import("./project-visuals/IdocParserVisual").then((m) => m.IdocParserVisual),
-);
-const EdiScrapperVisual = dynamic(() =>
-  import("./project-visuals/EdiScrapperVisual").then((m) => m.EdiScrapperVisual),
-);
-const WorkflowMcpVisual = dynamic(() =>
-  import("./project-visuals/WorkflowMcpVisual").then((m) => m.WorkflowMcpVisual),
-);
-const InterviewPrepVisual = dynamic(() =>
-  import("./project-visuals/InterviewPrepVisual").then(
-    (m) => m.InterviewPrepVisual,
-  ),
-);
-const TaskManagementVisual = dynamic(() =>
-  import("./project-visuals/TaskManagementVisual").then(
-    (m) => m.TaskManagementVisual,
-  ),
-);
-const NextFurnitureVisual = dynamic(() =>
-  import("./project-visuals/NextFurnitureVisual").then(
-    (m) => m.NextFurnitureVisual,
-  ),
-);
-const EnergyTrackerVisual = dynamic(() =>
-  import("./project-visuals/EnergyTrackerVisual").then(
-    (m) => m.EnergyTrackerVisual,
-  ),
-);
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  "energy-tracker": EnergyTrackerVisual,
-  "changelog-composer": ChangelogVisual,
-  "j-track": JTrackVisual,
-  "edupro": EduProVisual,
-  "idoc-parser": IdocParserVisual,
-  "edi-scrapper": EdiScrapperVisual,
-  "workflow-mcp": WorkflowMcpVisual,
-  "interview-prep": InterviewPrepVisual,
-  "task-management": TaskManagementVisual,
-  "nextfurniture": NextFurnitureVisual,
+  "energy-tracker": () => null,
+  "changelog-composer": () => null,
+  "j-track": () => null,
+  "edupro": () => null,
+  "idoc-parser": () => null,
+  "edi-scrapper": () => null,
+  "workflow-mcp": () => null,
+  "interview-prep": () => null,
+  "task-management": () => null,
+  "nextfurniture": () => null,
 };
 
 interface ProjectCardProps {
@@ -70,7 +26,6 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   const { isDark } = useTheme();
   const { t } = useTranslation();
-  const Visual = visualMap[project.slug];
   const slug = project.slug;
 
   const tag = project.technologies.slice(0, 3).join(" · ");
@@ -78,49 +33,25 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
   return (
     <article
-      className={`group rounded-xl border overflow-hidden transition-all duration-300 ${
+      className={`group relative rounded-xl border overflow-hidden transition-all duration-300 ${
         isDark
-          ? "bg-gray-900/50 border-gray-800 hover:border-gray-700"
-          : "bg-white border-gray-200 hover:border-gray-300"
-      } hover:shadow-lg`}
+          ? "bg-gray-900/50 border-gray-800 hover:border-gray-700 shadow-sm hover:shadow-lg"
+          : "bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg"
+      }`}
     >
-      {/* Visual */}
-      <div
-        className={`relative h-52 overflow-hidden ${
-          isDark ? "bg-gray-950" : "bg-gray-50"
-        }`}
-      >
-        {Visual &&
-          (() => {
-            const ActiveVisual = Visual;
-            return (
-              <Suspense
-                fallback={
-                  <div className="h-full w-full bg-zinc-100 animate-pulse dark:bg-zinc-900" />
-                }
-              >
-                <ActiveVisual className="w-full h-full" />
-              </Suspense>
-            );
-          })()}
+      {/* Visual placeholder */}
+      <div className={`relative h-48 overflow-hidden ${
+        isDark ? "bg-gray-900" : "bg-gray-50"
+      }`}>
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900 opacity-50" />
+        <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600 text-sm">
+          {project.title.slice(0, 1).toUpperCase()}
+        </div>
       </div>
 
       {/* Content */}
       <div className="p-5">
-        <p
-          className={`text-xs font-medium mb-2 ${
-            isDark ? "text-gray-500" : "text-gray-500"
-          }`}
-        >
-          {tag}
-          {moreCount > 0 && (
-            <span className={isDark ? "text-gray-600" : "text-gray-400"}>
-              {" "}
-              {t("common.more", { count: moreCount })}
-            </span>
-          )}
-        </p>
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start justify-between mb-3">
           <h3
             className={`text-lg font-semibold leading-snug ${
               isDark ? "text-white" : "text-gray-900"
@@ -146,6 +77,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             </span>
           )}
         </div>
+
         <p
           className={`mt-2 text-sm leading-relaxed line-clamp-3 ${
             isDark ? "text-gray-400" : "text-gray-600"
@@ -155,18 +87,27 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         </p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.technologies.slice(0, 5).map((tech) => (
+          {project.technologies.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className={`px-2 py-0.5 text-xs rounded-full ${
+              className={`px-2.5 py-0.5 text-xs rounded-full ${
                 isDark
-                  ? "bg-gray-800 text-gray-400"
+                  ? "bg-gray-800 text-gray-300"
                   : "bg-gray-100 text-gray-600"
               }`}
             >
               {tech}
             </span>
           ))}
+          {project.technologies.length > 4 && (
+            <span
+              className={`px-2.5 py-0.5 text-xs rounded-full ${
+                isDark ? "bg-blue-900/50 text-blue-300" : "bg-blue-100 text-blue-600"
+              }`}
+            >
+              +{project.technologies.length - 4} more
+            </span>
+          )}
         </div>
 
         <div className="mt-4">
