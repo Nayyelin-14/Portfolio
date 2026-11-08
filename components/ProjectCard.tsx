@@ -1,22 +1,85 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { useTheme } from "@/components/ThemeProvider";
 import { useTranslation } from "@/hooks/useTranslation";
 import { portfolioData } from "@/lib/data";
 import type { Project } from "@/types/data";
 
+const EnergyTrackerVisual = dynamic(
+  () => import("./project-visuals/EnergyTrackerVisual").then((m) => m.EnergyTrackerVisual),
+  { ssr: true },
+);
+const ChangelogVisual = dynamic(
+  () =>
+    import("./project-visuals/ChangelogComposerVisual").then(
+      (m) => m.ChangelogComposerVisual
+    ),
+  { ssr: true },
+);
+const JTrackVisual = dynamic(
+  () => import("./project-visuals/JTrackVisual").then((m) => m.JTrackVisual),
+);
+const EduProVisual = dynamic(
+  () => import("./project-visuals/EduProVisual").then((m) => m.EduProVisual),
+);
+const IdocParserVisual = dynamic(
+  () =>
+    import("./project-visuals/IdocParserVisual").then(
+      (m) => m.IdocParserVisual
+    ),
+);
+const EdiScrapperVisual = dynamic(
+  () =>
+    import("./project-visuals/EdiScrapperVisual").then(
+      (m) => m.EdiScrapperVisual
+    ),
+);
+const WorkflowMcpVisual = dynamic(
+  () =>
+    import("./project-visuals/WorkflowMcpVisual").then(
+      (m) => m.WorkflowMcpVisual
+    ),
+);
+const InterviewPrepVisual = dynamic(
+  () =>
+    import("./project-visuals/InterviewPrepVisual").then(
+      (m) => m.InterviewPrepVisual
+    ),
+);
+const TaskManagementVisual = dynamic(
+  () =>
+    import("./project-visuals/TaskManagementVisual").then(
+      (m) => m.TaskManagementVisual
+    ),
+);
+const NextFurnitureVisual = dynamic(
+  () =>
+    import("./project-visuals/NextFurnitureVisual").then(
+      (m) => m.NextFurnitureVisual
+    ),
+);
+const LogsManagerVisual = dynamic(
+  () =>
+    import("./project-visuals/LogsManagerVisual").then(
+      (m) => m.LogsManagerVisual
+    ),
+);
+
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  "energy-tracker": () => null,
-  "changelog-composer": () => null,
-  "j-track": () => null,
-  "edupro": () => null,
-  "idoc-parser": () => null,
-  "edi-scrapper": () => null,
-  "workflow-mcp": () => null,
-  "interview-prep": () => null,
-  "task-management": () => null,
-  "nextfurniture": () => null,
+  "energy-tracker": EnergyTrackerVisual,
+  "changelog-composer": ChangelogVisual,
+  "j-track": JTrackVisual,
+  "edupro": EduProVisual,
+  "idoc-parser": IdocParserVisual,
+  "edi-scrapper": EdiScrapperVisual,
+  "workflow-mcp": WorkflowMcpVisual,
+  "interview-prep": InterviewPrepVisual,
+  "task-management": TaskManagementVisual,
+  "nextfurniture": NextFurnitureVisual,
+  "logs-manager": LogsManagerVisual,
 };
 
 interface ProjectCardProps {
@@ -26,6 +89,7 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   const { isDark } = useTheme();
   const { t } = useTranslation();
+  const Visual = visualMap[project.slug];
   const slug = project.slug;
 
   const tag = project.technologies.slice(0, 3).join(" · ");
@@ -39,14 +103,37 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           : "bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg"
       }`}
     >
-      {/* Visual placeholder */}
-      <div className={`relative h-48 overflow-hidden ${
+      {/* Visual */}
+      <div className={`relative h-52 overflow-hidden ${
         isDark ? "bg-gray-900" : "bg-gray-50"
       }`}>
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900 opacity-50" />
-        <div className="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600 text-sm">
-          {project.title.slice(0, 1).toUpperCase()}
-        </div>
+        {Visual && (
+          <Suspense
+            fallback={
+              <div className="h-full w-full bg-zinc-100 animate-pulse dark:bg-zinc-900" />
+            }
+          >
+            <Visual className="w-full h-full" />
+          </Suspense>
+        )}
+        {/* Project status badge */}
+        {project.status && (
+          <div
+            className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${
+              project.status === "completed"
+                ? "bg-green-500/15 text-green-600 dark:text-green-400"
+                : project.status === "in-progress"
+                  ? "bg-yellow-500/15 text-yellow-600 dark:text-yellow-400"
+                  : "bg-blue-500/15 text-blue-600 dark:text-blue-400"
+            }`}
+          >
+            {project.status === "in-progress"
+              ? t("common.inProgress")
+              : project.status === "completed"
+                ? t("common.completed")
+                : t("common.planned")}
+          </div>
+        )}
       </div>
 
       {/* Content */}
