@@ -1,18 +1,19 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useMemo } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
-import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
+import en from "@/locales/en.json";
+import th from "@/locales/th.json";
+import my from "@/locales/my.json";
+import zh from "@/locales/zh.json";
 
-const localeModules: Record<Locale, () => Promise<Record<string, unknown>>> = {
-  en: () => import("@/locales/en.json"),
-  th: () => import("@/locales/th.json"),
-  my: () => import("@/locales/my.json"),
-  zh: () => import("@/locales/zh.json"),
+// All locale bundles are small JSON files. Importing them statically makes
+// language switching synchronous and guarantees every string updates
+// immediately (no async race while a new bundle loads).
+const MESSAGES: Record<Locale, Record<string, unknown>> = {
+  en,
+  th,
+  my,
+  zh,
 };
 
 function resolveKey(
@@ -41,28 +42,20 @@ interface UseTranslationReturn {
 
 export function useTranslation(): UseTranslationReturn {
   const { locale, setLocale, isReady } = useLanguage();
-  const [messages, setMessages] = useState<Record<string, unknown> | null>(
-    null,
-  );
-  const mounted = useRef(true);
-
-  useEffect(() => {
-    if (!isReady) return;
-    localeModules[locale]().then((mod) => {
-      if (!mounted.current) return;
-      setMessages((mod.default ?? mod) as Record<string, unknown>);
-    });
-    return () => {
-      mounted.current = false;
-    };
-  }, [isReady, locale]);
 
   const t = useCallback(
     (key: string, replacements?: Record<string, string | number>): string => {
-      if (!isReady || !messages) return key;
-      let value: unknown = resolveKey(messages, key);
+      let value: unknown = resolveKey(MESSAGES[locale], key);
+
+      // Fall back to English when a key has not been translated yet, so a
+      // partially translated locale never renders raw dot-path keys.
+      if (value === undefined && locale !== "en") {
+        value = resolveKey(MESSAGES.en, key);
+      }
+
       if (value === undefined) value = key;
       if (typeof value !== "string") return String(value);
+
       if (replacements) {
         value = String(value).replace(/\{\{(\w+)\}}/g, (_match, name) => {
           const repl = replacements[name];
@@ -71,7 +64,7 @@ export function useTranslation(): UseTranslationReturn {
       }
       return String(value);
     },
-    [isReady, messages],
+    [locale],
   );
 
   return useMemo<UseTranslationReturn>(

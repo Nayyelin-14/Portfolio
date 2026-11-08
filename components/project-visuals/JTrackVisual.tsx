@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface JTrackVisualProps {
   className?: string;
@@ -8,19 +9,20 @@ interface JTrackVisualProps {
 
 export const JTrackVisual = ({ className = "" }: JTrackVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const jobs = [
-    { title: "Sr. Frontend Engineer", company: "Acme Inc", salary: "$120k" },
-    { title: "Backend Developer", company: "Globex", salary: "$95k" },
-    { title: "DevOps Engineer", company: "Initech", salary: "$110k" },
+    { title: t("visuals.jobFrontend"), company: "Acme Inc", salary: "$120k" },
+    { title: t("visuals.jobBackend"), company: "Globex", salary: "$95k" },
+    { title: t("visuals.jobDevops"), company: "Initech", salary: "$110k" },
   ];
 
   const flowNodes = [
-    { label: "Webhook", color: "text-emerald-500" },
-    { label: "API Gateway", color: "text-blue-500" },
-    { label: "Service", color: "text-purple-500" },
-    { label: "Kafka", color: "text-amber-500" },
-    { label: "Consumer", color: "text-rose-500" },
+    { label: t("visuals.flowWebhook"), color: "text-emerald-500" },
+    { label: t("visuals.flowApiGateway"), color: "text-blue-500" },
+    { label: t("visuals.flowService"), color: "text-purple-500" },
+    { label: t("visuals.flowKafka"), color: "text-amber-500" },
+    { label: t("visuals.flowConsumer"), color: "text-rose-500" },
   ];
 
   return (
@@ -50,7 +52,7 @@ export const JTrackVisual = ({ className = "" }: JTrackVisualProps) => {
                     : "bg-blue-100 text-blue-600"
                 }`}
               >
-                Apply
+                {t("visuals.apply")}
               </span>
             </div>
           </div>
@@ -64,7 +66,7 @@ export const JTrackVisual = ({ className = "" }: JTrackVisualProps) => {
         >
           <span className="flex items-center justify-center gap-1">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500" />
-            SSE · live
+            {t("visuals.sseLive")}
           </span>
         </div>
       </div>
@@ -75,7 +77,7 @@ export const JTrackVisual = ({ className = "" }: JTrackVisualProps) => {
             isDark ? "text-gray-500" : "text-gray-400"
           }`}
         >
-          Pipeline
+          {t("visuals.pipeline")}
         </p>
         {flowNodes.map((node, i) => (
           <div key={node.label} className="flex flex-col items-center">

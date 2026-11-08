@@ -11,8 +11,9 @@ export function useLocalizedProject(project: ProjectDetail): ProjectDetail {
   const { locale } = useLanguage();
 
   const localize = useCallback(
-    (value: unknown) => localizeDeep(value, locale),
-    [locale],
+    (value: unknown) =>
+      localizeDeep(value, locale, `projectDetails.${project.slug}`),
+    [locale, project.slug],
   );
 
   return localize(project) as ProjectDetail;

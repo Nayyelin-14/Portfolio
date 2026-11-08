@@ -4,62 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLocalizedCertificates } from "@/hooks/useLocalizedCertificates";
 import { Award, Calendar, Download, ExternalLink, X } from "lucide-react";
 import type { Certificate } from "@/types/data";
-
-const certificates: Certificate[] = [
-  {
-    id: 1,
-    title: "Internship Completion Certificate",
-    provider: "Datasabai Thailand",
-    instructor: "gilbert COURTOT",
-    instructorBio:
-      "Senior Integration Architect specializing in cloud-native B2B platforms, API & data integration, and webMethods & SAP solutions. Mentored me throughout my 8-month internship at Datasabai Thailand.",
-    date: { start: "Dec 2025", end: "Jul 2026" },
-    image: "/Certi/internship-certificate.pdf",
-    description:
-      "Completed an 8-month Software Engineer Internship at Datasabai Thailand, where my software engineering journey began. Worked with the R&D team on enterprise integration products — EDI data transformation tools (EDIFACT/X12), a SAP IDoc parser, an internal VS Code extension, the company marketing website with Next.js and Payload CMS, and an AI-powered changelog platform built with Java, Quarkus, and React.",
-    techStack: ["Java", "Quarkus", "Maven", "React", "Next.js", "TypeScript", "Payload CMS", "Azure DevOps", "Docker", "REST APIs"],
-    skills: [
-      "Enterprise Integration (EDIFACT / X12)",
-      "SAP IDoc Parsing",
-      "Backend Development with Java & Quarkus",
-      "Full-Stack Web Development",
-      "VS Code Extension Development",
-      "CI/CD with Azure Pipelines",
-      "Docker & Azure VM Deployment",
-      "Agile Team Collaboration",
-    ],
-  },
-  {
-    id: 2,
-    title: "Full Stack Web Development Bootcamp",
-    provider: "Code Hub MM",
-    instructor: "Code Hub MM",
-    date: { start: "2024-05-14", end: "2024-08-29" },
-    image: "/Certi/image.webp",
-    instructorBio:
-      "A vibrant community for developers in Myanmar to learn, share, and grow together. We focus on coding tutorials, projects, and tech discussions to empower Myanmar's tech talent.",
-    description:
-      "Intensive hands-on bootcamp covering modern full stack development. Built multiple real-world projects using React, Next.js, Node.js, and MongoDB, with deployment on Vercel and production-ready configurations.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "ShadCN", "Node.js", "Express.js", "Fastify", "MongoDB", "Mongoose", "JWT", "Git", "GitHub", "Vercel", "Nginx"],
-    skills: ["Component Architecture", "React Hooks", "Server-Side Rendering", "API Development", "Authentication & Authorization", "Deployment & Hosting"],
-  },
-  {
-    id: 3,
-    title: "Full Stack Web Developer class",
-    provider: "Phone Nyo MM",
-    instructor: "Mr.Phone Nyo",
-    instructorBio:
-      "Mr.Phone Nyo is a full stack developer and tech lead from Myanmar. He specializes in React, Next.js, Node.js, React Native, and NestJS.",
-    date: { start: "2025-06-22" },
-    image: "/Certi/Full.webp",
-    description:
-      "An intensive hands-on bootcamp covering both frontend and backend development with modern technologies. Included multiple real-world projects, such as a full-featured furniture shop application, backend APIs with Express.js and Prisma, and GraphQL services.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Prisma ORM", "GraphQL", "Zustand", "Tanstack Query", "i18next"],
-    skills: ["React Hooks", "Responsive UI", "State Management", "REST API Development", "Authentication (JWT)", "Pagination", "Caching Strategies", "Cron Jobs"],
-  },
-];
 
 const certImageDims: Record<string, { width: number; height: number }> = {
   "/Certi/image.webp": { width: 1122, height: 789 },
@@ -73,6 +20,7 @@ function resolvedCertImage(image: string) {
 
 export const CertificatesClient = () => {
   const { isDark } = useTheme();
+  const certificates = useLocalizedCertificates();
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const { t } = useTranslation();
 
@@ -114,7 +62,7 @@ export const CertificatesClient = () => {
                 <div className="relative rounded-xl overflow-hidden w-full max-w-sm lg:w-72 h-48 lg:h-52">
                   <Image
                     src={resolvedCertImage(cert.image)}
-                    alt={`${cert.title} Certificate`}
+                    alt={`${cert.title} ${t("common.certificate")}`}
                     fill
                     sizes="(min-width: 1024px) 288px, (min-width: 640px) 384px, 100vw"
                     className="object-cover object-top"
@@ -146,7 +94,9 @@ export const CertificatesClient = () => {
                     isDark ? "text-gray-500" : "text-gray-500"
                   }`}
                 >
-                  <span className="font-semibold">Instructor:</span>{" "}
+                  <span className="font-semibold">
+                    {t("common.instructor")}:
+                  </span>{" "}
                   {cert.instructor}
                 </p>
                 <p

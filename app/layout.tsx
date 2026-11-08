@@ -43,13 +43,23 @@ export default function RootLayout({
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className={`${inter.className} ${notoThai.className} ${notoMyanmar.className} font-sans antialiased`}
+        className={`${inter.variable} ${notoThai.variable} ${notoMyanmar.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <Suspense fallback={null}>

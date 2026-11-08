@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface IdocParserVisualProps {
   className?: string;
@@ -8,6 +9,7 @@ interface IdocParserVisualProps {
 
 export const IdocParserVisual = ({ className = "" }: IdocParserVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const idocLines = [
     { text: "BEGIN_IDOC", indent: 0, kw: true },
@@ -55,7 +57,7 @@ export const IdocParserVisual = ({ className = "" }: IdocParserVisualProps) => {
           isDark ? "border-gray-700 bg-gray-900" : "border-gray-200 bg-gray-50"
         }`}
       >
-        <PanelLabel>Input · EDI</PanelLabel>
+        <PanelLabel>{t("visuals.inputEdi")}</PanelLabel>
         <div className="font-mono text-[9px] leading-relaxed">
           {idocLines.map((line, i) => (
             <p
@@ -90,7 +92,7 @@ export const IdocParserVisual = ({ className = "" }: IdocParserVisualProps) => {
             isDark ? "text-gray-500" : "text-gray-400"
           }`}
         >
-          parse
+          {t("visuals.parse")}
         </span>
       </div>
 
@@ -99,7 +101,7 @@ export const IdocParserVisual = ({ className = "" }: IdocParserVisualProps) => {
           isDark ? "border-gray-700 bg-gray-900" : "border-gray-200 bg-gray-50"
         }`}
       >
-        <PanelLabel>Output · JSON</PanelLabel>
+        <PanelLabel>{t("visuals.outputJson")}</PanelLabel>
         <div className="font-mono text-[9px] leading-relaxed">
           {jsonLines.map((line, i) => (
             <p

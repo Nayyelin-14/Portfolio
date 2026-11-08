@@ -1,15 +1,16 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface EnergyTrackerVisualProps {
   className?: string;
 }
 
 const KPIS = [
-  { value: "42.8", unit: "kWh", label: "consumed · 7d", tone: "emerald" },
-  { value: "3", unit: "", label: "devices online", tone: "blue" },
-  { value: "4.2", unit: "kW", label: "threshold", tone: "amber" },
+  { value: "42.8", unit: "kWh", labelKey: "visuals.consumed7d", tone: "emerald" },
+  { value: "3", unit: "", labelKey: "visuals.devicesOnline", tone: "blue" },
+  { value: "4.2", unit: "kW", labelKey: "visuals.threshold", tone: "amber" },
 ];
 
 const BARS = [26, 34, 30, 42, 38, 52, 46, 40, 58, 74, 66, 80, 62, 54];
@@ -18,6 +19,7 @@ export const EnergyTrackerVisual = ({
   className = "",
 }: EnergyTrackerVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const panel = isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white";
   const shell = isDark ? "border-gray-700 bg-gray-900" : "border-gray-200 bg-white";
@@ -50,7 +52,7 @@ export const EnergyTrackerVisual = ({
             }`}
           >
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-            LIVE
+            {t("visuals.live")}
           </span>
         </div>
 
@@ -59,7 +61,7 @@ export const EnergyTrackerVisual = ({
           {/* KPI row */}
           <div className="grid grid-cols-3 gap-2">
             {KPIS.map((kpi) => (
-              <div key={kpi.label} className={`rounded-lg border p-2 ${panel}`}>
+              <div key={kpi.labelKey} className={`rounded-lg border p-2 ${panel}`}>
                 <p
                   className={`font-mono text-[13px] font-semibold leading-none tabular-nums ${
                     tone[kpi.tone as keyof typeof tone]
@@ -70,7 +72,9 @@ export const EnergyTrackerVisual = ({
                     <span className="ml-0.5 text-[8px] font-medium">{kpi.unit}</span>
                   )}
                 </p>
-                <p className={`mt-1 truncate text-[8px] ${muted}`}>{kpi.label}</p>
+                <p className={`mt-1 truncate text-[8px] ${muted}`}>
+                  {t(kpi.labelKey)}
+                </p>
               </div>
             ))}
           </div>
@@ -85,7 +89,7 @@ export const EnergyTrackerVisual = ({
                 isDark ? "bg-gray-800 text-rose-400" : "bg-white text-rose-500"
               }`}
             >
-              limit
+              {t("visuals.limit")}
             </span>
             {BARS.map((h, i) => (
               <span
@@ -117,7 +121,7 @@ export const EnergyTrackerVisual = ({
               isDark ? "bg-rose-500/15 text-rose-400" : "bg-rose-100 text-rose-600"
             }`}
           >
-            ▲ breach · email sent
+            {t("visuals.breachEmail")}
           </span>
           <span
             className={`flex items-center gap-1 rounded px-1.5 py-0.5 text-[8px] font-medium ${
@@ -125,7 +129,7 @@ export const EnergyTrackerVisual = ({
             }`}
           >
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500" />
-            AI tips · SSE
+            {t("visuals.aiTipsSse")}
           </span>
         </div>
       </div>

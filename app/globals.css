@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-inter), var(--font-noto-thai), var(--font-noto-myanmar),
+    "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei",
+    ui-sans-serif, system-ui, sans-serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 html {

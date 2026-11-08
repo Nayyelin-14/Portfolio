@@ -1,4 +1,8 @@
 import type { Locale } from "./i18n";
+import {
+  CERTIFICATE_TRANSLATIONS,
+  PROJECT_DETAIL_TRANSLATIONS,
+} from "./content-translations";
 export type { Locale };
 
 /**
@@ -14,6 +18,8 @@ export type { Locale };
 export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
   en: {},
   th: {
+    ...PROJECT_DETAIL_TRANSLATIONS.th,
+    ...CERTIFICATE_TRANSLATIONS.th,
     // --- personal ---
     "personal.title": "วิศวกรซอฟต์แวร์ระดับจูเนียร์",
     "personal.tagline":
@@ -45,6 +51,8 @@ export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
       "ทำงานจริงกับ Azure DevOps: บอร์ด, รายการงาน, คลังรหัส และไปป์ไลน์",
     "experience.0.highlights.6":
       "มีประสบการณ์จริงในการผลิตกับ Java, Quarkus, Maven และเวิร์กโฟลว์การบูรณาการระดับองค์กร",
+    "experience.0.highlights.7":
+      "สร้าง Changelog Composer ด้วยตนเอง (Java 25 + Quarkus + React) — เริ่มแรกมุ่งเป้าไปที่ Azure DevOps และเปลี่ยนมาใช้ GitHub หลังการฝึกงาน",
     // experience technologies
     "experience.0.technologies.0": "Java 21/25",
     "experience.0.technologies.1": "Quarkus",
@@ -83,8 +91,8 @@ export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     "skills.allSkills.23": "Git",
     "skills.allSkills.24": "Jest",
     // --- projects (by id) ---
-    "projects.10.title": "Energy Tracker – ติดตามพลังงานที่บ้าน",
-    "projects.10.description":
+    "projects.0.title": "Energy Tracker – ติดตามพลังงานที่บ้าน",
+    "projects.0.description":
       "แพลตฟอร์มติดตามพลังงานที่บ้านที่สร้างขึ้นเพื่อตอบคำถามง่าย ๆ หนึ่งข้อ: ไฟฟ้าของคุณหมดไปที่ไหน? รวบรวมค่าอ่านจากอุปกรณ์ของคุณ, คงมุมมองสดของทั้งบ้าน, แจ้งเตือนคุณในทันทีเมื่ออุปกรณ์ข้ามขีดจำกัดที่คุณตั้งไว้, และใช้ AI เพื่อเปลี่ยนประวัติการใช้งานของคุณเองให้เป็นเคล็ดลับการประหยัด. มาพร้อมบ้านตัวอย่างที่เต็มไปด้วยข้อมูลที่สมจริง ดังนั้นคุณสามารถสำรวจทุกอย่างได้ทันที",
     "projects.1.title": "Changelog Composer",
     "projects.1.description":
@@ -171,8 +179,8 @@ export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     "skills.allSkills.22": "GraphQL",
     "skills.allSkills.23": "Git",
     "skills.allSkills.24": "Jest",
-    "projects.10.title": "Energy Tracker – Home Energy Monitoring",
-    "projects.10.description": "Home energy monitoring platform built to answer one simple question: where does your electricity go? It collects readings from your devices, keeps a live view of the whole house, warns you the moment a device crosses the limit you set, and uses AI to turn your own history into saving tips. Comes with a demo home full of realistic data so you can explore everything right away.",
+    "projects.0.title": "Energy Tracker – Home Energy Monitoring",
+    "projects.0.description": "Home energy monitoring platform built to answer one simple question: where does your electricity go? It collects readings from your devices, keeps a live view of the whole house, warns you the moment a device crosses the limit you set, and uses AI to turn your own history into saving tips. Comes with a demo home full of realistic data so you can explore everything right away.",
     "projects.1.title": "Changelog Composer",
     "projects.1.description": "AI assisted changelog generator that turns raw GitHub release activity into audience-specific changelogs for Developers, QA, and Business stakeholders. Multi-provider AI (NVIDIA NIM, OpenRouter, Groq, Z.AI) with live model catalog health probing. Per-user GitHub OAuth sessions, role-scoped views, SSE-streamed generation, and full revision history. Runs a full production pipeline: GitHub Actions builds immutable Docker images, promotes them to an Azure VM over SSH, and serves everything behind a Caddy TLS proxy.",
     "projects.2.title": "J Track – Job Tracking Platform",
@@ -193,18 +201,20 @@ export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     "projects.9.description": "A practice project showcasing modern full-stack development techniques, combining a furniture e-commerce platform with a blog section. Users can browse and filter products by categories, read blog articles about furniture, and manage their cart. Built to experiment with advanced frontend state management, backend queues, caching, image optimization, and multi-language support.",
   },
   zh: {
+    ...PROJECT_DETAIL_TRANSLATIONS.zh,
+    ...CERTIFICATE_TRANSLATIONS.zh,
     // Chinese (Simplified) translations for portfolio data.
     // Technical terms, company names, URLs, email addresses, phone numbers, and programming language names remain in English.
     // Keys must not be changed.
     "personal.title": "初级软件工程师",
-    "personal.tagline": "软件工程专业应届毕业生，拥有 8 个月企业实习经验。",
-    "personal.location": "Bangkok, Thailand",
-    "personal.bio": "初级软件工程师，拥有在 Datasabai Thailand 为期 8 个月的企业实习经验。",
+    "personal.tagline": "软件工程专业应届毕业生，拥有 8 个月企业实习经验 —— 构建可扩展后端和现代全栈应用。",
+    "personal.location": "泰国曼谷",
+    "personal.bio": "初级软件工程师，在 Datasabai Thailand 完成了 8 个月的企业实习，积累了实战经验。我喜欢构建可扩展的后端服务和解决实际问题的现代全栈应用。",
     "experience.0.role": "软件工程师实习生",
     "experience.0.company": "Datasabai Thailand",
     "experience.0.type": "实习 · 8 个月",
-    "experience.0.location": "Thailand · 混合办公",
-    "experience.0.description": "与研发团队合作开展企业级集成产品。",
+    "experience.0.location": "泰国 · 混合办公",
+    "experience.0.description": "与研发团队合作开发企业级集成产品 —— 营销网站、带开发者工具的内部 SDK，以及基于 Java/Quarkus 的后端服务。每天使用 Azure DevOps 与产品经理、UI/UX 设计师和资深工程师协作。",
     "experience.0.date.start": "2025",
     "experience.0.date.end": "2026",
     "experience.0.highlights.0": "使用 Next.js 和强大的 SEO 构建了营销网站的大部分 UI (datasabai.com/en)，与产品经理和 UI/UX 设计师紧密合作。",
@@ -214,6 +224,7 @@ export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     "experience.0.highlights.4": "为 VS Code 扩展项目开始实施 Azure Pipeline CI/CD。",
     "experience.0.highlights.5": "直接使用 Azure DevOps：看板、工作项、仓库和流水线。",
     "experience.0.highlights.6": "在 Java、Quarkus、Maven 和企业级集成工作流方面获得生产环境经验。",
+    "experience.0.highlights.7": "独立构建 Changelog Composer（Java 25 + Quarkus + React）—— 最初面向 Azure DevOps，实习结束后转向 GitHub。",
     "experience.0.technologies.0": "Java 21/25",
     "experience.0.technologies.1": "Quarkus",
     "experience.0.technologies.2": "Maven",
@@ -249,8 +260,8 @@ export const DATA_TRANSLATIONS: Record<Locale, Record<string, string>> = {
     "skills.allSkills.22": "GraphQL",
     "skills.allSkills.23": "Git",
     "skills.allSkills.24": "Jest",
-    "projects.10.title": "Energy Tracker – 家庭能源监控",
-    "projects.10.description": "家庭能源监控平台，旨在回答一个简单问题：您的电力去哪里了？它会从您的设备收集读数，保持对整个房屋的实时视图，在设备超过您设定的限制时立即警告您，并利用 AI 将您的使用历史转化为节省提示。附带一个充满真实数据的演示房屋，让您立即探索一切。",
+    "projects.0.title": "Energy Tracker – 家庭能源监控",
+    "projects.0.description": "家庭能源监控平台，旨在回答一个简单问题：您的电力去哪里了？它会从您的设备收集读数，保持对整个房屋的实时视图，在设备超过您设定的限制时立即警告您，并利用 AI 将您的使用历史转化为节省提示。附带一个充满真实数据的演示房屋，让您立即探索一切。",
     "projects.1.title": "Changelog Composer",
     "projects.1.description": "AI 辅助变更日志生成器，将原始 GitHub 发布活动转换为面向开发者、QA 和业务利益相关者的受众特定变更日志。多提供商 AI (NVIDIA NIM, OpenRouter, Groq, Z.AI)，带有实时模型目录健康探测。每用户 GitHub OAuth 会话，角色限定视图，SSE 流式生成，以及完整的修订历史。运行完整生产流水线：GitHub Actions 构建不可变 Docker 镜像，通过 SSH 将其提升到 Azure VM，并使用 Caddy TLS 代理提供所有内容。",
     "projects.2.title": "J Track – 求职追踪平台",

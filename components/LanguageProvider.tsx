@@ -69,6 +69,13 @@ export const LanguageProvider = ({
     [storedLocale],
   );
 
+  // Keep the document language in sync for accessibility and SEO.
+  useEffect(() => {
+    if (!isReady) return;
+    document.documentElement.lang = locale;
+    document.documentElement.dir = "ltr";
+  }, [isReady, locale]);
+
   const setLocale = useCallback(
     (nextLocale: Locale) => {
       // Persist the choice.

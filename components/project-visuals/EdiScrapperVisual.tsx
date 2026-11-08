@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface EdiScrapperVisualProps {
   className?: string;
@@ -8,6 +9,7 @@ interface EdiScrapperVisualProps {
 
 export const EdiScrapperVisual = ({ className = "" }: EdiScrapperVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const segments = [
     { name: "ISA", depth: 0, open: true },
@@ -37,7 +39,7 @@ export const EdiScrapperVisual = ({ className = "" }: EdiScrapperVisualProps) =>
           >
             <path d="M4 6l4-3 4 3M4 10l4 3 4-3" strokeLinecap="round" />
           </svg>
-          <span>Format</span>
+          <span>{t("visuals.format")}</span>
           <svg
             viewBox="0 0 16 16"
             className="h-3 w-3 text-gray-500"
@@ -62,7 +64,9 @@ export const EdiScrapperVisual = ({ className = "" }: EdiScrapperVisualProps) =>
 
       <div className="mb-3">
         <div className="mb-1 flex items-center justify-between text-[9px] text-gray-400">
-          <span>Parsing row 4,203 of 4,912</span>
+          <span>
+            {t("visuals.parsingRow", { current: "4,203", total: "4,912" })}
+          </span>
           <span>100%</span>
         </div>
         <div className="h-1.5 overflow-hidden rounded-full bg-gray-700/40">
@@ -92,7 +96,9 @@ export const EdiScrapperVisual = ({ className = "" }: EdiScrapperVisualProps) =>
               </svg>
             )}
             <span className="font-semibold text-blue-500">{seg.name}</span>
-            <span className="text-gray-400">· {seg.open ? "Segment" : "Element"}</span>
+            <span className="text-gray-400">
+              · {seg.open ? t("visuals.segment") : t("visuals.element")}
+            </span>
           </div>
         ))}
       </div>
@@ -108,7 +114,7 @@ export const EdiScrapperVisual = ({ className = "" }: EdiScrapperVisualProps) =>
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500" />
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500 [animation-delay:150ms]" />
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500 [animation-delay:300ms]" />
-          SSE stream · live
+          {t("visuals.sseStreamLive")}
         </span>
       </div>
     </div>

@@ -281,7 +281,7 @@ export const ProjectDetailClient = ({
                 <Image
                   key={src}
                   src={src}
-                  alt={`${localizedProject.title} screenshot ${idx + 1}`}
+                  alt={`${localizedProject.title} ${t("common.screenshot")} ${idx + 1}`}
                   fill
                   sizes="(min-width: 1280px) 1216px, 100vw"
                   className={`object-contain transition-all duration-500 ease-out ${

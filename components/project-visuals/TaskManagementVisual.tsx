@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface TaskManagementVisualProps {
   className?: string;
@@ -12,12 +13,14 @@ const KanbanColumn = ({
   accent,
   dotBg,
   tasks,
+  progressLabel,
 }: {
   isDark: boolean;
   title: string;
   accent: string;
   dotBg: string;
   tasks: { label: string; progress?: number; tag?: string; tagColor?: string }[];
+  progressLabel: string;
 }) => (
   <div className="flex w-1/3 flex-col gap-1.5">
     <div className={`flex items-center gap-1 text-[10px] font-semibold ${accent}`}>
@@ -52,7 +55,7 @@ const KanbanColumn = ({
           {typeof t.progress === "number" && (
             <div className="mt-1.5">
               <div className="mb-0.5 flex justify-between text-[7px] text-gray-400">
-                <span>Progress</span>
+                <span>{progressLabel}</span>
                 <span>{t.progress}%</span>
               </div>
               <div className="h-1 overflow-hidden rounded-full bg-gray-600/40">
@@ -73,12 +76,13 @@ export const TaskManagementVisual = ({
   className = "",
 }: TaskManagementVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className={`relative rounded-xl border p-3 ${className}`}>
       <div className="mb-2 flex items-center justify-between">
         <p className="text-[10px] font-semibold">
-          Project Board
+          {t("visuals.projectBoard")}
         </p>
         <div
           className={`flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[8px] ${
@@ -88,37 +92,40 @@ export const TaskManagementVisual = ({
           }`}
         >
           <span className="h-1 w-1 rounded-full bg-indigo-500 animate-pulse" />
-          synced
+          {t("visuals.synced")}
         </div>
       </div>
       <div className="flex gap-2">
         <KanbanColumn
           isDark={isDark}
-          title="Pending"
+          title={t("visuals.pending")}
           accent="text-orange-500"
           dotBg="bg-orange-500"
+          progressLabel={t("visuals.progress")}
           tasks={[
-            { label: "Fix navbar bug", tag: "bug", tagColor: "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400" },
-            { label: "Write unit tests", tag: "test", tagColor: "bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400" },
+            { label: t("visuals.taskFixNavbar"), tag: t("visuals.tagBug"), tagColor: "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400" },
+            { label: t("visuals.taskWriteTests"), tag: t("visuals.tagTest"), tagColor: "bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400" },
           ]}
         />
         <KanbanColumn
           isDark={isDark}
-          title="In Progress"
+          title={t("visuals.inProgress")}
           accent="text-blue-500"
           dotBg="bg-blue-500"
+          progressLabel={t("visuals.progress")}
           tasks={[
-            { label: "Design system tokens", progress: 60 },
+            { label: t("visuals.taskDesignTokens"), progress: 60 },
           ]}
         />
         <KanbanColumn
           isDark={isDark}
-          title="Completed"
+          title={t("visuals.completed")}
           accent="text-green-500"
           dotBg="bg-green-500"
+          progressLabel={t("visuals.progress")}
           tasks={[
-            { label: "Setup CI/CD", progress: 100 },
-            { label: "Ship MVP", tag: "done", tagColor: "bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-400" },
+            { label: t("visuals.taskSetupCicd"), progress: 100 },
+            { label: t("visuals.taskShipMvp"), tag: t("visuals.tagDone"), tagColor: "bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-400" },
           ]}
         />
       </div>

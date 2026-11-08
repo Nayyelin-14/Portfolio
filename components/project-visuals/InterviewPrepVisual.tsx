@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface InterviewPrepVisualProps {
   className?: string;
@@ -14,21 +15,22 @@ interface QA {
 
 export const InterviewPrepVisual = ({ className = "" }: InterviewPrepVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const cards: QA[] = [
     {
-      q: "Explain the event loop in JavaScript.",
-      a: "JS runs single-threaded; the event loop coordinates the call stack, web APIs, and task queue to handle async without blocking.",
+      q: t("visuals.interviewQ1"),
+      a: t("visuals.interviewA1"),
       pin: false,
     },
     {
-      q: "What is a closure?",
-      a: "A function bundled with its lexical scope, enabling private state and data encapsulation.",
+      q: t("visuals.interviewQ2"),
+      a: t("visuals.interviewA2"),
       pin: true,
     },
     {
-      q: "Explain debouncing vs throttling.",
-      a: "Debounce delays until a quiet period; throttle enforces a fixed execution rate.",
+      q: t("visuals.interviewQ3"),
+      a: t("visuals.interviewA3"),
       pin: false,
     },
   ];
@@ -37,7 +39,7 @@ export const InterviewPrepVisual = ({ className = "" }: InterviewPrepVisualProps
     <div className={`flex flex-col gap-2 ${className}`}>
       <div className="mb-1 flex items-center justify-between">
         <p className="text-[10px] font-semibold">
-          Interview Q&A
+          {t("visuals.interviewQa")}
         </p>
         <div
           className={`flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[8px] font-medium ${

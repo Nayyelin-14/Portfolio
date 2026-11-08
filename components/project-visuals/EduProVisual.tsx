@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface EduProVisualProps {
   className?: string;
@@ -8,6 +9,7 @@ interface EduProVisualProps {
 
 export const EduProVisual = ({ className = "" }: EduProVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
@@ -73,7 +75,7 @@ export const EduProVisual = ({ className = "" }: EduProVisualProps) => {
           <path d="M5 8.5l2 2 4-4.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
         <span className="text-[9px] font-bold text-green-600 dark:text-green-400">
-          Certified
+          {t("visuals.certified")}
         </span>
       </div>
 

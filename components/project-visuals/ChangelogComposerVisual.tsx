@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ChangelogComposerVisualProps {
   className?: string;
@@ -10,6 +11,7 @@ export const ChangelogComposerVisual = ({
   className = "",
 }: ChangelogComposerVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const diffLine = (type: "add" | "remove", base: string) => {
     if (type === "add") {
@@ -53,7 +55,11 @@ export const ChangelogComposerVisual = ({
       </div>
 
       <div className="flex gap-1 border-b px-4 pt-2">
-        {["Dev", "QA", "Business"].map((role, i) => (
+        {[
+          t("visuals.dev"),
+          t("visuals.qa"),
+          t("visuals.business"),
+        ].map((role, i) => (
           <div
             key={role}
             className={`rounded-t px-3 py-1 text-[11px] font-medium ${
@@ -77,9 +83,9 @@ export const ChangelogComposerVisual = ({
         }`}
       >
         <div className="flex flex-col gap-1.5">
-          {diffLine("remove", "Old: Added search feature to homepage")}
-          {diffLine("add", "New: added AI-powered search + filter")}
-          {diffLine("add", "New: updated copy for business stakehold…")}
+          {diffLine("remove", t("visuals.changelogRemove"))}
+          {diffLine("add", t("visuals.changelogAdd1"))}
+          {diffLine("add", t("visuals.changelogAdd2"))}
         </div>
 
         <div className="mt-3 flex items-center gap-2 rounded-lg px-2 py-1.5 text-[11px]">
@@ -96,7 +102,7 @@ export const ChangelogComposerVisual = ({
           <span
             className={isDark ? "text-gray-400" : "text-gray-500"}
           >
-            Generating summary for QA role…
+            {t("visuals.generatingSummary")}
           </span>
         </div>
       </div>

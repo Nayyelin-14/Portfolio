@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface WorkflowMcpVisualProps {
   className?: string;
@@ -16,12 +17,13 @@ interface FlowNode {
 
 export const WorkflowMcpVisual = ({ className = "" }: WorkflowMcpVisualProps) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   const nodes: FlowNode[] = [
-    { id: "start", label: "Start", bg: "bg-green-500", text: "text-white", icon: "▶" },
-    { id: "agent", label: "Agent", bg: "bg-blue-500", text: "text-white", icon: "⬡" },
-    { id: "branch", label: "If / Else", bg: "bg-yellow-400", text: "text-yellow-950", icon: "◆" },
-    { id: "end", label: "End", bg: "bg-rose-500", text: "text-white", icon: "■" },
+    { id: "start", label: t("visuals.start"), bg: "bg-green-500", text: "text-white", icon: "▶" },
+    { id: "agent", label: t("visuals.agent"), bg: "bg-blue-500", text: "text-white", icon: "⬡" },
+    { id: "branch", label: t("visuals.ifElse"), bg: "bg-yellow-400", text: "text-yellow-950", icon: "◆" },
+    { id: "end", label: t("visuals.end"), bg: "bg-rose-500", text: "text-white", icon: "■" },
   ];
 
   const positions = [
@@ -92,14 +94,14 @@ export const WorkflowMcpVisual = ({ className = "" }: WorkflowMcpVisualProps) =>
           isDark ? "text-gray-500" : "text-gray-400"
         }`}
       >
-        MCP · workflow graph
+        {t("visuals.mcpGraph")}
       </div>
       <div
         className={`absolute right-0 top-1/2 -translate-y-1/2 rounded-full px-1.5 py-0.5 text-[7px] font-medium ${
           isDark ? "bg-blue-500/15 text-blue-400" : "bg-blue-100 text-blue-600"
         }`}
       >
-        4 nodes
+        {t("visuals.nodes", { count: 4 })}
       </div>
     </div>
   );

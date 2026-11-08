@@ -90,7 +90,7 @@ export const AboutClient = ({
               className={`grid grid-cols-3 gap-2 rounded-2xl p-3 border ${isDark ? "bg-white/[0.04] border-white/10" : "bg-gray-50 border-gray-200"}`}
             >
               {[
-                { v: "8 mo", l: t("about.statEnterprise") },
+                { v: t("about.statEnterpriseValue"), l: t("about.statEnterprise") },
                 { v: "9", l: t("about.statProjects") },
                 { v: "3.79", l: t("about.statGpax") },
               ].map((s) => (
@@ -163,12 +163,12 @@ export const AboutClient = ({
                 <p
                   className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
                 >
-                  Mae Fah Luang University
+                  {t("about.university")}
                 </p>
                 <p
                   className={`text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}
                 >
-                  BE in Software Engineering · GPAX 3.79 / 4.0
+                  {t("about.degree")}
                 </p>
               </div>
             </div>
@@ -196,7 +196,7 @@ export const AboutClient = ({
                 <p
                   className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
                 >
-                  Backend · Full-stack · AI
+                  {t("about.focusAreas")}
                 </p>
               </div>
             </div>
@@ -282,28 +282,12 @@ export const AboutClient = ({
               <p
                 className={`mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
               >
-                Hi, I&apos;m{" "}
-                <span
-                  className={
-                    isDark
-                      ? "text-white font-semibold"
-                      : "text-gray-900 font-semibold"
-                  }
-                >
-                  Nay Ye Lin
-                </span>{" "}
-                — a Software Engineering graduate from Mae Fah Luang University
-                with 8 months of enterprise experience. I love building scalable
-                backend services and modern full-stack applications that solve
-                real-world problems.
+                {t("about.introP1")}
               </p>
               <p
                 className={`mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
               >
-                In the era of AI I&apos;m focused on smart, intuitive products —
-                from SSE-streamed features to LLM-powered developer tools —
-                while improving technically and in soft skills like
-                communication and problem-solving.
+                {t("about.introP2")}
               </p>
             </div>
           </div>
@@ -440,18 +424,15 @@ export const AboutClient = ({
               <p
                 className={`mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
               >
-                Core:{" "}
+                {t("about.buildIntro")}{" "}
                 <strong className={isDark ? "text-white" : "text-gray-900"}>
-                  Java, Quarkus, Node.js, Express, React, Next.js, PostgreSQL,
-                  MongoDB
+                  {t("about.buildCore")}
                 </strong>{" "}
-                — plus{" "}
+                {t("about.buildPlusLabel")}{" "}
                 <strong className={isDark ? "text-white" : "text-gray-900"}>
-                  Docker, GitHub Actions, Azure DevOps, Redis, Kafka, Payload
-                  CMS
+                  {t("about.buildPlus")}
                 </strong>
-                . I enjoy the full loop — clean responsive UIs, robust APIs, and
-                production deployments.
+                . {t("about.buildOutro")}
               </p>
             </div>
           </div>
@@ -477,8 +458,7 @@ export const AboutClient = ({
               <p
                 className={`mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
               >
-                Football and the gym — they keep me focused, disciplined, and
-                team-minded. That energy carries back into how I build software.
+                {t("about.beyondP1")}
               </p>
 
               {/* CTA band */}
