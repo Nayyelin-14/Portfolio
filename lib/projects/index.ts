@@ -12,6 +12,7 @@ import { energyTracker } from "./energy-tracker";
 import { logsManager } from "./logs-manager";
 
 export const allProjects: ProjectDetail[] = [
+  logsManager,
   energyTracker,
   changelogComposer,
   jTrack,
@@ -22,7 +23,6 @@ export const allProjects: ProjectDetail[] = [
   interviewPrep,
   taskManagement,
   nextFurniture,
-  logsManager,
 ];
 
 export function getProjectBySlug(slug: string): ProjectDetail | undefined {
