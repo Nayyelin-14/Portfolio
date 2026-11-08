@@ -6,6 +6,8 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useLocalizedProject } from "@/hooks/useLocalizedProject";
 import type { ProjectDetail } from "@/types/data";
 import {
   ArrowLeft,
@@ -84,21 +86,23 @@ export const ProjectDetailClient = ({
   project: ProjectDetail;
 }) => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const localizedProject = useLocalizedProject(project);
   const [activeIdx, setActiveIdx] = useState(0);
-  const Visual = visualMap[project.slug];
+  const Visual = visualMap[localizedProject.slug];
 
   const statusLabel =
-    project.status === "completed"
-      ? "Completed"
-      : project.status === "ongoing"
-        ? "Ongoing"
-        : "Prototype";
+    localizedProject.status === "completed"
+      ? t("common.completed")
+      : localizedProject.status === "ongoing"
+        ? t("common.inProgress")
+        : t("common.planned");
   const privacyLabel =
-    project.privacy === "open-source"
-      ? "Open source"
-      : project.privacy === "company"
-        ? "Company project"
-        : "Practice project";
+    localizedProject.privacy === "open-source"
+      ? t("common.openSource")
+      : localizedProject.privacy === "company"
+        ? t("common.companyProject")
+        : t("common.practiceProject");
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -112,7 +116,7 @@ export const ProjectDetailClient = ({
         }`}
       >
         <ArrowLeft className="w-4 h-4" />
-        Back
+        {t("common.back")}
       </Link>
 
       {/* Title */}
@@ -121,28 +125,28 @@ export const ProjectDetailClient = ({
           isDark ? "text-blue-400" : "text-blue-600"
         }`}
       >
-        Project Detail
+        {t("common.projectDetail")}
       </p>
       <h1
         className={`text-3xl sm:text-4xl font-bold tracking-tight ${
           isDark ? "text-white" : "text-gray-900"
         }`}
       >
-        {project.title}
+        {localizedProject.title}
       </h1>
       <p
         className={`mt-3 text-base leading-relaxed max-w-3xl ${
           isDark ? "text-gray-400" : "text-gray-600"
         }`}
       >
-        {project.summary}
+        {localizedProject.summary}
       </p>
 
       {/* Badges + links */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <span
           className={`px-3 py-1 text-xs font-semibold rounded-full ${
-            project.status === "completed"
+            localizedProject.status === "completed"
               ? "bg-green-500/10 text-green-600 dark:text-green-400"
               : "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400"
           }`}
@@ -156,9 +160,9 @@ export const ProjectDetailClient = ({
         >
           {privacyLabel}
         </span>
-        {project.githubUrl && (
+        {localizedProject.githubUrl && (
           <a
-            href={project.githubUrl}
+            href={localizedProject.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border transition-colors ${
@@ -168,12 +172,12 @@ export const ProjectDetailClient = ({
             }`}
           >
             <Github className="w-3.5 h-3.5" />
-            Source
+            {t("common.source")}
           </a>
         )}
-        {project.liveUrl && (
+        {localizedProject.liveUrl && (
           <a
-            href={project.liveUrl}
+            href={localizedProject.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border transition-colors ${
@@ -183,14 +187,14 @@ export const ProjectDetailClient = ({
             }`}
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            Live Demo
+            {t("common.liveDemo")}
           </a>
         )}
       </div>
 
       {/* Tech tags */}
       <div className="mt-6 flex flex-wrap gap-1.5">
-        {project.technologies.map((tech) => (
+        {localizedProject.technologies.map((tech) => (
           <span
             key={tech}
             className={`px-2.5 py-1 text-xs font-medium rounded-full ${
@@ -209,17 +213,17 @@ export const ProjectDetailClient = ({
             isDark ? "text-blue-400" : "text-blue-600"
           }`}
         >
-          Overview
+          {t("common.overview")}
         </p>
         <h2
           className={`text-2xl font-bold tracking-tight ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          {project.overview.title}
+          {localizedProject.overview.title}
         </h2>
         <div className="mt-6 space-y-6">
-          {project.overview.steps.map((step) => (
+          {localizedProject.overview.steps.map((step) => (
             <div key={step.number} className="flex gap-4">
               <span
                 className={`text-sm font-bold shrink-0 ${
@@ -250,34 +254,34 @@ export const ProjectDetailClient = ({
       </section>
 
       {/* Screenshots */}
-      {project.screenshots.length > 0 && (
+      {localizedProject.screenshots.length > 0 && (
         <section className="mt-12">
           <p
             className={`text-sm font-semibold uppercase tracking-widest mb-2 ${
               isDark ? "text-blue-400" : "text-blue-600"
             }`}
           >
-            Screenshots
+            {t("common.screenshots")}
           </p>
           <h2
             className={`text-2xl font-bold tracking-tight mb-6 ${
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            Screenshots
+            {t("common.screenshots")}
           </h2>
           <div
             className={`relative aspect-video rounded-xl border overflow-hidden ${
               isDark ? "border-gray-800" : "border-gray-200"
             }`}
           >
-            {project.screenshots.map((src, idx) => {
+            {localizedProject.screenshots.map((src, idx) => {
               const offset = idx - activeIdx;
               return (
                 <Image
                   key={src}
                   src={src}
-                  alt={`${project.title} screenshot ${idx + 1}`}
+                  alt={`${localizedProject.title} screenshot ${idx + 1}`}
                   fill
                   sizes="(min-width: 1280px) 1216px, 100vw"
                   className={`object-contain transition-all duration-500 ease-out ${
@@ -290,12 +294,12 @@ export const ProjectDetailClient = ({
                 />
               );
             })}
-            {project.screenshots.length > 1 && (
+            {localizedProject.screenshots.length > 1 && (
               <>
                 <button
                   onClick={() =>
                     setActiveIdx((prev) =>
-                      prev === 0 ? project.screenshots.length - 1 : prev - 1,
+                      prev === 0 ? localizedProject.screenshots.length - 1 : prev - 1,
                     )
                   }
                   className={`absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg transition-colors ${
@@ -303,14 +307,14 @@ export const ProjectDetailClient = ({
                       ? "bg-gray-800/80 text-white hover:bg-gray-700"
                       : "bg-white/80 text-gray-700 hover:bg-white"
                   }`}
-                  aria-label="Previous screenshot"
+                  aria-label={t("common.previousScreenshot")}
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() =>
                     setActiveIdx((prev) =>
-                      prev === project.screenshots.length - 1 ? 0 : prev + 1,
+                      prev === localizedProject.screenshots.length - 1 ? 0 : prev + 1,
                     )
                   }
                   className={`absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full shadow-lg transition-colors ${
@@ -318,12 +322,12 @@ export const ProjectDetailClient = ({
                       ? "bg-gray-800/80 text-white hover:bg-gray-700"
                       : "bg-white/80 text-gray-700 hover:bg-white"
                   }`}
-                  aria-label="Next screenshot"
+                  aria-label={t("common.nextScreenshot")}
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-                  {project.screenshots.map((_, idx) => (
+                  {localizedProject.screenshots.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveIdx(idx)}
@@ -332,7 +336,7 @@ export const ProjectDetailClient = ({
                           ? "bg-white scale-125"
                           : "bg-white/50 hover:bg-white/80"
                       }`}
-                      aria-label={`Go to screenshot ${idx + 1}`}
+                      aria-label={t("common.goToScreenshot", { n: idx + 1 })}
                     />
                   ))}
                 </div>
@@ -349,36 +353,36 @@ export const ProjectDetailClient = ({
             isDark ? "text-blue-400" : "text-blue-600"
           }`}
         >
-          Architecture
+          {t("common.architecture")}
         </p>
         <h2
           className={`text-2xl font-bold tracking-tight ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          {project.architecture.steps.length > 0
-            ? "How it works"
-            : "Architecture"}
+          {localizedProject.architecture.steps.length > 0
+            ? t("common.howItWorks")
+            : t("common.architecture")}
         </h2>
         <p
           className={`mt-3 text-sm leading-relaxed ${
             isDark ? "text-gray-400" : "text-gray-600"
           }`}
         >
-          {project.architecture.description}
+          {localizedProject.architecture.description}
         </p>
-        {project.architecture.note && (
+        {localizedProject.architecture.note && (
           <p
             className={`mt-2 text-xs italic ${
               isDark ? "text-gray-500" : "text-gray-500"
             }`}
           >
-            {project.architecture.note}
+            {localizedProject.architecture.note}
           </p>
         )}
-        {project.architecture.steps.length > 0 && (
+        {localizedProject.architecture.steps.length > 0 && (
           <div className="mt-6 space-y-6">
-            {project.architecture.steps.map((step) => (
+            {localizedProject.architecture.steps.map((step) => (
               <div key={step.number} className="flex gap-4">
                 <span
                   className={`text-sm font-bold shrink-0 ${
@@ -416,17 +420,17 @@ export const ProjectDetailClient = ({
             isDark ? "text-blue-400" : "text-blue-600"
           }`}
         >
-          Engineering Focus
+          {t("common.engineeringFocus")}
         </p>
         <h2
           className={`text-2xl font-bold tracking-tight ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          {project.engineeringFocus.title}
+          {localizedProject.engineeringFocus.title}
         </h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {project.engineeringFocus.items.map((item, idx) => (
+          {localizedProject.engineeringFocus.items.map((item, idx) => (
             <div
               key={idx}
               className={`p-4 rounded-xl border ${
@@ -449,9 +453,9 @@ export const ProjectDetailClient = ({
 
       {/* Actions */}
       <div className="mt-12 flex flex-wrap gap-3">
-        {project.githubUrl && (
+        {localizedProject.githubUrl && (
           <a
-            href={project.githubUrl}
+            href={localizedProject.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg border transition-colors ${
@@ -461,18 +465,18 @@ export const ProjectDetailClient = ({
             }`}
           >
             <Github className="w-4 h-4" />
-            View Source
+            {t("common.viewSource")}
           </a>
         )}
-        {project.liveUrl && (
+        {localizedProject.liveUrl && (
           <a
-            href={project.liveUrl}
+            href={localizedProject.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
           >
             <ExternalLink className="w-4 h-4" />
-            Live Demo
+            {t("common.liveDemo")}
           </a>
         )}
       </div>

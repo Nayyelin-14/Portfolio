@@ -84,6 +84,7 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 10,
+      slug: "energy-tracker",
       title: "Energy Tracker – Home Energy Monitoring",
       description: `Home energy monitoring platform built to answer one simple question: where does your electricity go? It collects readings from your devices, keeps a live view of the whole house, warns you the moment a device crosses the limit you set, and uses AI to turn your own history into saving tips. Comes with a demo home full of realistic data so you can explore everything right away.`,
       features: [
@@ -120,6 +121,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 1,
+      slug: "changelog-composer",
       title: "Changelog Composer",
       description: `AI assisted changelog generator that turns raw GitHub release activity into audience-specific changelogs for Developers, QA, and Business stakeholders. Multi-provider AI (NVIDIA NIM, OpenRouter, Groq, Z.AI) with live model catalog health probing. Per-user GitHub OAuth sessions, role-scoped views, SSE-streamed generation, and full revision history. Runs a full production pipeline: GitHub Actions builds immutable Docker images, promotes them to an Azure VM over SSH, and serves everything behind a Caddy TLS proxy.`,
       features: [
@@ -181,6 +183,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 2,
+      slug: "j-track",
       title: "J Track – Job Tracking Platform",
       description: `Full stack job application tracking platform: a Next.js frontend marketplace plus a microservices backend monorepo with JWT auth, AI resume/career analysis, Kafka event pipelines, Redis caching, and full CI/CD with Docker images deployed live to an Azure VM.`,
       features: [
@@ -232,6 +235,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 3,
+      slug: "edupro",
       title: "EduPro – E-Learning Platform",
       description: `EduPro is a multi-tenant, marketplace-style e-learning platform built with Next.js. Instructors publish courses through a full authoring workflow (modules, lessons, quizzes, and final exams) that goes through an approval pipeline before going live. Learners browse a public catalog, enroll via free checkout or Stripe payments, learn through a lesson/quizzes/exam player, and earn verifiable PDF certificates. It also includes an AI-powered roadmap generator that turns a learner's goal into a staged weekly plan matched to real platform courses.`,
       features: [
@@ -296,6 +300,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 4,
+      slug: "idoc-parser",
       title: "SAP IDoc Parser",
       description: `A Java/Quarkus parser service I built independently as part of the internal integration SDK — parses SAP IDoc files into structured schema metadata and field groups, with XSD projection validation and error reporting exposed through a REST API.`,
       features: [
@@ -316,6 +321,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 5,
+      slug: "edi-scrapper",
       title: "EDI Spec Scrapper",
       description: `A Quarkus service extracted from my internship SDK work — scrapes and structures EDI specifications (EDIFACT/X12/VDA) into JSON Schemas and BeanIO mapping definitions, with a live SSE scraping UI and publish workflow. This module is entirely my own work.`,
       features: [
@@ -341,6 +347,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 6,
+      slug: "workflow-mcp",
       title: "Workflow MCP · Flowagent.ai",
       description: `An open source visual AI workflow builder — drag and drop canvas for composing multi-step agent workflows (AI agents, branching, HTTP calls) instead of writing chain code. Supports multi model agent nodes, variable templating, and background workflow triggers via Upstash QStash.`,
       features: [
@@ -370,6 +377,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 7,
+      slug: "interview-prep",
       title: "AI Powered Interview Preparation",
       description: `This application helps users prepare for interviews by generating personalized questions and answers based on their job role and experience. Users can take notes, review topics, and explore AI-generated explanations for better understanding.`,
       features: [
@@ -406,6 +414,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 8,
+      slug: "task-management",
       title: "Task Management",
       description: `A full-stack team task management platform with separate Admin and Member experiences, built entirely with Next.js App Router. Admins manage the whole team's workload with analytics dashboards, user management, and Excel report exports, while members get an AI-powered task planner (Google Gemini) that turns their assigned tasks into a prioritized, step-by-step execution plan. Task progress is automated through checklists that recompute completion and auto-transition task status.`,
       features: [
@@ -455,6 +464,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 9,
+      slug: "nextfurniture",
       title: "NextFurniture – Shopping & Blog Platform",
       description: `A practice project showcasing modern full-stack development techniques, combining a furniture e-commerce platform with a blog section. Users can browse and filter products by categories, read blog articles about furniture, and manage their cart. Built to experiment with advanced frontend state management, backend queues, caching, image optimization, and multi-language support.`,
       features: [

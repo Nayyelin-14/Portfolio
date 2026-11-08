@@ -1,6 +1,7 @@
 "use client";
 
 import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface SkillsSectionProps {
   isDark: boolean;
@@ -11,6 +12,7 @@ export const SkillsSection = ({
   isDark,
   visibleElements,
 }: SkillsSectionProps) => {
+  const { t } = useTranslation();
   return (
     <section
       id="skills"
@@ -33,7 +35,7 @@ export const SkillsSection = ({
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          Skills
+          {t("skills.title")}
         </h3>
         <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
           {portfolioData.skills.allSkills.map((skill, idx) => (

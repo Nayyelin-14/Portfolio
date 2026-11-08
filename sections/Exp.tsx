@@ -2,6 +2,7 @@
 
 import { Award, Calendar, Download, ExternalLink, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { Certificate } from "@/types/data";
 
 interface CertificatesSectionProps {
@@ -165,6 +166,7 @@ export const CertificatesSection = ({
   visibleElements,
 }: CertificatesSectionProps) => {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -201,7 +203,7 @@ export const CertificatesSection = ({
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="bg-linear-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              Certificates
+              {t("certificates.title")}
             </span>
           </h2>
           <p
@@ -209,8 +211,7 @@ export const CertificatesSection = ({
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            My learning journey through formal education and professional
-            certifications
+            {t("certificates.subtitle")}
           </p>
         </div>
 
@@ -280,7 +281,8 @@ export const CertificatesSection = ({
                             isDark ? "text-gray-400" : "text-gray-600"
                           }`}
                         >
-                          Instructor: {cert.instructor}
+                          <span className="font-semibold">Instructor:</span>{" "}
+                          {cert.instructor}
                         </p>
                       </div>
 
@@ -318,7 +320,7 @@ export const CertificatesSection = ({
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        Technologies Covered:
+                        {t("certificates.technologiesCovered")}
                       </h5>
                       <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                         {cert.techStack.map((tech, techIndex) => (
@@ -343,7 +345,7 @@ export const CertificatesSection = ({
                           isDark ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        Key Skills Gained:
+                        {t("certificates.keySkillsGained")}
                       </h5>
                       <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                         {cert.skills.map((skill, skillIndex) => (
@@ -371,7 +373,7 @@ export const CertificatesSection = ({
                       }`}
                     >
                       <ExternalLink className="w-4 h-4" />
-                      View Certificate
+                      {t("certificates.viewCertificate")}
                     </button>
                   </div>
                 </div>
@@ -421,7 +423,7 @@ export const CertificatesSection = ({
                   }`}
                 >
                   <Download className="w-4 h-4" />
-                  Download PDF
+                  {t("common.downloadPDF")}
                 </a>
               </div>
             )}

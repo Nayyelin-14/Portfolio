@@ -3,11 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { ArrowRight, ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 export const HeroSection = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden">
@@ -34,28 +37,28 @@ export const HeroSection = () => {
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              <span className="animate-wave">👋</span> Hello, I&apos;m
+              <span className="animate-wave">👋</span> {t("hero.hello")}
             </p>
             <h1
               className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              {portfolioData.personal.name}
+              {data.personal.name}
             </h1>
             <p
               className={`mt-3 text-xl sm:text-2xl font-medium ${
                 isDark ? "text-blue-400" : "text-blue-600"
               }`}
             >
-              {portfolioData.personal.title}
+              {data.personal.title}
             </p>
             <p
               className={`mt-6 text-lg leading-relaxed max-w-lg ${
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              {portfolioData.personal.tagline}
+              {data.personal.tagline}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -63,7 +66,7 @@ export const HeroSection = () => {
                 href="/projects"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
               >
-                View My Work
+                {t("hero.viewMyWork")}
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -74,14 +77,14 @@ export const HeroSection = () => {
                     : "border-gray-300 text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                Contact Me
+                {t("hero.contactMe")}
                 <Mail className="w-4 h-4" />
               </Link>
             </div>
 
             <div className="mt-8 flex items-center gap-4">
               <a
-                href={portfolioData.personal.github}
+                href={data.personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-2.5 rounded-lg transition-colors ${
@@ -89,12 +92,12 @@ export const HeroSection = () => {
                     ? "text-gray-400 hover:bg-gray-800 hover:text-white"
                     : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}
-                aria-label="GitHub"
+                aria-label={t("hero.github")}
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href={portfolioData.personal.linkedin}
+                href={data.personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-2.5 rounded-lg transition-colors ${
@@ -102,18 +105,18 @@ export const HeroSection = () => {
                     ? "text-gray-400 hover:bg-gray-800 hover:text-white"
                     : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}
-                aria-label="LinkedIn"
+                aria-label={t("hero.linkedin")}
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href={`mailto:${portfolioData.personal.email}`}
+                href={`mailto:${data.personal.email}`}
                 className={`p-2.5 rounded-lg transition-colors ${
                   isDark
                     ? "text-gray-400 hover:bg-gray-800 hover:text-white"
                     : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}
-                aria-label="Email"
+                aria-label={t("hero.email")}
               >
                 <Mail className="w-5 h-5" />
               </a>
@@ -136,8 +139,8 @@ export const HeroSection = () => {
                 }`}
               >
                 <Image
-                  src={portfolioData.personal.profileImg}
-                  alt={portfolioData.personal.name}
+                  src={data.personal.profileImg}
+                  alt={data.personal.name}
                   fill
                   priority
                   sizes="288px"
@@ -153,7 +156,7 @@ export const HeroSection = () => {
                 }`}
               >
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                AVAILABLE
+                {t("hero.available")}
               </div>
             </div>
           </div>

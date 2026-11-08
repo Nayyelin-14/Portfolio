@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ImageSliderProps {
   images?: string[];
@@ -10,6 +11,7 @@ interface ImageSliderProps {
 }
 
 export const ImageSlider = ({ images = [], title = "" }: ImageSliderProps) => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
@@ -26,7 +28,7 @@ export const ImageSlider = ({ images = [], title = "" }: ImageSliderProps) => {
     <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl flex items-center justify-center p-4">
       <Image
         src={images[currentIndex]}
-        alt={`${title} image ${currentIndex + 1}`}
+        alt={`${title} ${t("common.image")} ${currentIndex + 1}`}
         fill
         sizes="(min-width: 1024px) 60vw, 100vw"
         className="object-cover transition-all duration-500"

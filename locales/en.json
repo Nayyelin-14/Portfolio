@@ -1,0 +1,188 @@
+{
+  "common": {
+    "localeSwitch": "Change language",
+    "image": "image",
+    "resume": "Resume",
+    "viewProject": "View Project →",
+    "viewSource": "View Source",
+    "liveDemo": "Live Demo",
+    "source": "Source",
+    "back": "Back",
+    "more": "+{{count}} more",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "planned": "Planned",
+    "openSource": "Open source",
+    "companyProject": "Company project",
+    "practiceProject": "Practice project",
+    "overview": "Overview",
+    "screenshots": "Screenshots",
+    "architecture": "Architecture",
+    "howItWorks": "How it works",
+    "engineeringFocus": "Engineering Focus",
+    "previousScreenshot": "Previous screenshot",
+    "nextScreenshot": "Next screenshot",
+    "goToScreenshot": "Go to screenshot {{n}}",
+    "technologiesTools": "Technologies & Tools",
+    "keySkills": "Key Skills",
+    "technologiesCovered": "Technologies Covered",
+    "keySkillsGained": "Key Skills Gained",
+    "viewCertificate": "View Certificate",
+    "downloadPDF": "Download PDF",
+    "instructor": "Instructor",
+    "projectDetail": "Project Detail"
+  },
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "contact": "Contact",
+    "resume": "Resume",
+    "toggleTheme": "Toggle theme",
+    "toggleMenu": "Toggle menu"
+  },
+  "hero": {
+    "hello": "Hello, I'm",
+    "viewMyWork": "View My Work",
+    "contactMe": "Contact Me",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "available": "Available",
+    "scrollDown": "Scroll down"
+  },
+  "about": {
+    "aboutMe": "About Me",
+    "title": "Building digital experiences that make a difference.",
+    "location": "Location",
+    "education": "Education",
+    "focus": "Focus",
+    "email": "Email",
+    "whoIam": "Who I am",
+    "whereIveBeen": "Where I've been",
+    "whatIBuildWith": "What I build with",
+    "beyondTheCode": "Beyond the code",
+    "letsBuild": "Let's build something great together.",
+    "getInTouch": "Get in touch",
+    "downloadResume": "Download Resume",
+    "emailCta": "Email",
+    "statEnterprise": "Enterprise",
+    "statProjects": "Projects",
+    "statGpax": "GPAX",
+    "openToCollab": "I'm always open to collaborating on meaningful projects, so feel free to reach out — let's build something great together."
+  },
+  "projects": {
+    "eyebrow": "Featured Projects",
+    "title": "Some things I've built",
+    "description": "A selection of things I've built — from enterprise SDKs to AI-powered tools and full-stack applications.",
+    "seeAllProjects": "See All Projects",
+    "projectsHeading": "Projects",
+    "projectsTitle": "Some things I've built"
+  },
+  "skills": {
+    "title": "Skills",
+    "heading": "Technologies I work with",
+    "description": "A collection of technologies I've used across backend, frontend, and cloud work.",
+    "allSkills": "All Skills",
+    "groups": {
+      "languages": "Languages",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "database": "Database",
+      "cloudDevOps": "Cloud & DevOps",
+      "tools": "Tools"
+    }
+  },
+  "strengths": {
+    "eyebrow": "Core Strengths",
+    "title": "The way I build.",
+    "description": "A practical approach shaped by enterprise internship work across backend services, full stack applications, and cloud systems.",
+    "cleanCode": {
+      "title": "Clean Code",
+      "description": "Maintainable backend services and modern full stack applications that stay clear and easy to extend."
+    },
+    "cloudDevops": {
+      "title": "Cloud & DevOps",
+      "description": "Docker containerization, CI/CD pipelines with GitHub Actions and Azure DevOps, deployed to cloud VMs."
+    },
+    "qualityFirst": {
+      "title": "Quality First",
+      "description": "Reliable delivery with testing, security hardening, and attention to production-ready details."
+    },
+    "problemSolver": {
+      "title": "Problem Solver",
+      "description": "Practical solutions for complex technical requirements — from Kafka event pipelines to AI integration."
+    }
+  },
+  "services": {
+    "eyebrow": "What I Do",
+    "title": "Building solutions with clean code and modern technologies.",
+    "backend": {
+      "title": "Backend Development",
+      "description": "Building scalable APIs and backend services with Java, Quarkus, Node.js, and Express."
+    },
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Creating responsive and performant web applications using React and Next.js."
+    },
+    "apiDesign": {
+      "title": "API Design",
+      "description": "Designing RESTful APIs with clear contracts, authentication, and proper error handling."
+    },
+    "cloudDevops": {
+      "title": "Cloud & DevOps",
+      "description": "Deploying and managing applications with Docker, GitHub Actions, and Azure DevOps."
+    },
+    "database": {
+      "title": "Database Design",
+      "description": "Designing efficient schemas with PostgreSQL and MongoDB, optimizing queries and data flow."
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "heading": "My professional journey",
+    "description": "My professional journey in software engineering.",
+    "technologiesTools": "Technologies & Tools"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "heading": "My learning journey",
+    "description": "Formal education and professional certifications.",
+    "technologiesCovered": "Technologies Covered:",
+    "keySkillsGained": "Key Skills Gained:",
+    "viewCertificate": "View Certificate",
+    "downloadPDF": "Download PDF",
+    "subtitle": "My learning journey through formal education and professional certifications"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Let's Build Together",
+    "description": "A passionate software engineer eager to grow and collaborate. If you have any questions, opportunities, or just want to chat, don't hesitate to get in touch.",
+    "email": "Email",
+    "sendMessage": "Send message",
+    "github": "GitHub",
+    "viewProjects": "View projects",
+    "phone": "Phone",
+    "clickContact": "Click any contact method below to get in touch instantly",
+    "quote": "A passionate software engineer eager to grow and collaborate. If you have any questions, opportunities, or just want to chat, don't hesitate to get in touch — I'm always open to learning and new opportunities."
+  },
+  "footer": {
+    "brand": "Building digital experiences that make a difference.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "letsConnect": "Let's connect",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "copyright": "All rights reserved."
+  },
+  "seo": {
+    "title": "Nay Ye Lin | Junior Software Engineer Portfolio",
+    "description": "Portfolio of Nay Ye Lin, a Junior Software Engineer in Bangkok, Thailand. 8 months of enterprise internship experience with Java, Quarkus, React, Next.js, Node.js, Docker, and Azure."
+  }
+}

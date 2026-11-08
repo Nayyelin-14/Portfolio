@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 import { Award, Calendar, Download, ExternalLink, X } from "lucide-react";
 import type { Certificate } from "@/types/data";
 
@@ -73,6 +74,7 @@ function resolvedCertImage(image: string) {
 export const CertificatesClient = () => {
   const { isDark } = useTheme();
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const { t } = useTranslation();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -81,21 +83,21 @@ export const CertificatesClient = () => {
           isDark ? "text-blue-400" : "text-blue-600"
         }`}
       >
-        Certificates
+        {t("certificates.title")}
       </p>
       <h1
         className={`text-3xl sm:text-4xl font-bold tracking-tight ${
           isDark ? "text-white" : "text-gray-900"
         }`}
       >
-        My learning journey
+        {t("certificates.heading")}
       </h1>
       <p
         className={`mt-4 text-lg leading-relaxed ${
           isDark ? "text-gray-400" : "text-gray-600"
         }`}
       >
-        Formal education and professional certifications.
+        {t("certificates.description")}
       </p>
 
       <div className="mt-10 space-y-8">
@@ -144,7 +146,8 @@ export const CertificatesClient = () => {
                     isDark ? "text-gray-500" : "text-gray-500"
                   }`}
                 >
-                  Instructor: {cert.instructor}
+                  <span className="font-semibold">Instructor:</span>{" "}
+                  {cert.instructor}
                 </p>
                 <p
                   className={`text-xs mt-1 flex items-center gap-1 ${
@@ -168,7 +171,7 @@ export const CertificatesClient = () => {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Technologies
+                    {t("certificates.technologiesCovered")}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {cert.techStack.map((tech) => (
@@ -190,7 +193,7 @@ export const CertificatesClient = () => {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Key Skills
+                    {t("certificates.keySkillsGained")}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {cert.skills.map((skill) => (
@@ -215,7 +218,7 @@ export const CertificatesClient = () => {
                   }`}
                 >
                   <ExternalLink className="w-4 h-4" />
-                  View Certificate
+                  {t("certificates.viewCertificate")}
                 </button>
               </div>
             </div>
@@ -256,7 +259,7 @@ export const CertificatesClient = () => {
                   className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  Download PDF
+                  {t("common.downloadPDF")}
                 </a>
               </div>
             )}

@@ -1,0 +1,189 @@
+{
+  "_note": "အောက်ပါ English စာသားအားလုံးကို မြန်မာဘာသာဖြင့် ဘာသာပြန်ထားသည်",
+  "common": {
+    "localeSwitch": "ဘာသာစကားပြောင်းရန်",
+    "image": "ပုံ",
+    "resume": "ကိုယ်ရေးရာဇဝင်",
+    "viewProject": "Project ကြည့်ရန် →",
+    "viewSource": "Source Code ကြည့်ရန်",
+    "liveDemo": "တိုက်ရိုက်စမ်းသပ်ကြည့်ရန်",
+    "source": "Source Code",
+    "back": "နောက်သို့",
+    "more": "နောက်ထပ် {{count}} ခု",
+    "completed": "ပြီးစီးပြီ",
+    "inProgress": "လုပ်ဆောင်နေဆဲ",
+    "planned": "အစီအစဉ်ရေးဆွဲထားသည်",
+    "openSource": "Open Source Project",
+    "companyProject": "ကုမ္ပဏီလုပ်ငန်းခွင် Project",
+    "practiceProject": "လေ့ကျင့်ရေး Project",
+    "overview": "အကျဉ်းချုပ်",
+    "screenshots": "မျက်နှာပြင်ပုံများ",
+    "architecture": "စနစ်တည်ဆောက်ပုံ",
+    "howItWorks": "အလုပ်လုပ်ပုံ",
+    "engineeringFocus": "အင်ဂျင်နီယာပိုင်း အဓိကလုပ်ဆောင်ချက်များ",
+    "previousScreenshot": "ယခင်ပုံ",
+    "nextScreenshot": "နောက်ပုံ",
+    "goToScreenshot": "ပုံ {{n}} သို့ သွားရန်",
+    "technologiesTools": "အသုံးပြုထားသော နည်းပညာများနှင့် Tools များ",
+    "keySkills": "အဓိကကျွမ်းကျင်မှုများ",
+    "technologiesCovered": "လေ့လာအသုံးပြုခဲ့သော နည်းပညာများ:",
+    "keySkillsGained": "ရရှိခဲ့သော အဓိကကျွမ်းကျင်မှုများ:",
+    "viewCertificate": "လက်မှတ်ကြည့်ရန်",
+    "downloadPDF": "PDF ဒေါင်းလုဒ်လုပ်ရန်",
+    "instructor": "သင်ကြားပေးသူ",
+    "projectDetail": "Project အသေးစိတ်"
+  },
+  "nav": {
+    "about": "ကိုယ်ရေးအကျဉ်း",
+    "projects": "Project များ",
+    "skills": "ကျွမ်းကျင်မှုများ",
+    "experience": "လုပ်ငန်းအတွေ့အကြုံ",
+    "contact": "ဆက်သွယ်ရန်",
+    "resume": "ကိုယ်ရေးရာဇဝင်",
+    "toggleTheme": "အရောင်အသွင်အပြင် ပြောင်းရန်",
+    "toggleMenu": "Menu ဖွင့်ပိတ်ရန်"
+  },
+  "hero": {
+    "hello": "မင်္ဂလာပါ၊ ကျွန်တော်က",
+    "viewMyWork": "ကျွန်တော့်လုပ်ဆောင်ချက်များ ကြည့်ရန်",
+    "contactMe": "ဆက်သွယ်ရန်",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "အီးမေးလ်",
+    "available": "အလုပ်အကိုင်အခွင့်အလမ်းများအတွက် အသင့်ရှိပါသည်",
+    "scrollDown": "အောက်သို့ ဆင်းကြည့်ရန်"
+  },
+  "about": {
+    "aboutMe": "ကျွန်တော့်အကြောင်း",
+    "title": "အဓိပ္ပာယ်ရှိသော အကျိုးသက်ရောက်မှုများ ဖန်တီးပေးနိုင်သည့် Digital Experience များကို တည်ဆောက်ခြင်း။",
+    "location": "တည်နေရာ",
+    "education": "ပညာရေး",
+    "focus": "အဓိကစိတ်ဝင်စားသည့် နယ်ပယ်",
+    "email": "အီးမေးလ်",
+    "whoIam": "ကျွန်တော်ဘယ်သူလဲ",
+    "whereIveBeen": "ကျွန်တော့်အတွေ့အကြုံများ",
+    "whatIBuildWith": "အသုံးပြုသည့် နည်းပညာများ",
+    "beyondTheCode": "Coding အပြင် အခြားစိတ်ဝင်စားမှုများ",
+    "letsBuild": "အတူတကွ ကောင်းမွန်တဲ့အရာတစ်ခု တည်ဆောက်ကြရအောင်။",
+    "getInTouch": "ဆက်သွယ်ရန်",
+    "downloadResume": "ကိုယ်ရေးရာဇဝင် ဒေါင်းလုဒ်လုပ်ရန်",
+    "emailCta": "အီးမေးလ်",
+    "statEnterprise": "လုပ်ငန်းသုံးနည်းပညာ",
+    "statProjects": "Project များ",
+    "statGpax": "ပညာရေးအမှတ်ပျမ်းမျှ",
+    "openToCollab": "အဓိပ္ပာယ်ရှိသော Project များတွင် အတူတကွ ပူးပေါင်းလုပ်ဆောင်ရန် အမြဲအသင့်ရှိပါသည်။ ဆက်သွယ်နိုင်ပါတယ်။ အတူတကွ ကောင်းမွန်တဲ့အရာတစ်ခု တည်ဆောက်ကြရအောင်။"
+  },
+  "projects": {
+    "eyebrow": "အထူးဖော်ပြထားသော Project များ",
+    "title": "ကျွန်တော် တည်ဆောက်ခဲ့သော Project အချို့",
+    "description": "လုပ်ငန်းသုံး SDK များမှ AI အသုံးပြုထားသော Tools များနှင့် Full-stack Application များအထိ ကျွန်တော်တည်ဆောက်ခဲ့သော Project အချို့ကို ရွေးချယ်ဖော်ပြထားပါသည်။",
+    "seeAllProjects": "Project အားလုံးကြည့်ရန်",
+    "projectsHeading": "Project များ",
+    "projectsTitle": "ကျွန်တော် တည်ဆောက်ခဲ့သော Project အချို့"
+  },
+  "skills": {
+    "title": "ကျွမ်းကျင်မှုများ",
+    "heading": "ကျွန်တော် အသုံးပြုလုပ်ကိုင်သော နည်းပညာများ",
+    "description": "Backend, Frontend နှင့် Cloud နယ်ပယ်များတွင် အသုံးပြုခဲ့သော နည်းပညာများကို ဖော်ပြထားပါသည်။",
+    "allSkills": "ကျွမ်းကျင်မှုအားလုံး",
+    "groups": {
+      "languages": "Programming Languages",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "database": "Database",
+      "cloudDevOps": "Cloud နှင့် DevOps",
+      "tools": "Tools များ"
+    }
+  },
+  "strengths": {
+    "eyebrow": "အဓိကအားသာချက်များ",
+    "title": "ကျွန်တော် လုပ်ဆောင်တည်ဆောက်ပုံ။",
+    "description": "Backend Services, Full-stack Applications နှင့် Cloud Systems များတွင် လုပ်ငန်းခွင်အတွေ့အကြုံမှ ရရှိလာသော လက်တွေ့ကျသည့် လုပ်ဆောင်ပုံနည်းလမ်း။",
+    "cleanCode": {
+      "title": "သန့်ရှင်းပြီး စနစ်ကျသော Code",
+      "description": "ထိန်းသိမ်းပြုပြင်ရလွယ်ကူပြီး နောက်ပိုင်းတွင် လုပ်ဆောင်ချက်အသစ်များ ထပ်မံတိုးချဲ့နိုင်သော Backend Services နှင့် ခေတ်မီ Full-stack Applications များ တည်ဆောက်ခြင်း။"
+    },
+    "cloudDevops": {
+      "title": "Cloud နှင့် DevOps",
+      "description": "Docker Containerization၊ GitHub Actions နှင့် Azure DevOps အသုံးပြုထားသော CI/CD Pipelines များကို တည်ဆောက်ပြီး Cloud VM များပေါ်တွင် Deploy လုပ်ခြင်း။"
+    },
+    "qualityFirst": {
+      "title": "အရည်အသွေးကို ဦးစားပေးခြင်း",
+      "description": "Testing၊ Security Hardening နှင့် Production အတွက် အဆင်သင့်ဖြစ်စေရန် လိုအပ်သော အသေးစိတ်အချက်များကို အလေးထားပြီး ယုံကြည်စိတ်ချရသော Software များ ပေးအပ်ခြင်း။"
+    },
+    "problemSolver": {
+      "title": "ပြဿနာဖြေရှင်းနိုင်စွမ်း",
+      "description": "Kafka Event Pipelines များမှ AI Integration များအထိ ရှုပ်ထွေးသော နည်းပညာဆိုင်ရာ လိုအပ်ချက်များအတွက် လက်တွေ့ကျသော ဖြေရှင်းနည်းများ ဖန်တီးခြင်း။"
+    }
+  },
+  "services": {
+    "eyebrow": "ကျွန်တော် လုပ်ဆောင်ပေးနိုင်သည့်အရာများ",
+    "title": "သန့်ရှင်းသော Code နှင့် ခေတ်မီနည်းပညာများဖြင့် ဖြေရှင်းနည်းများ တည်ဆောက်ခြင်း။",
+    "backend": {
+      "title": "Backend Development",
+      "description": "Java, Quarkus, Node.js နှင့် Express တို့ကို အသုံးပြုပြီး တိုးချဲ့အသုံးပြုနိုင်သော APIs နှင့် Backend Services များ တည်ဆောက်ခြင်း။"
+    },
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "React နှင့် Next.js တို့ကို အသုံးပြုပြီး မျက်နှာပြင်အရွယ်အစားအမျိုးမျိုးတွင် အဆင်ပြေစွာ အသုံးပြုနိုင်ပြီး စွမ်းဆောင်ရည်ကောင်းမွန်သော Web Applications များ ဖန်တီးခြင်း။"
+    },
+    "apiDesign": {
+      "title": "API Design",
+      "description": "ရှင်းလင်းသော API Contracts၊ Authentication နှင့် သင့်လျော်သော Error Handling များပါဝင်သည့် RESTful APIs များ ရေးဆွဲတည်ဆောက်ခြင်း။"
+    },
+    "cloudDevops": {
+      "title": "Cloud နှင့် DevOps",
+      "description": "Docker, GitHub Actions နှင့် Azure DevOps တို့ကို အသုံးပြုပြီး Applications များကို Deploy လုပ်ခြင်းနှင့် စီမံခန့်ခွဲခြင်း။"
+    },
+    "database": {
+      "title": "Database Design",
+      "description": "PostgreSQL နှင့် MongoDB တို့ကို အသုံးပြုပြီး ထိရောက်သော Database Schemas များ ရေးဆွဲခြင်း၊ Queries များနှင့် Data Flow များကို ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း။"
+    }
+  },
+  "experience": {
+    "title": "လုပ်ငန်းအတွေ့အကြုံ",
+    "heading": "ကျွန်တော့်၏ လုပ်ငန်းခွင်ခရီးစဉ်",
+    "description": "Software Engineering နယ်ပယ်တွင် ကျွန်တော် ရရှိခဲ့သော လုပ်ငန်းခွင်အတွေ့အကြုံများ။",
+    "technologiesTools": "အသုံးပြုခဲ့သော နည်းပညာများနှင့် Tools များ"
+  },
+  "certificates": {
+    "title": "လက်မှတ်များ",
+    "heading": "ကျွန်တော့်၏ လေ့လာသင်ယူမှုခရီးစဉ်",
+    "description": "တရားဝင်ပညာရေးနှင့် အသက်မွေးဝမ်းကျောင်းဆိုင်ရာ အသိအမှတ်ပြုလက်မှတ်များ။",
+    "technologiesCovered": "လေ့လာအသုံးပြုခဲ့သော နည်းပညာများ:",
+    "keySkillsGained": "ရရှိခဲ့သော အဓိကကျွမ်းကျင်မှုများ:",
+    "viewCertificate": "လက်မှတ်ကြည့်ရန်",
+    "downloadPDF": "PDF ဒေါင်းလုဒ်လုပ်ရန်",
+    "subtitle": "တရားဝင်ပညာရေးနှင့် အသက်မွေးဝမ်းကျောင်းဆိုင်ရာ အသိအမှတ်ပြုလက်မှတ်များမှတစ်ဆင့် ကျွန်တော်၏ လေ့လာသင်ယူမှုခရီးစဉ်"
+  },
+  "contact": {
+    "title": "ဆက်သွယ်ရန်",
+    "heading": "အတူတကွ တည်ဆောက်ကြရအောင်",
+    "description": "ပိုမိုတိုးတက်လိုပြီး အခြားသူများနှင့် ပူးပေါင်းလုပ်ဆောင်ရန် စိတ်အားထက်သန်သော Software Engineer တစ်ဦးဖြစ်ပါသည်။ မေးခွန်းများ၊ အလုပ်အကိုင်အခွင့်အလမ်းများ သို့မဟုတ် စကားပြောလိုသည်များရှိပါက အချိန်မရွေး ဆက်သွယ်နိုင်ပါသည်။",
+    "email": "အီးမေးလ်",
+    "sendMessage": "စာပို့ရန်",
+    "github": "GitHub",
+    "viewProjects": "Project များကြည့်ရန်",
+    "phone": "ဖုန်း",
+    "clickContact": "ချက်ချင်းဆက်သွယ်နိုင်ရန် အောက်ပါဆက်သွယ်ရေးနည်းလမ်းများထဲမှ တစ်ခုခုကို နှိပ်ပါ။",
+    "quote": "ပိုမိုတိုးတက်လိုပြီး အခြားသူများနှင့် ပူးပေါင်းလုပ်ဆောင်ရန် စိတ်အားထက်သန်သော Software Engineer တစ်ဦးဖြစ်ပါသည်။ မေးခွန်းများ၊ အလုပ်အကိုင်အခွင့်အလမ်းများ သို့မဟုတ် စကားပြောလိုသည်များရှိပါက အချိန်မရွေး ဆက်သွယ်နိုင်ပါသည်။ အသစ်အသစ်သောအရာများကို လေ့လာရန်နှင့် အခွင့်အလမ်းသစ်များကို ရှာဖွေရန် အမြဲအသင့်ရှိပါသည်။"
+  },
+  "footer": {
+    "brand": "အဓိပ္ပာယ်ရှိသော အကျိုးသက်ရောက်မှုများ ဖန်တီးပေးနိုင်သည့် Digital Experience များကို တည်ဆောက်ခြင်း။",
+    "quickLinks": "အမြန်သွားရန်",
+    "home": "ပင်မစာမျက်နှာ",
+    "about": "ကိုယ်ရေးအကျဉ်း",
+    "skills": "ကျွမ်းကျင်မှုများ",
+    "projects": "Project များ",
+    "experience": "လုပ်ငန်းအတွေ့အကြုံ",
+    "contact": "ဆက်သွယ်ရန်",
+    "letsConnect": "ဆက်သွယ်ကြရအောင်",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "copyright": "မူပိုင်ခွင့်အားလုံးကို ထိန်းသိမ်းထားသည်။"
+  },
+  "seo": {
+    "title": "Nay Ye Lin | Junior Software Engineer Portfolio",
+    "description": "ထိုင်းနိုင်ငံ၊ ဘန်ကောက်မြို့တွင် အခြေစိုက်သော Junior Software Engineer Nay Ye Lin ၏ Portfolio ဖြစ်ပါသည်။ Java, Quarkus, React, Next.js, Node.js, Docker နှင့် Azure တို့ဖြင့် လုပ်ငန်းသုံး Software များတွင် ၈ လကြာ Internship အတွေ့အကြုံရှိပါသည်။"
+  }
+}

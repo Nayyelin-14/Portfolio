@@ -4,23 +4,27 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Menu, Moon, Sun, X, Download } from "lucide-react";
 
-type NavItem = { label: string; href: string; hash: string };
+type NavItem = { key: string; href: string; hash: string };
 
 // Full set for off-home routes; on home, Experience lives inside About
 // so we hide it to avoid duplicate anchor and misordered highlight.
 const allNavItems: NavItem[] = [
-  { label: "About", href: "/about", hash: "about" },
-  { label: "Projects", href: "/projects", hash: "projects" },
-  { label: "Skills", href: "/skills", hash: "skills" },
-  { label: "Experience", href: "/experience", hash: "experience" },
-  { label: "Contact", href: "/contact", hash: "contact" },
+  { key: "nav.about", href: "/about", hash: "about" },
+  { key: "nav.projects", href: "/projects", hash: "projects" },
+  { key: "nav.skills", href: "/skills", hash: "skills" },
+  { key: "nav.experience", href: "/experience", hash: "experience" },
+  { key: "nav.contact", href: "/contact", hash: "contact" },
 ];
 
 export const Navigation = () => {
   const { isDark, toggleTheme } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
   const pathname = usePathname();
   const router = useRouter();
   const isHome = pathname === "/";
@@ -164,7 +168,7 @@ export const Navigation = () => {
               isDark ? "text-white" : "text-gray-900"
             }`}
           >
-            {portfolioData.personal.name}
+            {data.personal.name}
           </Link>
 
           {/* Desktop Navigation */}
@@ -191,7 +195,7 @@ export const Navigation = () => {
                       : "text-gray-600 hover:text-gray-900"
                 }`}
               >
-                {item.label}
+                {t(item.key)}
               </a>
             ))}
             <span
@@ -205,7 +209,7 @@ export const Navigation = () => {
 
           <div className="hidden md:flex items-center gap-2">
             <a
-              href={portfolioData.personal.resumeLink}
+              href={data.personal.resumeLink}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
@@ -215,7 +219,7 @@ export const Navigation = () => {
               }`}
             >
               <Download className="w-4 h-4" />
-              Resume
+              {t("common.resume")}
             </a>
             <button
               onClick={toggleTheme}
@@ -224,7 +228,7 @@ export const Navigation = () => {
                   ? "text-gray-400 hover:bg-gray-800 hover:text-gray-200"
                   : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
               }`}
-              aria-label="Toggle theme"
+              aria-label={t("nav.toggleTheme")}
             >
               {isDark ? (
                 <Sun className="w-[18px] h-[18px]" />
@@ -232,12 +236,13 @@ export const Navigation = () => {
                 <Moon className="w-[18px] h-[18px]" />
               )}
             </button>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile */}
           <div className="md:hidden flex items-center gap-1">
             <a
-              href={portfolioData.personal.resumeLink}
+              href={data.personal.resumeLink}
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2 rounded-lg ${isDark ? "text-gray-400" : "text-gray-600"}`}
@@ -251,7 +256,7 @@ export const Navigation = () => {
                   ? "text-gray-400 hover:bg-gray-800"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
-              aria-label="Toggle theme"
+              aria-label={t("nav.toggleTheme")}
             >
               {isDark ? (
                 <Sun className="w-5 h-5" />
@@ -259,6 +264,7 @@ export const Navigation = () => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
+            <LanguageSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`p-2 rounded-lg ${
@@ -266,7 +272,7 @@ export const Navigation = () => {
                   ? "text-gray-400 hover:bg-gray-800"
                   : "text-gray-600 hover:bg-gray-100"
               }`}
-              aria-label="Toggle menu"
+              aria-label={t("nav.toggleMenu")}
               aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
@@ -301,7 +307,7 @@ export const Navigation = () => {
                   if (!isHome) setIsMenuOpen(false);
                 }}
               >
-                {item.label}
+                {t(item.key)}
               </a>
             ))}
           </div>

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 import { portfolioData } from "@/lib/data";
 import type { Project } from "@/types/data";
 
@@ -50,29 +51,16 @@ const EnergyTrackerVisual = dynamic(() =>
   ),
 );
 const visualMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  "Energy Tracker – Home Energy Monitoring": EnergyTrackerVisual,
-  "Changelog Composer": ChangelogVisual,
-  "J Track – Job Tracking Platform": JTrackVisual,
-  "EduPro – E-Learning Platform": EduProVisual,
-  "SAP IDoc Parser": IdocParserVisual,
-  "EDI Spec Scrapper": EdiScrapperVisual,
-  "Workflow MCP · Flowagent.ai": WorkflowMcpVisual,
-  "AI Powered Interview Preparation": InterviewPrepVisual,
-  "Task Management": TaskManagementVisual,
-  "NextFurniture – Shopping & Blog Platform": NextFurnitureVisual,
-};
-
-const slugMap: Record<string, string> = {
-  "Energy Tracker – Home Energy Monitoring": "energy-tracker",
-  "Changelog Composer": "changelog-composer",
-  "J Track – Job Tracking Platform": "j-track",
-  "EduPro – E-Learning Platform": "edupro",
-  "SAP IDoc Parser": "idoc-parser",
-  "EDI Spec Scrapper": "edi-scrapper",
-  "Workflow MCP · Flowagent.ai": "workflow-mcp",
-  "AI Powered Interview Preparation": "interview-prep",
-  "Task Management": "task-management",
-  "NextFurniture – Shopping & Blog Platform": "nextfurniture",
+  "energy-tracker": EnergyTrackerVisual,
+  "changelog-composer": ChangelogVisual,
+  "j-track": JTrackVisual,
+  "edupro": EduProVisual,
+  "idoc-parser": IdocParserVisual,
+  "edi-scrapper": EdiScrapperVisual,
+  "workflow-mcp": WorkflowMcpVisual,
+  "interview-prep": InterviewPrepVisual,
+  "task-management": TaskManagementVisual,
+  "nextfurniture": NextFurnitureVisual,
 };
 
 interface ProjectCardProps {
@@ -81,8 +69,9 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   const { isDark } = useTheme();
-  const Visual = visualMap[project.title];
-  const slug = slugMap[project.title];
+  const { t } = useTranslation();
+  const Visual = visualMap[project.slug];
+  const slug = project.slug;
 
   const tag = project.technologies.slice(0, 3).join(" · ");
   const moreCount = project.technologies.length - 3;
@@ -127,7 +116,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           {moreCount > 0 && (
             <span className={isDark ? "text-gray-600" : "text-gray-400"}>
               {" "}
-              +{moreCount} more
+              {t("common.more", { count: moreCount })}
             </span>
           )}
         </p>
@@ -150,10 +139,10 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
               }`}
             >
               {project.status === "in-progress"
-                ? "In Progress"
+                ? t("common.inProgress")
                 : project.status === "completed"
-                  ? "Completed"
-                  : "Planned"}
+                  ? t("common.completed")
+                  : t("common.planned")}
             </span>
           )}
         </div>
@@ -190,7 +179,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                   : "text-blue-600 hover:text-blue-700"
               }`}
             >
-              View Project →
+              {t("common.viewProject")}
             </Link>
           )}
         </div>

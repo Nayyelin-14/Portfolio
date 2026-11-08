@@ -2,7 +2,8 @@
 
 import { useTheme } from "@/components/ThemeProvider";
 import Image from "next/image";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import {
   MapPin,
   GraduationCap,
@@ -23,7 +24,9 @@ export const AboutClient = ({
   hidePortrait?: boolean;
 }) => {
   const { isDark } = useTheme();
-  const exp = portfolioData.experience[0];
+  const { t } = useTranslation();
+  const data = usePortfolioData();
+  const exp = data.experience[0];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -33,18 +36,14 @@ export const AboutClient = ({
           isDark ? "text-blue-400" : "text-blue-600"
         }`}
       >
-        About Me
+        {t("about.aboutMe")}
       </p>
       <h1
         className={`text-3xl sm:text-4xl font-bold tracking-tight ${
           isDark ? "text-white" : "text-gray-900"
         }`}
       >
-        Building digital experiences
-        <br />
-        <span className={isDark ? "text-gray-500" : "text-gray-400"}>
-          that make a difference.
-        </span>
+        {t("about.title")}
       </h1>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-10 items-start">
@@ -63,8 +62,8 @@ export const AboutClient = ({
                 }`}
               >
                 <Image
-                  src={portfolioData.personal.profileImg}
-                  alt={portfolioData.personal.name}
+                  src={data.personal.profileImg}
+                  alt={data.personal.name}
                   fill
                   sizes="280px"
                   className="object-cover"
@@ -73,12 +72,12 @@ export const AboutClient = ({
                   <p
                     className={`text-sm font-bold ${isDark ? "text-white" : "text-gray-900"}`}
                   >
-                    {portfolioData.personal.name}
+                    {data.personal.name}
                   </p>
                   <p
                     className={`text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}
                   >
-                    {portfolioData.personal.title}
+                    {data.personal.title}
                   </p>
                 </div>
               </div>
@@ -91,9 +90,9 @@ export const AboutClient = ({
               className={`grid grid-cols-3 gap-2 rounded-2xl p-3 border ${isDark ? "bg-white/[0.04] border-white/10" : "bg-gray-50 border-gray-200"}`}
             >
               {[
-                { v: "8 mo", l: "Enterprise" },
-                { v: "9", l: "Projects" },
-                { v: "3.79", l: "GPAX" },
+                { v: "8 mo", l: t("about.statEnterprise") },
+                { v: "9", l: t("about.statProjects") },
+                { v: "3.79", l: t("about.statGpax") },
               ].map((s) => (
                 <div key={s.l} className="text-center py-2">
                   <p
@@ -131,12 +130,12 @@ export const AboutClient = ({
                 <p
                   className={`text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}
                 >
-                  Location
+                  {t("about.location")}
                 </p>
                 <p
                   className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
                 >
-                  {portfolioData.personal.location}
+                  {data.personal.location}
                 </p>
               </div>
             </div>
@@ -159,7 +158,7 @@ export const AboutClient = ({
                 <p
                   className={`text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}
                 >
-                  Education
+                  {t("about.education")}
                 </p>
                 <p
                   className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
@@ -192,7 +191,7 @@ export const AboutClient = ({
                 <p
                   className={`text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}
                 >
-                  Focus
+                  {t("about.focus")}
                 </p>
                 <p
                   className={`text-sm font-semibold ${isDark ? "text-white" : "text-gray-900"}`}
@@ -206,7 +205,7 @@ export const AboutClient = ({
           {/* Quick actions */}
           <div className="flex flex-wrap gap-2">
             <a
-              href={`mailto:${portfolioData.personal.email}`}
+              href={`mailto:${data.personal.email}`}
               className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium border transition-colors ${
                 isDark
                   ? "bg-white text-gray-900 hover:bg-gray-100 border-white"
@@ -214,10 +213,10 @@ export const AboutClient = ({
               }`}
             >
               <Mail className="h-4 w-4" />
-              Email
+              {t("about.emailCta")}
             </a>
             <a
-              href={portfolioData.personal.resumeLink}
+              href={data.personal.resumeLink}
               download
               className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium border ${
                 isDark
@@ -226,13 +225,13 @@ export const AboutClient = ({
               }`}
             >
               <Download className="h-4 w-4" />
-              Resume
+              {t("common.resume")}
             </a>
           </div>
 
           <div className="flex items-center gap-2">
             <a
-              href={portfolioData.personal.github}
+              href={data.personal.github}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${
@@ -245,7 +244,7 @@ export const AboutClient = ({
               <Github className="h-4 w-4" />
             </a>
             <a
-              href={portfolioData.personal.linkedin ?? "#"}
+              href={data.personal.linkedin ?? "#"}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${
@@ -275,7 +274,7 @@ export const AboutClient = ({
               <h2
                 className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-900"}`}
               >
-                Who I am
+                {t("about.whoIam")}
               </h2>
               <div
                 className={`mt-1 h-px w-10 ${isDark ? "bg-white/15" : "bg-gray-200"}`}
@@ -322,7 +321,7 @@ export const AboutClient = ({
               <h2
                 className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-900"}`}
               >
-                Where I&apos;ve been
+                {t("about.whereIveBeen")}
               </h2>
               <div
                 className={`mt-1 h-px w-10 ${isDark ? "bg-white/15" : "bg-gray-200"}`}
@@ -433,7 +432,7 @@ export const AboutClient = ({
               <h2
                 className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-900"}`}
               >
-                What I build with
+                {t("about.whatIBuildWith")}
               </h2>
               <div
                 className={`mt-1 h-px w-10 ${isDark ? "bg-white/15" : "bg-gray-200"}`}
@@ -470,7 +469,7 @@ export const AboutClient = ({
               <h2
                 className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-900"}`}
               >
-                Beyond the code
+                {t("about.beyondTheCode")}
               </h2>
               <div
                 className={`mt-1 h-px w-10 ${isDark ? "bg-white/15" : "bg-gray-200"}`}
@@ -493,18 +492,18 @@ export const AboutClient = ({
                 <p
                   className={`text-sm font-medium ${isDark ? "text-white" : "text-white"}`}
                 >
-                  Let&apos;s build something great together.
+                  {t("about.letsBuild")}
                 </p>
                 <div className="flex gap-2">
                   <a
-                    href={`mailto:${portfolioData.personal.email}`}
+                    href={`mailto:${data.personal.email}`}
                     className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
                   >
                     <Mail className="h-4 w-4" />
-                    Get in touch
+                    {t("about.getInTouch")}
                   </a>
                   <a
-                    href={portfolioData.personal.resumeLink}
+                    href={data.personal.resumeLink}
                     download
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium border ${
                       isDark
@@ -513,7 +512,7 @@ export const AboutClient = ({
                     }`}
                   >
                     <Download className="h-4 w-4" />
-                    Resume
+                    {t("common.resume")}
                   </a>
                 </div>
               </div>

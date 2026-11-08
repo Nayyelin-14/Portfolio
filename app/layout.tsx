@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Thai, Noto_Sans_Myanmar } from "next/font/google";
 import "./globals.css";
 import { metadata as siteMetadata, jsonLd } from "@/lib/seo";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
@@ -12,6 +14,20 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+const notoThai = Noto_Sans_Thai({
+  subsets: ["thai"],
+  variable: "--font-noto-thai",
+  display: "swap",
+  weight: ["400", "700"],
+});
+
+const notoMyanmar = Noto_Sans_Myanmar({
+  subsets: ["myanmar"],
+  variable: "--font-noto-myanmar",
+  display: "swap",
+  weight: ["400", "700"],
 });
 
 const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":true;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
@@ -33,14 +49,18 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} font-sans antialiased`}
+        className={`${inter.className} ${notoThai.className} ${notoMyanmar.className} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider>
-          <Navigation />
-          <main className="min-h-screen pt-16">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Suspense fallback={null}>
+          <ThemeProvider>
+            <LanguageProvider>
+              <Navigation />
+              <main className="min-h-screen pt-16">{children}</main>
+              <Footer />
+            </LanguageProvider>
+          </ThemeProvider>
+        </Suspense>
         <Analytics />
         <SpeedInsights />
       </body>

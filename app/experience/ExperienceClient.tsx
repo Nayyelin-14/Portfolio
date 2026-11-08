@@ -1,11 +1,14 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { Briefcase, Calendar, MapPin, ExternalLink, Check } from "lucide-react";
 
 export const ExperienceClient = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -14,21 +17,21 @@ export const ExperienceClient = () => {
           isDark ? "text-blue-400" : "text-blue-600"
         }`}
       >
-        Experience
+        {t("experience.title")}
       </p>
       <h1
         className={`text-3xl sm:text-4xl font-bold tracking-tight ${
           isDark ? "text-white" : "text-gray-900"
         }`}
       >
-        My professional journey
+        {t("experience.heading")}
       </h1>
       <p
         className={`mt-4 text-lg max-w-2xl leading-relaxed ${
           isDark ? "text-gray-400" : "text-gray-600"
         }`}
       >
-        My professional journey in software engineering.
+        {t("experience.description")}
       </p>
 
       {/* Timeline */}
@@ -39,7 +42,7 @@ export const ExperienceClient = () => {
           }`}
         />
 
-        {portfolioData.experience.map((exp) => (
+        {data.experience.map((exp) => (
           <div key={exp.id} className="relative mb-12 last:mb-0">
             {/* Dot */}
             <div
@@ -148,7 +151,7 @@ export const ExperienceClient = () => {
                     isDark ? "text-gray-500" : "text-gray-500"
                   }`}
                 >
-                  Technologies &amp; Tools
+                  {t("common.technologiesTools")}
                 </h5>
                 <div className="flex flex-wrap gap-2">
                   {exp.technologies.map((tech) => (

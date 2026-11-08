@@ -2,12 +2,15 @@
 
 import { Github, Phone, Mail } from "lucide-react";
 import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ContactSectionProps {
   isDark: boolean;
 }
 
 const ContactSection = ({ isDark }: ContactSectionProps) => {
+  const { t } = useTranslation();
+
   const handleEmailClick = () => {
     window.location.href = `mailto:${portfolioData.personal.email}?subject=Contact%20from%20Portfolio&body=Hi%2C%0D%0A%0D%0AI%20would%20like%20to%20get%20in%20touch%20with%20you%20regarding%20potential%20opportunities.%0D%0A%0D%0ABest%20regards`;
   };
@@ -34,7 +37,7 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Let&apos;s Build Together
+              {t("contact.heading")}
             </h2>
             <div
               className={`w-24 h-1 ${
@@ -48,16 +51,13 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
               isDark ? "text-gray-300" : "text-gray-700"
             }`}
           >
-            &quot;A passionate software engineer eager to grow and collaborate.
-            If you have any questions, opportunities, or just want to chat,
-            don&apos;t hesitate to get in touch — I&apos;m always open to
-            learning and new opportunities.&quot;
+            {t("contact.quote")}
           </p>
 
           <div
             className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
           >
-            Click any contact method below to get in touch instantly
+            {t("contact.clickContact")}
           </div>
         </div>
 
@@ -71,7 +71,7 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
                 ? "border-gray-700 bg-gray-800 hover:bg-gray-750 text-blue-400"
                 : "border-gray-300 bg-white hover:bg-gray-50 text-blue-600"
             }`}
-            aria-label="Send Email"
+            aria-label={t("contact.email")}
           >
             <div
               className={`p-2 rounded-lg transition-colors ${
@@ -83,13 +83,13 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
               <Mail className="w-6 h-6 group-hover:animate-pulse" />
             </div>
             <div className="text-left">
-              <p className="font-semibold text-lg">Email</p>
+              <p className="font-semibold text-lg">{t("contact.email")}</p>
               <p
                 className={`text-sm opacity-80 ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                Send message
+                {t("contact.sendMessage")}
               </p>
             </div>
           </button>
@@ -104,7 +104,7 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
                 ? "border-gray-700 bg-gray-800 hover:bg-gray-750 text-green-400"
                 : "border-gray-300 bg-white hover:bg-gray-50 text-green-600"
             }`}
-            aria-label="GitHub Profile"
+            aria-label={t("contact.github")}
           >
             <div
               className={`p-2 rounded-lg transition-colors ${
@@ -116,13 +116,13 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
               <Github className="w-6 h-6 group-hover:rotate-12 transition-transform" />
             </div>
             <div className="text-left">
-              <p className="font-semibold text-lg">GitHub</p>
+              <p className="font-semibold text-lg">{t("contact.github")}</p>
               <p
                 className={`text-sm opacity-80 ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                View projects
+                {t("contact.viewProjects")}
               </p>
             </div>
           </a>
@@ -135,7 +135,7 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
                 ? "border-gray-700 bg-gray-800 hover:bg-gray-750 text-purple-400"
                 : "border-gray-300 bg-white hover:bg-gray-50 text-purple-600"
             }`}
-            aria-label="Call Phone"
+            aria-label={t("contact.phone")}
           >
             <div
               className={`p-2 rounded-lg transition-colors ${
@@ -147,7 +147,7 @@ const ContactSection = ({ isDark }: ContactSectionProps) => {
               <Phone className="w-6 h-6 group-hover:animate-bounce" />
             </div>
             <div className="text-left">
-              <p className="font-semibold text-lg">Phone</p>
+              <p className="font-semibold text-lg">{t("contact.phone")}</p>
               <p
                 className={`text-sm opacity-80 ${
                   isDark ? "text-gray-400" : "text-gray-600"

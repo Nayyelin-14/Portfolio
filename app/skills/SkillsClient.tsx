@@ -1,37 +1,42 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { Code2, Server, Database, Layers, Wrench, Globe } from "lucide-react";
 
-const skillGroups: { label: string; icon: React.ComponentType<{ className?: string }>; skills: string[] }[] = [
+const skillGroups: {
+  labelKey: string;
+  icon: React.ComponentType<{ className?: string }>;
+  skills: string[];
+}[] = [
   {
-    label: "Languages",
+    labelKey: "skills.groups.languages",
     icon: Code2,
     skills: ["Java", "TypeScript", "JavaScript"],
   },
   {
-    label: "Backend",
+    labelKey: "skills.groups.backend",
     icon: Server,
     skills: ["Java", "Quarkus", "Spring Boot", "Maven", "Node.js", "Express.js", "REST APIs", "GraphQL"],
   },
   {
-    label: "Frontend",
+    labelKey: "skills.groups.frontend",
     icon: Globe,
     skills: ["React", "Next.js", "Tailwind CSS"],
   },
   {
-    label: "Database",
+    labelKey: "skills.groups.database",
     icon: Database,
     skills: ["PostgreSQL", "MongoDB", "Prisma", "Drizzle ORM"],
   },
   {
-    label: "Cloud & DevOps",
+    labelKey: "skills.groups.cloudDevOps",
     icon: Layers,
     skills: ["Docker", "GitHub Actions", "Azure DevOps", "Azure Pipelines", "Redis", "Apache Kafka"],
   },
   {
-    label: "Tools",
+    labelKey: "skills.groups.tools",
     icon: Wrench,
     skills: ["Git", "Jest", "Payload CMS"],
   },
@@ -39,6 +44,8 @@ const skillGroups: { label: string; icon: React.ComponentType<{ className?: stri
 
 export const SkillsClient = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -47,28 +54,27 @@ export const SkillsClient = () => {
           isDark ? "text-blue-400" : "text-blue-600"
         }`}
       >
-        Skills
+        {t("skills.title")}
       </p>
       <h1
         className={`text-3xl sm:text-4xl font-bold tracking-tight ${
           isDark ? "text-white" : "text-gray-900"
         }`}
       >
-        Technologies I work with
+        {t("skills.heading")}
       </h1>
       <p
         className={`mt-4 text-lg max-w-2xl leading-relaxed ${
           isDark ? "text-gray-400" : "text-gray-600"
         }`}
       >
-        A collection of technologies I&apos;ve used across backend, frontend,
-        and cloud work.
+        {t("skills.description")}
       </p>
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillGroups.map((group) => (
           <div
-            key={group.label}
+            key={group.labelKey}
             className={`p-6 rounded-xl border ${
               isDark ? "bg-gray-900/50 border-gray-800" : "bg-white border-gray-200"
             }`}
@@ -86,7 +92,7 @@ export const SkillsClient = () => {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {group.label}
+                {t(group.labelKey)}
               </h2>
             </div>
             <div className="flex flex-wrap gap-1.5">
@@ -112,10 +118,10 @@ export const SkillsClient = () => {
             isDark ? "text-gray-400" : "text-gray-600"
           }`}
         >
-          All Skills
+          {t("skills.allSkills")}
         </h2>
         <div className="flex flex-wrap gap-2">
-          {portfolioData.skills.allSkills.map((skill) => (
+          {data.skills.allSkills.map((skill) => (
             <span
               key={skill}
               className={`px-3 py-1.5 text-sm font-medium rounded-full border transition-colors ${

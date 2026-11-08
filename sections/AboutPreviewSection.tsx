@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { StatCounter } from "@/components/StatCounter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { MapPin, GraduationCap, ArrowRight } from "lucide-react";
 
 export const AboutPreviewSection = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
 
   return (
     <section className="py-20">
@@ -17,7 +20,7 @@ export const AboutPreviewSection = () => {
           {/* Left: About content */}
           <div>
             <SectionHeader
-              eyebrow="About Me"
+              eyebrow={t("about.aboutMe")}
               title="Passionate about creating impactful products"
               align="left"
             />
@@ -26,7 +29,7 @@ export const AboutPreviewSection = () => {
                 isDark ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              {portfolioData.personal.bio} I enjoy turning complex problems into
+              {data.personal.bio} I enjoy turning complex problems into
               simple, beautiful and intuitive solutions.
             </p>
 
@@ -37,7 +40,7 @@ export const AboutPreviewSection = () => {
                 }`}
               >
                 <MapPin className="w-4 h-4 text-blue-500 shrink-0" />
-                {portfolioData.personal.location}
+                {data.personal.location}
               </div>
               <div
                 className={`flex items-center gap-3 text-sm ${
@@ -66,10 +69,10 @@ export const AboutPreviewSection = () => {
                 : "bg-gray-50 border-gray-200"
             }`}
           >
-            <StatCounter value="8+" label="Months Experience" delay={0} />
-            <StatCounter value="9+" label="Projects Built" delay={90} />
-            <StatCounter value="25+" label="Technologies" delay={180} />
-            <StatCounter value="1" label="Internship" delay={270} />
+            <StatCounter value="8+" label={t("about.statEnterprise")} delay={0} />
+            <StatCounter value="9+" label={t("about.statProjects")} delay={90} />
+            <StatCounter value="25+" label={t("skills.allSkills")} delay={180} />
+            <StatCounter value="1" label={t("about.statGpax")} delay={270} />
           </div>
         </div>
       </div>

@@ -2,20 +2,23 @@
 
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { Mail, MapPin, Github, Linkedin } from "lucide-react";
 
 const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/skills", label: "Skills" },
-  { href: "/projects", label: "Projects" },
-  { href: "/experience", label: "Experience" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", key: "footer.home" },
+  { href: "/about", key: "footer.about" },
+  { href: "/skills", key: "footer.skills" },
+  { href: "/projects", key: "footer.projects" },
+  { href: "/experience", key: "footer.experience" },
+  { href: "/contact", key: "footer.contact" },
 ];
 
 export const Footer = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
 
   return (
     <footer
@@ -37,10 +40,10 @@ export const Footer = () => {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              {portfolioData.personal.name}
+              {data.personal.name}
             </Link>
             <p className="mt-2 text-sm leading-relaxed">
-              Building digital experiences that make a difference.
+              {t("footer.brand")}
             </p>
           </div>
 
@@ -51,7 +54,7 @@ export const Footer = () => {
                 isDark ? "text-gray-300" : "text-gray-900"
               }`}
             >
-              Quick Links
+              {t("footer.quickLinks")}
             </h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
@@ -60,7 +63,7 @@ export const Footer = () => {
                     href={link.href}
                     className="text-sm hover:text-blue-500 transition-colors"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </Link>
                 </li>
               ))}
@@ -74,42 +77,42 @@ export const Footer = () => {
                 isDark ? "text-gray-300" : "text-gray-900"
               }`}
             >
-              Let&apos;s connect
+              {t("footer.letsConnect")}
             </h4>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-sm">
                 <Mail className="w-4 h-4 shrink-0" />
                 <a
-                  href={`mailto:${portfolioData.personal.email}`}
+                  href={`mailto:${data.personal.email}`}
                   className="hover:text-blue-500 transition-colors"
                 >
-                  {portfolioData.personal.email}
+                  {data.personal.email}
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <MapPin className="w-4 h-4 shrink-0" />
-                {portfolioData.personal.location}
+                {data.personal.location}
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Linkedin className="w-4 h-4 shrink-0" />
                 <a
-                  href={portfolioData.personal.linkedin}
+                  href={data.personal.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-500 transition-colors"
                 >
-                  LinkedIn
+                  {t("footer.linkedin")}
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Github className="w-4 h-4 shrink-0" />
                 <a
-                  href={portfolioData.personal.github}
+                  href={data.personal.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-500 transition-colors"
                 >
-                  GitHub
+                  {t("footer.github")}
                 </a>
               </li>
             </ul>
@@ -123,8 +126,8 @@ export const Footer = () => {
               : "border-gray-200 text-gray-500"
           }`}
         >
-          &copy; {new Date().getFullYear()} {portfolioData.personal.name}. All
-          rights reserved.
+          &copy; {new Date().getFullYear()} {data.personal.name}.{" "}
+          {t("footer.copyright")}
         </div>
       </div>
     </footer>

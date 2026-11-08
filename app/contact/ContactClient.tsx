@@ -1,14 +1,17 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
-import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { Github, Phone, Mail } from "lucide-react";
 
 export const ContactClient = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  const data = usePortfolioData();
 
   const handleEmailClick = () => {
-    window.location.href = `mailto:${portfolioData.personal.email}?subject=Contact%20from%20Portfolio&body=Hi%2C%0D%0A%0D%0AI%20would%20like%20to%20get%20in%20touch%20with%20you%20regarding%20potential%20opportunities.%0D%0A%0D%0ABest%20regards`;
+    window.location.href = `mailto:${data.personal.email}?subject=Contact%20from%20Portfolio&body=Hi%2C%0D%0A%0D%0AI%20would%20like%20to%20get%20in%20touch%20with%20you%20regarding%20potential%20opportunities.%0D%0A%0D%0ABest%20regards`;
   };
 
   const handlePhoneClick = () => {
@@ -22,23 +25,21 @@ export const ContactClient = () => {
           isDark ? "text-blue-400" : "text-blue-600"
         }`}
       >
-        Contact
+        {t("contact.title")}
       </p>
       <h1
         className={`text-3xl sm:text-4xl font-bold tracking-tight ${
           isDark ? "text-white" : "text-gray-900"
         }`}
       >
-        Let&apos;s Build Together
+        {t("contact.heading")}
       </h1>
       <p
         className={`mt-4 text-lg max-w-2xl leading-relaxed ${
           isDark ? "text-gray-400" : "text-gray-600"
         }`}
       >
-        A passionate software engineer eager to grow and collaborate. If you have
-        any questions, opportunities, or just want to chat, don&apos;t hesitate
-        to get in touch.
+        {t("contact.description")}
       </p>
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -60,17 +61,17 @@ export const ContactClient = () => {
           </div>
           <div>
             <p className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>
-              Email
+              {t("contact.email")}
             </p>
             <p className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-              Send message
+              {t("contact.sendMessage")}
             </p>
           </div>
         </button>
 
         {/* GitHub */}
         <a
-          href={portfolioData.personal.github}
+          href={data.personal.github}
           target="_blank"
           rel="noopener noreferrer"
           className={`group flex items-center gap-4 rounded-xl border p-6 transition-all hover:scale-[1.02] ${
@@ -88,10 +89,10 @@ export const ContactClient = () => {
           </div>
           <div>
             <p className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>
-              GitHub
+              {t("contact.github")}
             </p>
             <p className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-              View projects
+              {t("contact.viewProjects")}
             </p>
           </div>
         </a>
@@ -114,7 +115,7 @@ export const ContactClient = () => {
           </div>
           <div>
             <p className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>
-              Phone
+              {t("contact.phone")}
             </p>
             <p className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}>
               0945462376

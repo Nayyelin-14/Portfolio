@@ -2,6 +2,7 @@
 
 import { Briefcase, Calendar, MapPin, ExternalLink, Check } from "lucide-react";
 import { portfolioData } from "@/lib/data";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ExperienceSectionProps {
   isDark: boolean;
@@ -12,6 +13,8 @@ export const ExperienceSection = ({
   isDark,
   visibleElements,
 }: ExperienceSectionProps) => {
+  const { t } = useTranslation();
+
   return (
     <section
       id="experience"
@@ -47,7 +50,7 @@ export const ExperienceSection = ({
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              Experience
+              {t("experience.heading")}
             </span>
           </h2>
           <p
@@ -55,7 +58,7 @@ export const ExperienceSection = ({
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            My professional journey in software engineering
+            {t("experience.description")}
           </p>
         </div>
 
@@ -187,7 +190,7 @@ export const ExperienceSection = ({
                       isDark ? "text-gray-400" : "text-gray-500"
                     }`}
                   >
-                    Technologies &amp; Tools
+                    {t("common.technologiesTools")}
                   </h5>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, idx) => (

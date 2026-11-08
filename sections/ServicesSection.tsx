@@ -1,56 +1,53 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslation } from "@/hooks/useTranslation";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Server, Monitor, Globe, Database, Layers } from "lucide-react";
 
 const services = [
   {
     icon: Server,
-    title: "Backend Development",
-    description:
-      "Building scalable APIs and backend services with Java, Quarkus, Node.js, and Express.",
+    titleKey: "services.backend.title",
+    descKey: "services.backend.description",
   },
   {
     icon: Monitor,
-    title: "Frontend Development",
-    description:
-      "Creating responsive and performant web applications using React and Next.js.",
+    titleKey: "services.frontend.title",
+    descKey: "services.frontend.description",
   },
   {
     icon: Globe,
-    title: "API Design",
-    description:
-      "Designing RESTful APIs with clear contracts, authentication, and proper error handling.",
+    titleKey: "services.apiDesign.title",
+    descKey: "services.apiDesign.description",
   },
   {
     icon: Layers,
-    title: "Cloud & DevOps",
-    description:
-      "Deploying and managing applications with Docker, GitHub Actions, and Azure DevOps.",
+    titleKey: "services.cloudDevops.title",
+    descKey: "services.cloudDevops.description",
   },
   {
     icon: Database,
-    title: "Database Design",
-    description:
-      "Designing efficient schemas with PostgreSQL and MongoDB, optimizing queries and data flow.",
+    titleKey: "services.database.title",
+    descKey: "services.database.description",
   },
 ];
 
 export const ServicesSection = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          eyebrow="What I Do"
-          title="Building solutions with clean code and modern technologies."
+          eyebrow={t("services.eyebrow")}
+          title={t("services.title")}
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
             <div
-              key={s.title}
+              key={s.titleKey}
               className={`p-6 rounded-xl border transition-colors ${
                 isDark
                   ? "bg-gray-900/50 border-gray-800 hover:border-gray-700"
@@ -69,14 +66,14 @@ export const ServicesSection = () => {
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                {s.title}
+                {t(s.titleKey)}
               </h3>
               <p
                 className={`mt-2 text-sm leading-relaxed ${
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                {s.description}
+                {t(s.descKey)}
               </p>
             </div>
           ))}
