@@ -9,6 +9,11 @@ import { ArrowRight } from "lucide-react";
 import type { Project } from "@/types/data";
 
 const CATEGORY_CONFIG: Record<string, { label: string; icon: string; color: string }> = {
+  "python-fastapi": {
+    label: "Python FastAPI",
+    icon: "🐍",
+    color: "bg-blue-500 text-white",
+  },
   "java-backend": {
     label: "Java Backend",
     icon: "☕",
@@ -42,7 +47,7 @@ export const ProjectsGridClient = () => {
     {} as Record<string, typeof data.projects>,
   );
 
-  const categoryOrder = ["java-backend", "nodejs-express", "nextjs-fullstack"];
+  const categoryOrder = ["python-fastapi", "java-backend", "nodejs-express", "nextjs-fullstack"];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
